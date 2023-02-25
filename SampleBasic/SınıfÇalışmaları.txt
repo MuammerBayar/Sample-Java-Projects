@@ -1,0 +1,228 @@
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı double türden x1, y1, x2, y2 koordinat bilgilerine göre iki nokta
+	arasındaki  ((x1, y1) ve (x2, y2)) uzaklığa geri dönen distance isimli metodu PointUtil isimli sınıf içerisinde
+	yazınız	ve klavyeden girilen değerlerle çağırarak test ediniz
+----------------------------------------------------------------------------------------------------------------------*/
+class PointUtil {
+    public static double distance(double x1, double y1, double x2, double y2)
+    {
+        return Math.sqrt(Math.pow(x1 - x2,2) + Math.pow(y1 - y2,2));
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı en fazla 3(üç) basamaklı int türden bir sayının basamakları toplamını döndüren
+	digitsSum metodunu döngü kullanmadan yazınız. Metot aldığı argümanın en fazla 3(üç) basamaklı olup olmadığını kontrol
+	etmeyecektir. Basmaklar toplamı pozitif olarak döndürülecektir.
+----------------------------------------------------------------------------------------------------------------------*/
+class NumberUtil {
+    public static int digitSum(int val)
+    {
+        int sum = val % 10;
+        sum += val / 10 % 10;
+        sum += val /100;
+
+        return Math.abs(sum);
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Sınıf Çalışması: Katsayıları klavyeden girilen ikinci dereceden bir denklemin köklerini bulup ekrana yazdıran
+	 programı yazınız
+----------------------------------------------------------------------------------------------------------------------*/
+class EquationSolver {
+    public static double findDelta(double a, double b, double c)
+    {
+        return b * b - 4 * a * c;
+    }
+
+    public static void root(double a, double b, double c)
+    {
+        double delta = findDelta(a, b, c);
+
+        if (delta < 0)
+            System.out.print("gerçek kök yok%n");
+
+        else if (delta == 0) {
+            double x = -b / 2 * a;
+            System.out.printf("x1 = x2 = %f%n", x);
+        }
+        else if (delta > 0) {
+            double x1 = (-b + Math.sqrt(delta)) / 2 * a;
+            double x2 = (-b - Math.sqrt(delta)) / 2 * a;
+            System.out.printf("x1 = %f%nx2 = %f%n", x1, x2);
+        }
+
+    }
+
+ }
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Sınıf Çalışması: Klavyeden sıfır girilene kadar alınan sayıların pozitif ve negatif olanlarının ayrı ayrı toplamını
+ 	bulan programı yazınız. Programda hiç negatif veya pozitif sayı girilmemişse uygun mesajlar verilmelidir.
+----------------------------------------------------------------------------------------------------------------------*/
+class FindPosNegSumApp {
+    public static void run ()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+        int val;
+        int posSum = 0, negSum = 0;
+
+        while ((val = Integer.parseInt(kb.nextLine())) != 0)
+        {
+            if (val < 0)
+                negSum += val;
+            else
+                posSum += val;
+        }
+        display(posSum, negSum);
+    }
+
+    public static void display(int posSum, int negSum)
+    {
+        if (posSum == 0)
+            System.out.println("pozitif değer girilmedi.%n");
+        else
+            System.out.printf("pozitif değerler toplam: %d%n", posSum);
+
+        if (negSum == 0)
+            System.out.println("negatif değer girilmedi.%n");
+        else
+            System.out.printf("negatif değerler toplam: %d%n", negSum);
+
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Sınıf Çalışması: Yukarıdaki örnekte pozitif negatif sayılardan kaç tane girildiğini de bulan şekilde programı
+ 	güncelleyiniz
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının basamak sayısını döndüren countDigits isimli metodu
+ 	NumberUtil isimli sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz.
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının basamakları toplamını döndüren sumDigits isimli metodu
+ 	NumberUtil isimli sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz. Metot negatif sayılar için basamakları
+ 	toplamını pozitif olarak döndürecektir
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının tersini döndüren reversed isimli metodu NUmberUtil
+ 	sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
+
+ 	123 -> 3 -> 3 * 10 + 2 = 32 -> 32 * 10 + 1 = 321
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Sınıf Çalışması: Parametresi ile aldığı int türden a ve b değerleri için a'nın b-inci kuvvetini döndüren
+ 	pow isimli metodu NumberUtil sınıfı içerisinde yazınız.
+ 	 	Açıklamalar:
+ 	 	- Math sınıfının pow metodu kullanılmayacaktır
+ 	 	- Metot b'nin negatif değerleri için 1 değerine geri dönecektir
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Sınıf Çalışması: Parametresi ile aldığı bir sayının Armstrong sayısı olup olmadığını test eden isArmstrong isimli
+ 	metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
+ 	 	 Açıklamalar:
+ 	 	 - Bir sayının her basamağının sayının basamak sayıncı kuvvetleri toplandığında sonuç sayının kendisine eşitse bu sayıya
+ 	 	 Armstrong sayısı denir. Örneğin:
+
+ 	 	 153 -> 1 * 1 * 1 + 5 * 5 * 5 + 3 * 3 * 3 = 153
+
+ 	 	 - Kuvvet alma işlemi için yukarıda yazılmış olan pow metodu kullanılacaktır
+
+ 	 	 - Sayı negatif ise Armstrong sayısı kabul etmeyiniz
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Sınıf Çalışması: Parametresi ile aldığı long türden bir sayının asal olup olmadığını test eden isPrime isimli
+ 	metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
+ 	(Yavaş versiyon)
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Sınıf Çalışması: Parametresi ile aldığı int türden bir n değeri için n-inci asal sayıyı döndüren getPrime
+ 	isimli metodu yazınız ve aşağıdaki kod ile test ediniz.
+ 	Açıklamalar:
+ 		- isPrime metodunu kullanınız
+ 	  	- isPrime metodunun hızlı olan versiyonunu kullandığınız bilinciyle yazınız
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının faktoriyel değerini döndüren factorial isimli
+	metodu NumberUtil sınıfı içersinde yazınız ve aşağıdaki kodu ile test ediniz.
+
+	0! = 1
+	1! = 1
+	1! 1 * 2
+
+	...
+
+	n! = 1 * 2 * ... * (n - 1) * n
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı n sayısı için n-inci Fibonacci sayısını döndüren getFibonacciNumber
+	isimli metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
+	Açıklama:
+		- Fibonacci sayıları:
+		0 1 1 2 3 5 8 13 21 34 ...
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı int türden sayıdan büyük ilk Fibonacci sayısına geri dönen
+	getNextFibonacciNumber isimli metodu yazınız ve aşağıdaki kod ile test ediniz
+
+	0 1 1 2 3 5 8 13 21 34 ...
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı int türden yıl değerinin artık yıl olup olmadığını test eden isLeapYear
+	isimli metodu yazınız ve aşağıdaki kod ile test ediniz
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı int türden gün, ay ve yıl bilgilerine ilişkin tarihin geçerli bir tarih
+	olup olmadığını test eden isValidDate isimli metodu yazınız aşağıdaki kod ile test ediniz
+	(İleride daha iyi yazılacaktır)
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı int türden gün, ay ve yıl bilgilerine ilişkin tarihin geçerli bir tarih
+	olup olmadığını test eden isValidDate isimli metodu yazınız aşağıdaki kod ile test ediniz
+	(İleride daha iyi yazılacaktır)
+
+	Not: Buradaki kodun yukarıdaki kod ile okunabilirlik/algılanabilirlik açısından bir farkı yoktur
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı int türden gün, ay ve yıl bilgilerine ilişkin tarihin yılın kaçıncı
+	günü olduğunu döndüren getDayOfYear metodu yazınız ve aşağıdaki kod ile test ediniz.
+	Açıklamalar:
+		- Metot geçersiz bir tarih durumunda -1 değerine geri dönecektir
+		- Örnekler:
+		01.03.2020 -> 1 + 29 + 31 = 61
+		01.03.2021 -> 1 + 28 + 31 = 60
+		31.12.202 -> 31 + 30 + ... + 29 + 31 = 366
+		31.12.2020 -> 31 + 30 + ... + 28 + 31 = 365
+	(İleride daha iyisi yazılacaktır)
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı int türden gün, ay ve yıl bilgilerine ilişkin tarihin aşağıdaki açıklamalara
+	göre haftanın hangi gününe geldiğini döndüren getDayOfWeek isimli metodu yazınız ve aşağıdaki kod ile test ediniz
+	Açıklamalar:
+		- Metot geçersiz bir tarih durumunda -1 değerine geri dönecektir
+		- Haftanın günü 1.1.1900 ile verilen tariharasındaki (verilen tarih dahil) gün sayısının 7(yedi) ile bölümünden
+		elde edilen kalan ile bulunabilir. Değer 0(sıfır) ise "Pazar", 1(bir) ise "Pazartesi", ... 6(altı) ise "Cumartesi"
+		günlerine karşılık gelir
+		- 1.1.1900 öncesindeki tarihler geçersizler kabul edilir
+		- Parametresi ile aldığı gün, ay ve yıl bilgilerine ilişkin tarihin hafta sonu olup olmadığını test eden isWeekend
+		ve hafta içi olup olmadığını test eden isWeekday metotlarını yazınız. Metotlar tarih geçerliliği kontrolü yapmayacaktır
+	(İleride daha iyisi yazılacaktır)
+----------------------------------------------------------------------------------------------------------------------*/
+
