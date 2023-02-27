@@ -3,6 +3,9 @@
 	arasındaki  ((x1, y1) ve (x2, y2)) uzaklığa geri dönen distance isimli metodu PointUtil isimli sınıf içerisinde
 	yazınız	ve klavyeden girilen değerlerle çağırarak test ediniz
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 25.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
 class PointUtil {
     public static double distance(double x1, double y1, double x2, double y2)
     {
@@ -14,6 +17,9 @@ class PointUtil {
 	Sınıf Çalışması: Parametresi ile aldığı en fazla 3(üç) basamaklı int türden bir sayının basamakları toplamını döndüren
 	digitsSum metodunu döngü kullanmadan yazınız. Metot aldığı argümanın en fazla 3(üç) basamaklı olup olmadığını kontrol
 	etmeyecektir. Basmaklar toplamı pozitif olarak döndürülecektir.
+----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 25.02.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 class NumberUtil {
     public static int digitSum(int val)
@@ -29,6 +35,9 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Sınıf Çalışması: Katsayıları klavyeden girilen ikinci dereceden bir denklemin köklerini bulup ekrana yazdıran
 	 programı yazınız
+----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 25.02.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 class EquationSolver {
     public static double findDelta(double a, double b, double c)
@@ -61,6 +70,9 @@ class EquationSolver {
  	Sınıf Çalışması: Klavyeden sıfır girilene kadar alınan sayıların pozitif ve negatif olanlarının ayrı ayrı toplamını
  	bulan programı yazınız. Programda hiç negatif veya pozitif sayı girilmemişse uygun mesajlar verilmelidir.
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 25.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
 class FindPosNegSumApp {
     public static void run ()
     {
@@ -81,12 +93,12 @@ class FindPosNegSumApp {
     public static void display(int posSum, int negSum)
     {
         if (posSum == 0)
-            System.out.println("pozitif değer girilmedi.%n");
+            System.out.println("pozitif değer girilmedi.");
         else
             System.out.printf("pozitif değerler toplam: %d%n", posSum);
 
         if (negSum == 0)
-            System.out.println("negatif değer girilmedi.%n");
+            System.out.println("negatif değer girilmedi.");
         else
             System.out.printf("negatif değerler toplam: %d%n", negSum);
 
@@ -97,17 +109,148 @@ class FindPosNegSumApp {
  	Sınıf Çalışması: Yukarıdaki örnekte pozitif negatif sayılardan kaç tane girildiğini de bulan şekilde programı
  	güncelleyiniz
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 26.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class FindPosNegSumApp {
+    public static void run ()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+        int val;
+        int posSum = 0, negSum = 0;
+        int posCount = 0, negCount = 0;
+
+        System.out.println("Sayıları girmeye başlayınız..");
+
+        while ((val = Integer.parseInt(kb.nextLine())) != 0)
+        {
+            if (val < 0) {
+                negSum += val;
+                ++negCount;
+            }
+            else {
+                posSum += val;
+                ++posCount;
+            }
+        }
+        display(posSum, negSum,posCount,negCount);
+    }
+
+    public static void display(int posSum, int negSum,int posCount, int negCount)
+    {
+
+        if (posSum == 0)
+            System.out.println("pozitif değer girilmedi.");
+        else
+            System.out.printf("%d pozitif sayı girildi, sayılar toplamı: %d%n",posCount, posSum);
+
+        if (negSum == 0)
+            System.out.println("negatif değer girilmedi.");
+        else
+            System.out.printf("%d negatif sayı girildi, sayılar toplamı: %d%n",negCount, negSum);
+
+    }
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
  	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının basamak sayısını döndüren countDigits isimli metodu
  	NumberUtil isimli sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz.
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 26.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class CountDigitsTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        System.out.print("Bir sayı giriniz:");
+        int val;
+
+        while ((val = Integer.parseInt(kb.nextLine())) != 0) {
+            int count = NumberUtil.countDigits(val);
+
+            System.out.printf("%d sayısının basamak sayısı:%d%n", val, count);
+            System.out.print("Bir sayı giriniz:");
+        }
+
+        System.out.printf("0 sayısının basamak sayısı:%d%n", NumberUtil.countDigits(0));
+        System.out.println("Tekrar yapıyor musunuz?");
+    }
+}
+
+class NumberUtil {
+    public static int countDigits(int val)
+    {
+        val = Math.abs(val);
+        int count = 0;
+
+        if (val < 10)
+            return ++count;
+
+        while (val != 0) {
+            val /= 10;
+            ++count;
+        }
+
+        return count;
+    }
+}
+class NumberUtil {
+	public static int countDigits(int val)
+	{
+		int count = 0;
+
+		do {
+			++count;
+			val /= 10;
+		} while (val != 0);
+
+		return count;
+	}
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
  	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının basamakları toplamını döndüren sumDigits isimli metodu
  	NumberUtil isimli sınıf içerisinde yazınız ve aşağıdaki kod ile test ediniz. Metot negatif sayılar için basamakları
  	toplamını pozitif olarak döndürecektir
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 26.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class SumDigitsTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        System.out.print("Bir sayı giriniz:");
+        int val;
+
+        while ((val = Integer.parseInt(kb.nextLine())) != 0) {
+            int count = NumberUtil.sumDigits(val);
+
+            System.out.printf("%d sayısının basamakları toplamı:%d%n", val, count);
+            System.out.print("Bir sayı giriniz:");
+        }
+
+        System.out.printf("0 sayısının basamakları toplamı:%d%n", NumberUtil.sumDigits(0));
+        System.out.println("Tekrar yapıyor musunuz?");
+    }
+}
+class NumberUtil {
+    public static int sumDigits(int val)
+    {
+        val = Math.abs(val);
+
+        int sum = 0;
+        while (val != 0) {
+            sum += val % 10;
+            val /= 10;
+        }
+
+        return sum;
+    }
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
  	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının tersini döndüren reversed isimli metodu NUmberUtil
@@ -115,6 +258,41 @@ class FindPosNegSumApp {
 
  	123 -> 3 -> 3 * 10 + 2 = 32 -> 32 * 10 + 1 = 321
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 27.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class ReversedTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        System.out.print("Bir sayı giriniz:");
+        int val;
+
+        while ((val = Integer.parseInt(kb.nextLine())) != 0) {
+            int count = NumberUtil.reversed(val);
+
+            System.out.printf("%d sayısının tersi:%d%n", val, count);
+            System.out.print("Bir sayı giriniz:");
+        }
+
+        System.out.printf("0 sayısının tersi:%d%n", NumberUtil.reversed(0));
+        System.out.println("Tekrar yapıyor musunuz?");
+    }
+}
+class NumberUtil {
+    public static int reversed(int val)
+    {
+        int result = 0;
+
+        while (val != 0) {
+            result = result *  10 + val % 10;
+            val /= 10;
+        }
+
+        return result;
+    }
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
  	Sınıf Çalışması: Parametresi ile aldığı int türden a ve b değerleri için a'nın b-inci kuvvetini döndüren
@@ -123,6 +301,42 @@ class FindPosNegSumApp {
  	 	- Math sınıfının pow metodu kullanılmayacaktır
  	 	- Metot b'nin negatif değerleri için 1 değerine geri dönecektir
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 27.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class ReversedTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        while (true) {
+            System.out.print("tabanı giriniz:");
+            int a = Integer.parseInt(kb.nextLine());
+
+            if(a == 0)
+                break;
+
+            System.out.print("üstü giriniz:");
+            int b = Integer.parseInt(kb.nextLine());
+            System.out.printf("%d üzeri %d = %d%n", a, b, NumberUtil.pow(a,b));
+        }
+        System.out.println("Tekrar yapıyor musunuz?");
+    }
+}
+class NumberUtil {
+    public static int pow(int a, int b)
+    {
+        if (b < 0)
+            return 1;
+
+        int result = 1;
+
+        for (int i = 0; i < b; ++i)
+            result *= a;
+
+        return result;
+    }
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
  	Sınıf Çalışması: Parametresi ile aldığı bir sayının Armstrong sayısı olup olmadığını test eden isArmstrong isimli
@@ -137,13 +351,108 @@ class FindPosNegSumApp {
 
  	 	 - Sayı negatif ise Armstrong sayısı kabul etmeyiniz
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 27.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class IsArmstrongTest {
+    public static void run()
+    {
+        for (int n = 0; n <= 9999999; ++n)
+            if (NumberUtil.isArmstrong(n))
+                System.out.println(n);
+    }
+}
+
+class NumberUtil {
+    public static boolean isArmstrong(int val)
+    {
+        if (val < 0)
+            return false;
+
+        int temp = val;
+        int result = 0;
+        int countDigits = countDigits(val);
+
+        while (temp != 0) {
+            result += pow(temp % 10, countDigits);
+            temp /= 10;
+        }
+
+        if(val == result)
+            return true;
+
+        return false;
+    }
+    public static int pow(int a, int b)
+    {
+        int result = 1;
+
+        while (b-- > 0)
+            result *= a;
+
+        return result;
+    }
+    public static int countDigits(int val)
+    {
+        int count = 0;
+
+        do {
+            ++count;
+            val /= 10;
+        } while (val != 0);
+
+        return count;
+    }
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
  	Sınıf Çalışması: Parametresi ile aldığı long türden bir sayının asal olup olmadığını test eden isPrime isimli
  	metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
- 	(Yavaş versiyon)
+ 	Kural: Bir sayı karekökünden küçük olan asal sayıların hiç birisine bölünemiyorsa asaldır.
+ 	(Hızlı versiyon)
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 27.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class IsPrimeTest {
+    public static void run()
+    {
+        for (int i = -10; i <= 100; ++i)
+            if (NumberUtil.isPrime(i))
+                System.out.printf("%d ", i);
 
+        System.out.println();
+        System.out.println(NumberUtil.isPrime(1_000_003));
+
+        System.out.println(NumberUtil.isPrime(3_728_803_592_870_153_407L));
+    }
+}
+
+class NumberUtil {
+    public static boolean isPrime(long val)
+    {
+        if (val < 2)
+            return false;
+
+        if (val % 2 == 0)
+            return val == 2;
+
+        if (val % 3 == 0)
+            return val == 3;
+
+        if (val % 5 == 0)
+            return val == 5;
+
+        if (val % 7 == 0)
+            return val == 7;
+
+        for (long i = 11; i * i <= val; i += 2)
+            if (val % i == 0)
+                return false;
+
+        return true;
+    }
+}
 /*----------------------------------------------------------------------------------------------------------------------
  	Sınıf Çalışması: Parametresi ile aldığı int türden bir n değeri için n-inci asal sayıyı döndüren getPrime
  	isimli metodu yazınız ve aşağıdaki kod ile test ediniz.
