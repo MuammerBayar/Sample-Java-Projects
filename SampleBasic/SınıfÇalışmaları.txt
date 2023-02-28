@@ -460,7 +460,67 @@ class NumberUtil {
  		- isPrime metodunu kullanınız
  	  	- isPrime metodunun hızlı olan versiyonunu kullandığınız bilinciyle yazınız
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 28.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class GetPrimeTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
 
+        for (;;) {
+            System.out.print("Bir sayı giriniz:");
+            int n = Integer.parseInt(kb.nextLine());
+
+
+            if (n < 1)
+                return;
+
+            System.out.printf("%d. asal sayı:%d%n", n, NumberUtil.getPrime(n));
+        }
+    }
+}
+
+class NumberUtil {
+    public static int getPrime(int n)
+    {
+        int count = 0;
+        int result = 0;
+
+        for (int i = 2; count != n; ++i)
+            if (isPrime(i)) {
+                ++count;
+                result = i;
+            }
+
+        return result;
+
+    }
+
+    public static boolean isPrime(long val)
+    {
+        if (val < 2)
+            return false;
+
+        if (val % 2 == 0)
+            return val == 2;
+
+        if (val % 3 == 0)
+            return val == 3;
+
+        if (val % 5 == 0)
+            return val == 5;
+
+        if (val % 7 == 0)
+            return val == 7;
+
+        for (long i = 11; i * i <= val; i += 2)
+            if (val % i == 0)
+                return false;
+
+        return true;
+    }
+}
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması: Parametresi ile aldığı int türden bir sayının faktoriyel değerini döndüren factorial isimli
 	metodu NumberUtil sınıfı içersinde yazınız ve aşağıdaki kodu ile test ediniz.
@@ -473,7 +533,30 @@ class NumberUtil {
 
 	n! = 1 * 2 * ... * (n - 1) * n
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 28.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class FactorialTest {
+    public static void run()
+    {
+        int n = 13;
 
+        for (int i = 0; i <= n; ++i)
+            System.out.printf("%d! = %d%n", i, NumberUtil.factorial(i));
+    }
+}
+
+class NumberUtil {
+    public static int factorial(int val)
+    {
+        int result = 1;
+
+        for (int i = 2; i <= val; ++i)
+            result *= i;
+
+        return result;
+    }
+}
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması: Parametresi ile aldığı n sayısı için n-inci Fibonacci sayısını döndüren getFibonacciNumber
 	isimli metodu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
@@ -481,14 +564,101 @@ class NumberUtil {
 		- Fibonacci sayıları:
 		0 1 1 2 3 5 8 13 21 34 ...
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 28.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class GetFibonnaciTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
 
+        for (;;) {
+            System.out.print("Bir sayı giriniz:");
+            int n = Integer.parseInt(kb.nextLine());
+
+
+            if (n < 1)
+                break;
+
+            System.out.printf("%d. Fibonacci sayısı:%d%n", n, NumberUtil.getFibonacciNumber(n));
+        }
+
+        System.out.println("Tekrar yapıyor musunuz?");
+    }
+}
+
+class NumberUtil {
+    public static int getFibonacciNumber(int n)
+    {
+
+        if (val < 0)
+        	return 0;
+
+        int prev2 = 0, prev1 = 1;
+
+        if (n < 2)
+            return n - 1;
+
+        for (int i = 2; i < n; ++i) {
+             int temp = prev1;
+             prev1 += prev2;
+             prev2 = temp;
+        }
+
+        return prev1;
+    }
+}
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması: Parametresi ile aldığı int türden sayıdan büyük ilk Fibonacci sayısına geri dönen
 	getNextFibonacciNumber isimli metodu yazınız ve aşağıdaki kod ile test ediniz
 
 	0 1 1 2 3 5 8 13 21 34 ...
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 28.02.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class GetNextFibonnaciTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
 
+        for (;;) {
+            System.out.print("Bir sayı giriniz:");
+            int n = Integer.parseInt(kb.nextLine());
+
+
+            if (n < -999)
+                break;
+
+            System.out.printf("%d sayısından büyük ilk Fibonacci sayısı:%d%n", n, NumberUtil.getNextFibonacciNumber(n));
+        }
+
+        System.out.println("Tekrar yapıyor musunuz?");
+    }
+}
+
+class NumberUtil {
+
+    public static int getNextFibonacciNumber(int val)
+    {
+        if (val < 0)
+            return 0;
+
+        int prev2 = 0, prev1 = 1;
+        int result = prev1 + prev2;
+
+        for (;;) {
+
+            prev2 = prev1;
+            prev1 = result;
+
+            if (result > val )
+                return result;
+
+            result = prev1 + prev2;
+        }
+    }
+}
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması: Parametresi ile aldığı int türden yıl değerinin artık yıl olup olmadığını test eden isLeapYear
 	isimli metodu yazınız ve aşağıdaki kod ile test ediniz
