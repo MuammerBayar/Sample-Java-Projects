@@ -19,6 +19,11 @@
 
     3. Parametresi ile aldığı int türden bir sayının negatif mi, 0(sıfır) mı, pozitif mi olduğunu test eden signum isimli
     metodu yazınız ve test ediniz. Metot pozitif için 1(bir), negatif için -1(eksi bir) ve sıfır için 0(sıfır) döndürecektir.
+
+    C ve Sistem Programcıları Derneği
+    Java ile Nesne Yönelimli Programlama
+    Çalışma Soruları
+
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01

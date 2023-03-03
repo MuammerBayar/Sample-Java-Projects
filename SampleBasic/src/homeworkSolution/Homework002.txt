@@ -46,4 +46,8 @@
     çift sayı alan ve bunu iki asal sayının toplamı biçiminde yazdıran programı yazınız. Örneğin:
     Sayı: 16
     11 + 5
+
+    C ve Sistem Programcıları Derneği
+    Java ile Nesne Yönelimli Programlama
+    Çalışma Soruları
 ----------------------------------------------------------------------------------------------------------------------*/
