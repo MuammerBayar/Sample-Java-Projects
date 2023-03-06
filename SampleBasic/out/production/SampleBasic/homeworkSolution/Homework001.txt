@@ -29,15 +29,6 @@
 	 Question-01
 	 çözüm tarihi:01.02.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package samples;
-
-public class Main {
-    public static void main(String[] args)
-    {
-        NumberCompareApp.run();
-    }
-}
-
 class NumberCompareApp {
     public static void run()
     {
@@ -77,15 +68,6 @@ class  NumberUtil {
 	 Question-02
 	 çözüm tarihi:01.02.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package samples;
-
-public class Main {
-    public static void main(String[] args)
-    {
-        MidTestApp.run();
-    }
-}
-
 class MidTestApp {
     public static void run()
     {
@@ -114,15 +96,6 @@ class  NumberUtil {
 	Question-03
 	çözüm tarihi:01.02.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package samples;
-
-public class Main {
-    public static void main(String[] args)
-    {
-        SignumTestApp.run();
-    }
-}
-
 class SignumTestApp {
     public static void run()
     {

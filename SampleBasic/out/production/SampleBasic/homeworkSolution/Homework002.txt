@@ -51,3 +51,105 @@
     Java ile Nesne Yönelimli Programlama
     Çalışma Soruları
 ----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-01
+	 çözüm tarihi:06.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class DrawDiomandApp {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Bir sayı giriniz:");
+            int n = Integer.parseInt(kb.nextLine());
+            if (n <= 0)
+                break;
+            drawDiomand(n);
+        }
+        System.out.println("Tekrar yapıyormusun..");
+    }
+    public static void drawDiomand(int n)
+    {
+        for (int i = 0; i < n ; ++i) {
+            for (int k = 0; k < n - 1 - i; ++k)
+                System.out.print(" ");
+            for (int k = 0; k < 2 * i + 1; ++k)
+                System.out.print("*");
+
+            System.out.println();
+        }
+
+        for (int i = n - 1; i > 0; --i) {
+            for (int k = 0; k < n - i; ++k)
+                System.out.print(" ");
+            for (int k = 0; k < 2 * i - 1; ++k)
+                System.out.print("*");
+
+            System.out.println();
+        }
+
+    }
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-02
+	 çözüm tarihi:06.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class DisplayDurationTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Bir değer giriniz:");
+            long n = Long.parseLong(kb.nextLine());
+
+            DateUtil.displayDuration(n);
+            if(n == 0)
+                break;
+        }
+        System.out.println("Tekrar yapıyormusun..");
+    }
+}
+class DateUtil{
+    public static void displayDuration (long second)
+    {
+        long hour =  getHour(second);
+        long minute = getMinute(second);
+        second = getSecond(second);
+
+        if (hour != 0)
+            System.out.printf("%d saat ",hour);
+        if (minute != 0)
+            System.out.printf("%d dakika ",minute);
+        if(second != 0)
+            System.out.printf("%d saniye ",second);
+
+        System.out.println();
+    }
+
+    public static long getHour(long second)
+    {
+        return second / 3600;
+    }
+
+    public static long getMinute(long second)
+    {
+        second -= getHour(second) * 3600;
+
+        return second / 60;
+    }
+
+    public static long getSecond(long second)
+    {
+        second -= getHour(second) * 3600;
+        second -= getMinute(second) * 60;
+
+        return second;
+    }
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-03
+	 çözüm tarihi:06.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
