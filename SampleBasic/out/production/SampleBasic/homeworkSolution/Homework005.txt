@@ -1,0 +1,39 @@
+/*----------------------------------------------------------------------------------------------------------------------
+    Homework-005
+    verilen ders: 16-03-04-2021
+    çözülen ders: -16-03-04-2021-?
+
+    1. e sayısını aşağıdaki seri toplamıyla bulabilirsiniz :
+    e=
+    1/0! + 1/1! + 1/2! + 1/3! + 1/4!..
+
+    Bir Java programı yazarak e sayısını yukarıdaki seri toplamıyla hesaplayarak ekrana yazdırınız.
+
+    2. Parametresi ile aldığı pozitif bir tamsayının kendisi hariç tüm çarpanlarının toplamı ile geri dönen sumFactors
+    metodunu yazınız. Metot parametresi ile aldığı sayı hariç tüm çarpanlarının toplamına geri dönecektir: (1 her
+    sayının doğal çarpanıdır ve toplama dahil edilecektir.)
+
+    3. x ve y pozitif tamsayılar olmak üzere eğer x sayısının kendisi hariç bölenleri toplamı y sayısına ve aynı
+    zamanda y sayısının kendisi hariç bölenleri toplamı x sayısına eşit ise bu sayılar arkadaştır denir. Örneğin 220
+    ve 284 sayıları arkadaş sayılardır. Parametre olarak aldığı iki tamsayının arkadaş olup olmadıklarını test eden
+    areFriends metodunu yazınız. Metodunuzu dört basamaklı bir arkadaş sayı çifti bulan bir kodla test
+    edebilirsiniz.
+
+    4. Kendisi haricindeki tüm pozitif bölenlerinin toplamına eşit olan tamsayılara "mükemmel sayı" (perfect
+    number) denir. Örneğin 6 ve 28 sayıları mükemmel sayılardır:
+
+    6 = 1 + 2 + 3
+    28 = 1 + 2 + 4 + 7 + 14
+
+    a) Parametresi ile aldığı int türden bir değerin mükemmel sayı olup olmadığını test eden isPerfect metodunu
+    yazınız.
+
+    Metot sayı mükemmel ise true mükemmel değil ise false değerine geri dönecektir.
+
+    b) 4 basamaklı tek bir mükemmel sayı vardır. Yazmış olduğunuz isPerfect metodunu kullanarak 4 basamaklı
+    mükemmel sayıyı bulan programı yazınız.
+
+        C ve Sistem Programcıları Derneği
+        Java ile Nesne Yönelimli Programlama
+        Çalışma Soruları
+----------------------------------------------------------------------------------------------------------------------*/

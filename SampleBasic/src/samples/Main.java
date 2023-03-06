@@ -6,107 +6,49 @@ package samples;
 public class Main {
     public static void main(String [] args)
     {
-        DateUtilTest.run();
+        GcdTest.run();
     }
 }
 
-class DateUtilTest {
+class GcdTest {
     public static void run()
     {
         java.util.Scanner kb = new java.util.Scanner(System.in);
 
         for (;;) {
-            System.out.print("Gün?");
-            int day = Integer.parseInt(kb.nextLine());
+            System.out.print("Birinci sayıyı giriniz:");
+            int a = Integer.parseInt(kb.nextLine());
 
-            if (day == 0)
+            System.out.print("İkinci sayıyı giriniz:");
+            int b = Integer.parseInt(kb.nextLine());
+
+            int result = NumberUtil.gcd(a, b);
+
+            System.out.printf("obeb(%d, %d) = %d%n", a, b, result);
+            if (result == 1)
                 break;
-
-            System.out.print("Ay?");
-            int month = Integer.parseInt(kb.nextLine());
-
-            System.out.print("Yıl?");
-            int year = Integer.parseInt(kb.nextLine());
-
-            int dayOfYear = DateUtil.getDayOfYear(day, month, year);
-
-            if (dayOfYear != -1)
-                System.out.printf("%02d/%02d/%04d tarihi yılın %d. günüdür%n", day, month, year, dayOfYear);
-            else
-                System.out.println("Geçersiz tarih");
         }
 
         System.out.println("Tekrar yapıyor musunuz?");
     }
 }
 
-class DateUtil {
-
-    public static int getDayOfYear(int day, int month, int year)
+class NumberUtil {
+    public static int gcd(int a, int b)
     {
-        if (!isValidDate(day, month, year))
-            return -1;
+        int devider = Math.min(a,b);
 
-        return day + getTotalDays(month,year);
-    }
+        if (Math.max(a,b) % devider == 0)
+            return devider;
+        else
+            devider /= 2;
 
-    public static int getTotalDays(int month, int year)
-    {
-        int totalDays = 0;
-        switch (month - 1) {
-            case 12:
-                totalDays += 31;
-            case 11:
-                totalDays += 30;
-            case 10:
-                totalDays += 31;
-            case 9:
-                totalDays += 30;
-            case 8:
-                totalDays += 31;
-            case 7:
-                totalDays += 31;
-            case 6:
-                totalDays += 30;
-            case 5:
-                totalDays += 31;
-            case 4:
-                totalDays += 30;
-            case 3:
-                totalDays += 31;
-            case 2:
-                totalDays += 28;
-                if(isLeapYear(year))
-                    ++totalDays;
-            case 1:
-                totalDays += 31;
+        for (;;) {
+
+            if (a % devider == 0 && b % devider == 0)
+                return devider;
+
+            --devider;
         }
-
-        return totalDays;
-    }
-    public static boolean isValidDate(int day,int month, int year)
-    {
-        if(day < 1 || day > 31 || month < 1 || month > 12)
-            return false;
-
-        int days = 31;
-        switch (month) {
-            case 11:
-            case 9:
-            case 6:
-            case 4:
-                days = 30;
-                break;
-            case 2:
-                days = 28;
-                if (isLeapYear(year))
-                    ++days;
-                break;
-        }
-        return day <= days;
-    }
-    public static boolean isLeapYear(int year)
-    {
-        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
 }
