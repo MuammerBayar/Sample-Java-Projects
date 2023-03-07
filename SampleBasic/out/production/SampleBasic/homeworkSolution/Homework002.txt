@@ -151,5 +151,65 @@ class DateUtil{
 }
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-03
-	 çözüm tarihi:06.03.2023
+	 çözüm tarihi:?????
 ----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-04
+	 çözüm tarihi:07.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class DrawBallFallApp {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Yükseklik değerini giriniz:");
+            int height = Integer.parseInt(kb.nextLine());
+
+            if (height == 0)
+                break;
+
+            System.out.print("Genişlik değerini giriniz:");
+            int width = Integer.parseInt(kb.nextLine());
+
+            drawFallBall(height,width);
+        }
+    }
+
+    public static void drawFallBall(int height, int width)
+    {
+        int count = 0;
+        LOOP:
+        for (;;) {
+           for (int j = 0; j < width; ++j) {
+                ++count;
+               drawLine(width, j);
+               if (count == height)
+                   break LOOP;
+           }
+
+            for (int j = width - 2; j > 0; --j) {
+                ++count;
+                drawLine(width, j);
+                if (count == height)
+                    break LOOP;
+            }
+        }
+    }
+
+    public static void drawLine(int width, int j)
+    {
+        System.out.print("|");
+
+        for (int k = 0; k < j; ++k)
+            System.out.print(" ");
+
+        System.out.print("*");
+
+        for (int k = 0; k < width - 1 - j; ++k)
+            System.out.print(" ");
+
+        System.out.println("|");
+    }
+}
