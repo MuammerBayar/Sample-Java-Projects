@@ -97,3 +97,236 @@
     Çalışma Soruları
 
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-01
+	 çözüm tarihi:08.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class FindPrimesOfThreeDigitsNumber {
+    public static void run()
+    {
+
+        for (int i = 100; i < 1000; ++i)
+            if (checkConditions(i))
+                System.out.printf("%d ",i);
+
+    }
+
+    public static boolean checkConditions (int val)
+    {
+        int cba = 100 * (val % 10) + val / 10;
+
+        if (val > cba)
+            return false;
+
+        if (!isPrime(val) || !isPrime(cba))
+            return false;
+
+        if (!isPrime(val / 10) || !isPrime(val % 100))
+            return false;
+
+        if (!isPrime(cba / 10) || !isPrime(cba % 100))
+            return false;
+
+        return true;
+    }
+
+    public static boolean isPrime(long val)
+    {
+        if (val <= 1)
+            return false;
+
+        if (val % 2 == 0)
+            return val == 2;
+
+        if (val % 3 == 0)
+            return val == 3;
+
+        if (val % 5 == 0)
+            return val == 5;
+
+        if (val % 7 == 0)
+            return val == 7;
+
+        for (long i = 11; i * i <= val; i += 2)
+            if (val % i == 0)
+                return false;
+
+        return true;
+    }
+
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-02
+	 çözüm tarihi:08.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class NumberUtil {
+
+    public static boolean isPrimeX(int val)
+    {
+        while (isPrime(val)) {
+            if (val < 10)
+                return true;
+
+            val = digitsSum(val);
+        }
+
+        return false;
+    }
+    public static int digitsSum(int val)
+    {
+        int sum = 0;
+
+        while (val != 0) {
+            sum += val % 10;
+            val /= 10;
+        }
+
+        return sum;
+    }
+    public static boolean isPrime(long val)
+    {
+        if (val <= 1)
+            return false;
+
+        if (val % 2 == 0)
+            return val == 2;
+
+        if (val % 3 == 0)
+            return val == 3;
+
+        if (val % 5 == 0)
+            return val == 5;
+
+        if (val % 7 == 0)
+            return val == 7;
+
+        for (long i = 11; i * i <= val; i += 2)
+            if (val % i == 0)
+                return false;
+
+        return true;
+    }
+
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-03
+	 çözüm tarihi:08.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+
+
+class NumberUtil {
+
+    public static int calculateDigitalRoot(int val)
+    {
+        while ((val = digitsSum(val)) > 10)
+            ;
+
+        return val;
+    }
+    public static int digitsSum(int val)
+    {
+        int sum = 0;
+
+        while (val != 0) {
+            sum += val % 10;
+            val /= 10;
+        }
+
+        return sum;
+    }
+
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-04
+	 çözüm tarihi:08.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class IsFactorianTest {
+    public static void run()
+    {
+
+        for (int i = 1;i < 100000; ++i) {
+            if (NumberUtil.isFactorian(i))
+                System.out.printf("%d ",i);
+        }
+    }
+
+}
+
+class NumberUtil {
+    public static boolean isFactorian(int val)
+    {
+        return val == getDigitsFactorialSum(val);
+    }
+    public static int getDigitsFactorialSum(int val)
+    {
+        int result = 0;
+
+        while (val != 0) {
+            result += factorial(val % 10);
+            val /= 10;
+        }
+
+        return result;
+    }
+    public static int factorial(int val)
+    {
+        int result = 1;
+        for (int i = 2; i <= val; ++i)
+            result *= i;
+
+        return result;
+    }
+
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-05
+	 çözüm tarihi:08.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class NumberUtil {
+
+    public static boolean isSuperPrime(int val)
+    {
+        if (!isPrime(val))
+            return false;
+
+        int primeNum = 2;
+        int i;
+        for ( i = 0; primeNum <= val; ) {
+            if (isPrime(primeNum))
+                ++i;
+            ++primeNum;
+        }
+
+        return isPrime(i);
+    }
+    public static boolean isPrime(long val)
+    {
+        if (val <= 1)
+            return false;
+
+        if (val % 2 == 0)
+            return val == 2;
+
+        if (val % 3 == 0)
+            return val == 3;
+
+        if (val % 5 == 0)
+            return val == 5;
+
+        if (val % 7 == 0)
+            return val == 7;
+
+        for (long i = 11; i * i <= val; i += 2)
+            if (val % i == 0)
+                return false;
+
+        return true;
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-06
+	 çözüm tarihi:08.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
