@@ -330,3 +330,85 @@ class NumberUtil {
 	 Question-06
 	 çözüm tarihi:08.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+class IsHardyRamanujanNumberTest {
+    public static void run()
+    {
+
+        for (int i = 1;i < 100000; ++i) {
+            if (NumberUtil.isHardyRamanujanNumber(i))
+                System.out.printf("%d %n",i);
+        }
+    }
+
+}
+
+class NumberUtil {
+    public static boolean isHardyRamanujanNumber(int n)
+    {
+        int count = 0;
+        int  b, temp = 0;
+
+        for (int i = 1; ; ++i) {
+            int cubeOfi = (int)Math.pow(i, 3);
+
+            if (cubeOfi > n)
+                return false;
+
+            if ((b = getCubeRootOfNumber(n - cubeOfi)) != -1 && b != temp) {
+                ++count;
+                temp = i;
+            }
+            if (count == 2)
+                return true;
+        }
+    }
+    public static int  getCubeRootOfNumber(int val)
+    {
+        for (int i = 1;Math.pow(i,3) <= val; ++i)
+            if (Math.pow(i,3) == val)
+                return i;
+
+        return -1;
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-07
+	 çözüm tarihi:09.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+
+class isDecimalHarshadtest {
+    public static void run()
+    {
+        for (int i = 1; i < 100_000; ++i)
+            if (NumberUtil.isDecimalHarshad(i))
+                System.out.println(i);
+
+        System.out.println("Tekrar yapıyormusun..");
+    }
+}
+class NumberUtil {
+    public static boolean isDecimalHarshad(int val)
+    {
+        if (val < 0)
+            return false;
+
+        return val % digitsSum(val) == 0;
+    }
+
+    public static int digitsSum(int val)
+    {
+        int sum = 0;
+        while (val != 0) {
+            sum += val % 10;
+            val /= 10;
+        }
+
+        return sum;
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-08
+	 çözüm tarihi:09.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
