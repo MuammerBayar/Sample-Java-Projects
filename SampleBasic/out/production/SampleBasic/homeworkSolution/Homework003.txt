@@ -412,3 +412,39 @@ class NumberUtil {
 	 Question-08
 	 çözüm tarihi:09.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+class DisplayCollatzTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        for (;;){
+            System.out.print("Bir değer giriniz: ");
+            int n = Integer.parseInt(kb.nextLine());
+
+            if (n == 0)
+                break;
+
+            NumberUtil.displayCollatz(n);
+        }
+
+        System.out.println("Tekrar yapıyormusun..");
+    }
+}
+class NumberUtil {
+
+    public static void displayCollatz(int n)
+    {
+        while (true) {
+            System.out.println(n);
+
+            if (n == 1)
+                break;
+
+            if (n % 2 == 0)
+                n /= 2;
+            else
+                n = 3 * n + 1;
+        }
+    }
+}
+
