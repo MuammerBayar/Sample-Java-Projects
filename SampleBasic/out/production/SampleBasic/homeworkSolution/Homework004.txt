@@ -32,3 +32,62 @@
         Java ile Nesne Yönelimli Programlama
         Çalışma Soruları
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-01
+	 çözüm tarihi:10.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+
+class SumNumbersApp {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        int sum = 0, max = 0, count = 0, min = 0;
+
+
+        for (;;) {
+            System.out.print(" Yeni bir deger girmek istiyor musunuz? " +
+                    "[Evet için 1(bir) Hayır için 0(sıfır) değerlerinden birini giriniz]");
+            int val = Integer.parseInt(kb.nextLine());
+
+            if (val == 1) {
+                int n = doWorkForOne();
+                sum += n;
+                max = Math.max(n, max);
+                min = Math.min(n, max);
+                ++count;
+            }
+
+            else {
+                doWorkForZero(sum, count, max, min);
+                break;
+            }
+        }
+
+    }
+    public static int doWorkForOne()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        for(;;) {
+            System.out.print("bir değer giriniz: ");
+            int n = Integer.parseInt(kb.nextLine());
+            if (n < 0 || n > 100){
+                System.out.println("Geçersiz değer");
+                System.out.print("Yeni ");
+                continue;
+            }
+
+            return n;
+        }
+    }
+    public static void doWorkForZero(int sum, int count, int max, int min)
+    {
+        System.out.printf("Toplam %d değer girildi%n", count);
+        System.out.printf("Max: %d%n", max);
+        System.out.printf("Min: %d%n", min);
+        System.out.printf("Ortalama: %f%n",(double)sum / count);
+        System.out.println("Program Sonlandı..");
+    }
+}
+
