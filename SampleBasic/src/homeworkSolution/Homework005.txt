@@ -92,3 +92,72 @@ class NumberUtil {
         return sum;
     }
 }
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-03
+	 çözüm tarihi:12.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class AreFriendsTest {
+    public static void run()
+    {
+        EXIT_LOOP:
+        for (int i = 1000; i < 10000; ++i)
+            for (int k = 1000; k < 10000; ++k) {
+                if (NumberUtil.areFriends(i, k)) {
+                    System.out.printf("%d ve %d sayısı arkadaştır.%n", i, k);
+                    break EXIT_LOOP;
+                }
+            }
+    }
+}
+
+class NumberUtil {
+
+    public static boolean areFriends(int a, int b)
+    {
+        return sumFactors(a) == b && sumFactors(b) == a;
+    }
+    public static int sumFactors(int val)
+    {
+        int sum = 1;
+
+        for (int i = 2; i <= val / 2; ++i)
+            if (val % i == 0)
+                sum += i;
+
+        return sum;
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-04
+	 çözüm tarihi:12.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class IsPerfectTest {
+    public static void run()
+    {
+
+        for (int i = 2; i < 100_000; ++i)
+            if (NumberUtil.isPerfect(i))
+                System.out.printf("%d sayısı perfect sayıdır.%n", i);
+
+    }
+}
+
+class NumberUtil {
+
+    public static boolean isPerfect(int val)
+    {
+        return sumFactors(val) == val ;
+    }
+    public static int sumFactors(int val)
+    {
+        int sum = 1;
+
+        for (int i = 2; i <= val / 2; ++i)
+            if (val % i == 0)
+                sum += i;
+
+        return sum;
+    }
+}
