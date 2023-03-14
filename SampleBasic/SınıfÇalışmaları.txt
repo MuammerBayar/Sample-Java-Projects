@@ -1088,5 +1088,88 @@ class NumberUtil {
 }
 
 /*----------------------------------------------------------------------------------------------------------------------
+	 Sınıf Çalışması: Hilesiz bir paranın yazı gelme olasılığının yaklaşık olarak 0.5 olduğunu bulan basit bir simülasyon
+	 programı yazınız.
+
+----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 14.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class CoinSimulationApp {
+    public static boolean isHead(java.util.Random random)
+    {
+        return random.nextBoolean();
+    }
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Kaç Deneme yapılsın: ");
+            int n = Integer.parseInt(kb.nextLine());
+
+            if (n == 0)
+                break;
+
+            System.out.printf("yazı gelme olasılığı: %f%n",(double)getNumberOfHeads(n) / n);
+        }
+    }
+    public static int getNumberOfHeads(int n)
+    {
+        java.util.Random r = new java.util.Random();
+        int count = 0;
+        for (int i = 0; i < n; ++i)
+            if (isHead(r))
+                ++count;
+
+        return count;
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Sınıf Çalışması: İki zar atıldığında zarların çift gelmesi (ikisinin de aynı) olasılığını yaklaşık olarak
+	 hesaplayan simülasyon programını yazınız
+----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 14.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class SameDiceProbilitySimulationApp {
+    public static boolean isSame(java.util.Random random)
+    {
+        return random.nextInt(6) == random.nextInt(6);
+    }
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Kaç Deneme yapılsın: ");
+            int n = Integer.parseInt(kb.nextLine());
+
+            if (n == 0)
+                break;
+
+            System.out.printf("Çift gelme olasılığı: %f%n",(double)getNumberOfSameDice(n) / n);
+        }
+    }
+    public static int getNumberOfSameDice(int n)
+    {
+        java.util.Random r = new java.util.Random();
+        int count = 0;
+        for (int i = 0; i < n; ++i)
+            if (isSame(r))
+                ++count;
+
+        return count;
+    }
+}
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------*/

@@ -1,0 +1,30 @@
+/*----------------------------------------------------------------------------------------------------------------------
+    Homework-007
+    verilen ders: 21-18-04-2021
+    çözülen ders: --
+
+    1. Bir tombala torbasında 1'den 99'a kadar numaralanmış (99 dahil) pullar bulunmaktadır. Bu tombala torbasıyla
+    aşağıdaki oyunlar oynanmaktadır:
+
+    Çekilen bir pul torbaya geri atılmamak üzere
+
+    i) Torbadan 3 pul çekiliyor. Çekilen pulların toplamı 150' den küçük ise oyuncu kazanıyor.
+
+    ii) Torbadan 3 pul çekiliyor. Çekilen pulların toplamı asal sayı ise oyuncu kazanıyor.
+
+    iii) Torbadan 3 pul çekiliyor. En büyük değerli pul ile en küçük değerli pul arasındaki fark ortanca değerli puldan
+    büyükse oyuncu kazanıyor.
+
+    Oynanacak her bir oyun için oyuncunun kazanma olasılığını en az 30000 oyunu simule ederek hesaplayınız!
+
+    2. Çağrıldığında ekrana 01.01.1900 ve 31.12.2100 arasında rastgele bir tarihi yazan printRandomDate isimli
+    metodu yazınız. Metodun ekrana yazdırdığı tarih geçerli bir tarih olmalıdır. Rasgele tarihin Şubat ayına denk
+    gelmesi durumunda, seçilen yılın artık yıl olup olmamasına göre, Şubat ayı 29 çekebilecektir. Tarih ekrana
+    aşağıdaki formatta yazdırılacaktır:
+
+    11th Jul 1983
+
+        C ve Sistem Programcıları Derneği
+        Java ile Nesne Yönelimli Programlama
+        Çalışma Soruları
+----------------------------------------------------------------------------------------------------------------------*/
