@@ -1164,6 +1164,77 @@ class SameDiceProbilitySimulationApp {
     }
 }
 
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı iki yazıdan birincisi içerisinde ikincisinden kaç tane olduğunu döndüren
+	countString ve büyük küçük harf duyarsız çalışan countStringIgnoreCase isimli metodu yazınız ve aşağıdaki kod
+	ile test ediniz:
+	Örnek:
+	aaa yazısı içerisinde aa dan 2 tane vardır
+----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 15.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class CountStringTest {
+    public static void run()
+    {
+        for (;;) {
+            java.util.Scanner kb = new java.util.Scanner(System.in);
+            System.out.print("Birinci yazıyı giriniz: ");
+            String s1 = kb.nextLine();
+
+            if (s1.equals("elma"))
+                break;
+            System.out.print("Birinci yazıyı giriniz: ");
+            String s2 = kb.nextLine();
+
+            System.out.printf(" %s yazısında %s yazısından %d tane var.%n", s1, s2, StringUtil.countString(s1,s2));
+            System.out.printf(" %s yazısında %s yazısından %d tane var.%n", s1, s2, StringUtil.countStringIgnoreCase(s1,s2));
+        }
+
+    }
+}
+
+class StringUtil {
+
+    public static int countString(String s1, String s2)
+    {
+        int count = 0;
+        int index = -1;
+        while ((index = s1.indexOf(s2, index + 1)) != -1)
+            ++count;
+
+        return count;
+    }
+
+    public static int countStringIgnoreCase(String s1, String s2)
+    {
+        return countString(s1.toLowerCase(), s2.toLowerCase());
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Klavyeden bir kullanıcı adı ve şifre isteyen basit bir ATM uygulamasının bir parçasını aşağıdaki
+	açıklamalara göre yazınız.
+
+	 Açıklamalar:
+	 - Kullanıcı ad ve şifresi en fazla 3(üç) kez denenebilecektir.
+
+	 - Denemeler sırasında doğru giriş yapılırsa "Giriş başarılı", başarısız denemelerde "Giriş başarısız", 3. denemede de
+	 başarısız olunursa "Giriş başarısız . Artık deneme hakkınız bitti" mesajla verilecektir.
+
+	 - Kullanıcı adı ve şifrenin doğruluğu program içerisinde belirlenen bir kullanıcı adı ve şifre ile yapılacaktır
+
+	 - Uygulama genel düşünülerek yapılmalıdır
+
+	 - Örnekte ATM uygulaması sürekli çalışmaktadır
+----------------------------------------------------------------------------------------------------------------------*/
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı bir yazının tersini döndüren reversed isimli metodu StringUtil sınıfı
+	içerisinde yazınız ve aşağıdaki kod ile test ediniz. ** ile belirtilen kodda yeni String nesnesi yaratılıp rev
+	referansına atanıyor. Bu da göreceli yavaşlatabilir. İleride bu şekilde olmayan başka çözümleri de yazılacaktır
+----------------------------------------------------------------------------------------------------------------------*/
 
 
 /*----------------------------------------------------------------------------------------------------------------------
