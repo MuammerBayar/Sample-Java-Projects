@@ -1238,6 +1238,29 @@ class StringUtil {
 
 
 /*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Klavyeden elma girilene kadar alınan yazıların arasında - karakteri olacak şekilde birleştirilmiş
+	bir String oluşturan programı yazınız:
+	Örneğin: ankara istanbul izmir girilirse -> ankara-istanbul-izmir
+	Örneğin: ankara -> ankara
+----------------------------------------------------------------------------------------------------------------------*/
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı bir yazının ilk harfi büyük geri kalan tüm harfleri küçük olacak ve harf dışı
+	karakterler de aynı kalacak şekilde bir yazı döndüren capitalize isimli metodu StringUtil sınıfı içerisinde yazınız
+	ve aşağıdaki kod ile test ediniz.
+	Örnek: jAVA Programcısı ÇOK çalışmalıdır. -> Java programcısı çok çalışmalıdır.
+----------------------------------------------------------------------------------------------------------------------*/
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı bir yazının sadece başındaki boşluk karakterlerini atan trimLeading ve
+	sadece sonundaki boşluk karkaterlerini atan trimTrailing isimli metotları yazınız ve aşağıdaki kod ile test ediniz.
+----------------------------------------------------------------------------------------------------------------------*/
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------------*/
 
