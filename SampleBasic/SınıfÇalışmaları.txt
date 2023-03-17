@@ -1259,6 +1259,82 @@ class StringUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 
 
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Aşağıda açıklanan metotları yazınız.
+
+	public static String padLeading(String s, int length, char ch);
+	public static String padLeading(String s, int length);
+	public static String padTrailing(String s, int length, char ch);
+	public static String padTrailing(String s, int length);
+
+	Açıklamalar:
+	- padLeading metodunun 3 parametreli overload'u ikinci parametresi ile aldığı length birinci parametresi ile
+	aldığının uzunluğundan büyükse yazıyı soldan üçüncü parametresi ile aldığı karakter ile doldurulmuş yeni bir
+	String referansına geri dönecektir.
+		Örneğin:
+		padLeading("ankara", 11, 'x'); çağrısı
+		xxxxxankara
+		yazısını döndürecektir
+
+	- length uzunluğu yazının uzunluğundan küçük veya eşitse aynı referansa geri dçnecektir.
+	- padLeading metodunun 2 parametreli overload'u yazıyı soldan space karakteri ile dolduracaktır
+	- padTrailin metotşarı benzer şekilde sağdan dolduracak şekilde yazılacaktır
+	- Örneği Java 11+ için yazınız
+----------------------------------------------------------------------------------------------------------------------*/
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	 Sınıf Çalışması: Parametresi ile aldığı bir yazının Türkçe pangram olup olmadığını test eden isPangramTR ve
+ 	 İngilizce pangram olup olmadığını test eden isPangramEN isimli metotları yazınız ve aşağıdaki kod ile test ediniz.
+ 	 Pangram: İçerisinde özel isim olmayan anlamlı ve ilgili dilin alfabesinin tüm karakterlerini içeren cümlelere denir.
+
+ 	 Programda özel isim ve anlamlı olması durumunu dikkate almayacaktır
+
+  	 İnglizce: The quick brown fox jumps over the lazy dog.
+  	 Türkçe: Pijamalı hasta yağız şoföre çabucak güvendi.
+----------------------------------------------------------------------------------------------------------------------*/
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	 Sınıf Çalışması: Parametresi ile aldığı bir yazının palindrom olup olmadığını test eden isPalindrome metodunu
+ 	 yazınız ve aşağıdaki kod ile test ediniz.
+ 	 Palindrom: Yalnızca alfabetik karakterleri tersten okunduğunda aynı olan yazılara palindrom denir. Detaylar
+ 	 gözardı edilmesi koşuluyla bu tanım yazılabilir.
+
+ 	 Örnek:
+ 	 Ey Edip Adana'da pide ye 	-> eyedipadanadapideye
+ 	 Anastas mum satsana 		-> anastasmumsatsana
+ 	 Ali Papila					-> alipapila
+
+ 	 Açıklama: Örnek daha önce yazdığımız reverse metodu kullanılarak çok daha basit biçimde yazılabilirdi. Ancak
+ 	 daha önce de belirtildiği gibi reverse metodunun ilgili versiyonu sürekli String nesnesi yarattığından böyle bir
+ 	 durumda tercih edilmesi uygun değildir. Ancak ileride reverse metodunu daha etkin hale getirdiğimizde kodu basitleştirmesi
+ 	 açısından isPalindrome metodunda reverse kullanabileceğiz
+----------------------------------------------------------------------------------------------------------------------*/
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	 Sınıf Çalışması: Parametresi ile aldığı int türden bir n değeri için n tane rasgele üretilmiş Türkçe alfabedeki
+ 	 karakterlerden oluşan bir yazı döndüren getRandomTextTR ile n tane rasgele üretilmiş İngilizce alfabedeki karakterlerden
+ 	 oluşan bir yazı döndüren getRandomTextEN isimli metotları ve aşağıdaki kod ile test ediniz
+----------------------------------------------------------------------------------------------------------------------*/
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+ 	 Sınıf Çalışması: Parametresi ile aldığı bir yazının içerisindeki en uzun palindromu döndüren getLongestPalindrome
+ 	 isimli metodu yazınız ve aşağıdaki kod ile test ediniz. Yazı pandrom içermiyorsa metot boş String'e geri dönecektir
+ 	 Örnek:adaeyedipadanadapideyeecealipapilaanastasmumsatsana
+ 	 Örnek:adaeeyedipadanadapideyeecealipapilaanastasmumsatsanaaxxxxxxyyyztzt
+
+ 	 Açıklama: Örnek daha önce yazdığımız reverse metodu kullanılarak çok daha basit biçimde yazılabilirdi. Ancak
+ 	 daha önce de belirtildiği gibi reverse metodunun ilgili versiyonu sürekli String nesnesi yarattığından böyle bir
+ 	 durumda tercih edilmesi uygun değildir. Ancak ileride reverse metodunu daha etkin hale getirdiğimizde kodu basitleştirmesi
+ 	 açısından isPalindrome metodunda reverse kullanabileceğiz
+----------------------------------------------------------------------------------------------------------------------*/
+
+
 
 /*----------------------------------------------------------------------------------------------------------------------
 
