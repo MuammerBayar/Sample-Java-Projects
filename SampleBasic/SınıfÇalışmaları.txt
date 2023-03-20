@@ -1232,8 +1232,7 @@ class StringUtil {
 
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması: Parametresi ile aldığı bir yazının tersini döndüren reversed isimli metodu StringUtil sınıfı
-	içerisinde yazınız ve aşağıdaki kod ile test ediniz. ** ile belirtilen kodda yeni String nesnesi yaratılıp rev
-	referansına atanıyor. Bu da göreceli yavaşlatabilir. İleride bu şekilde olmayan başka çözümleri de yazılacaktır
+	içerisinde yazınız ve aşağıdaki kod ile test ediniz.
 ----------------------------------------------------------------------------------------------------------------------*/
 
 
@@ -1276,12 +1275,65 @@ class StringUtil {
 		xxxxxankara
 		yazısını döndürecektir
 
-	- length uzunluğu yazının uzunluğundan küçük veya eşitse aynı referansa geri dçnecektir.
+	- length uzunluğu yazının uzunluğundan küçük veya eşitse aynı referansa geri dönecektir.
 	- padLeading metodunun 2 parametreli overload'u yazıyı soldan space karakteri ile dolduracaktır
 	- padTrailin metotşarı benzer şekilde sağdan dolduracak şekilde yazılacaktır
 	- Örneği Java 11+ için yazınız
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 20.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class PadLeadingTrailingTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
 
+        for (;;) {
+            System.out.print("Bir yazı giriniz:");
+            String s = kb.nextLine();
+
+            if ("elma".equals(s))
+                break;
+
+            System.out.print("Bir sayı giriniz:");
+            int newLength = Integer.parseInt(kb.nextLine());
+
+
+            System.out.printf("(%s)%n", StringUtil.padLeading(s, newLength, 'x'));
+            System.out.printf("(%s)%n", StringUtil.padLeading(s, newLength));
+            System.out.printf("(%s)%n", StringUtil.padTrailing(s, newLength, 'x'));
+            System.out.printf("(%s)%n", StringUtil.padTrailing(s, newLength));
+        }
+
+        System.out.println("Tekrar yapıyor musunuz?");
+    }
+}
+
+class StringUtil {
+    public static String padLeading(String text, int length, char ch)
+    {
+        if (text.length() < length)
+            text = (ch + "").repeat(length - text.length()) + text;
+
+        return text;
+    }
+    public static String padLeading(String text, int length)
+    {
+        return padLeading(text, length,' ');
+    }
+
+    public static String padTrailing(String text, int length, char ch)
+    {
+        if ( text.length() < length)
+            text = text + (ch + "").repeat(length - text.length());
+
+        return text;
+    }
+    public static String padTrailing(String text, int length)
+    {
+        return padTrailing(text, length,' ');
+    }
+}
 
 
 /*----------------------------------------------------------------------------------------------------------------------
@@ -1294,7 +1346,49 @@ class StringUtil {
   	 İnglizce: The quick brown fox jumps over the lazy dog.
   	 Türkçe: Pijamalı hasta yağız şoföre çabucak güvendi.
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 20.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
 
+class IsPangramENTRTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Input a text:");
+            String s = kb.nextLine();
+
+            if ("quit".equals(s) || "elma".equals(s))
+                break;
+
+            System.out.println(StringUtil.isPangramTR(s) ? "Pangram" : "Pangram değil");
+            System.out.println(StringUtil.isPangramEN(s) ? "Pangram" : "Not a Pangram");
+        }
+    }
+}
+
+
+class StringUtil {
+    public static boolean isPangramTR(String text)
+    {
+        return isPangram(text.toLowerCase(), "abcçdefgğhıijklmnoöprsştuüvyz");
+    }
+    public static boolean isPangramEN(String text)
+    {
+        return isPangram(text.toLowerCase(), "abcdefghijklmnopqrstuvwxyz");
+    }
+        public static boolean isPangram(String text, String alphabet)
+    {
+        int len = alphabet.length();
+
+        for (int i = 0; i < len; ++i)
+            if (text.indexOf(alphabet.charAt(i)) == -1)
+                return false;
+
+        return true;
+    }
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
  	 Sınıf Çalışması: Parametresi ile aldığı bir yazının palindrom olup olmadığını test eden isPalindrome metodunu
