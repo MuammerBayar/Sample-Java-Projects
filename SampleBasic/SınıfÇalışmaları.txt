@@ -1227,9 +1227,80 @@ class StringUtil {
 	 - Uygulama genel düşünülerek yapılmalıdır
 
 	 - Örnekte ATM uygulaması sürekli çalışmaktadır
+
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 21.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class ATMApp {
+    public static void run()
+    {
+        for (;;) {
+            ATM atm = new ATM();
+        }
+    }
+}
+class Card {
+    public String name;
+    public String userName;
+    public String password;
 
+    public Card ()
+    {
+    }
 
+    public Card (String fullName, String uName, String pwd)
+    {
+        //...
+        name = fullName;
+        userName = uName;
+        password = pwd;
+    }
+
+    //...
+}
+class ATM{
+    public Card card;
+    public java.util.Scanner kb;
+
+    public void getCard()
+    {
+        card = new Card();
+        card.name = kb.nextLine();
+        card.userName = kb.nextLine();
+        card.password = kb.nextLine();
+    }
+
+    public boolean checkCard(String uname, String pwd)
+    {
+        return card.userName.equals(uname) && card.password.equals(pwd);
+    }
+    public void doWorkForEntry(int n)
+    {
+
+        for (int i = 0; i < n; ++i) {
+            System.out.print("username: ");
+            String uname = kb.nextLine();
+            System.out.print("password: ");
+            String pwd = kb.nextLine();
+
+            if (checkCard(uname,pwd)) {
+                System.out.println("Giriş başarılı. ");
+                return;
+            }
+            else
+                System.out.println("Giriş başarısız. ");
+        }
+        System.out.println("Artık deneme hakkınız bitti.");
+    }
+    public ATM ()
+    {
+        kb = new java.util.Scanner(System.in);
+        getCard();
+        doWorkForEntry(3);
+
+    }
+}
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması: Parametresi ile aldığı bir yazının tersini döndüren reversed isimli metodu StringUtil sınıfı
 	içerisinde yazınız ve aşağıdaki kod ile test ediniz.
