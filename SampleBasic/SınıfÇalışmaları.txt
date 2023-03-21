@@ -591,7 +591,7 @@ class NumberUtil {
     public static int getFibonacciNumber(int n)
     {
 
-        if (val < 0)
+        if (n < 0)
         	return 0;
 
         int prev2 = 0, prev1 = 1;
@@ -1305,15 +1305,64 @@ class ATM{
 	Sınıf Çalışması: Parametresi ile aldığı bir yazının tersini döndüren reversed isimli metodu StringUtil sınıfı
 	içerisinde yazınız ve aşağıdaki kod ile test ediniz.
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 21.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class ReversedTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+        for (;;) {
+            System.out.print("Bir yazı giriniz: ");
+            String str = kb.nextLine();
 
+            if (str.equals("elma"))
+                break;
 
+            System.out.printf("Yazının tersi : %s%n", StringUtil.reversed(str));
+        }
+    }
+}
+class StringUtil {
+    public static String reversed(String s)
+    {
+        int length = s.length();
+        String str = "";
+        for (int i = 0; i < length; ++i) {
+            str += s.charAt(length - 1 - i);
+        }
+        return str;
+    }
+}
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması: Klavyeden elma girilene kadar alınan yazıların arasında - karakteri olacak şekilde birleştirilmiş
 	bir String oluşturan programı yazınız:
 	Örneğin: ankara istanbul izmir girilirse -> ankara-istanbul-izmir
 	Örneğin: ankara -> ankara
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 21.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class ConcatWithHypenApp {
+    public static void run()
+    {
+        String str = "";
+        Scanner kb = new Scanner(System.in);
+        for (;;) {
+            System.out.print("Yazı giriniz: ");
+            String s = kb.nextLine();
 
+            if (s.equals("elma"))
+                break;
+            if (s.isBlank())
+                continue;
+
+            str += s + "-";
+        }
+        if (!str.isBlank())
+            System.out.println(str.substring(0,str.length() - 1));
+    }
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
 	Sınıf Çalışması: Parametresi ile aldığı bir yazının ilk harfi büyük geri kalan tüm harfleri küçük olacak ve harf dışı
