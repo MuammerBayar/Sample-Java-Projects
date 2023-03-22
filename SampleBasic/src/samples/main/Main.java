@@ -3,9 +3,7 @@
     izlenecek (app): -
 ----------------------------------------------------------------------------------------------------------------------*/
 
-package samples;
-
-import java.util.Scanner;
+package samples.main;
 
 public class Main {
     public static void main(String [] args)
