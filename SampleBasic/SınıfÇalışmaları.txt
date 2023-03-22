@@ -1753,6 +1753,97 @@ class StringUtil {
  	 durumda tercih edilmesi uygun değildir. Ancak ileride reverse metodunu daha etkin hale getirdiğimizde kodu basitleştirmesi
  	 açısından isPalindrome metodunda reverse kullanabileceğiz
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 22.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+class GetLongestPalindromeTest {
+    public static void run()
+    {
+        java.util.Scanner kb = new java.util.Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Bir yazı giriniz:");
+            String text = kb.nextLine();
+
+            if ("elma".equals(text))
+                break;
+
+
+            System.out.println("En uzun palindrom:");
+            System.out.println(StringUtil.getLongestPalindrome(text));
+
+        }
+        System.out.println("Tekrar yapıyor musununz?");
+    }
+}
+class StringUtil {
+
+    public static String getLongestPalindrome(String str)
+    {
+        String maxPalindrome = "";
+
+        for (int i = str.length() - 1; i > 0; --i)
+            for (int k = 0; k < i; ++k) {
+                String s = str.substring(k, i);
+
+                if (s.length() != 1 && isPalindrome(s) && s.length() > maxPalindrome.length())
+                    maxPalindrome = s;
+            }
+
+        return maxPalindrome;
+    }
+    public static boolean isPalindrome(String s)
+    {
+        int left = 0;
+        int right = s.length() - 1;
+
+        while (left < right) {
+            char cLeft = Character.toLowerCase(s.charAt(left));
+
+            if (!Character.isLetter(cLeft)) {
+                ++left;
+                continue;
+            }
+
+            char cRight = Character.toLowerCase(s.charAt(right));
+
+            if (!Character.isLetter(cRight)) {
+                --right;
+                continue;
+            }
+
+            if (cLeft != cRight)
+                return false;
+
+            ++left;
+            --right;
+        }
+
+        return true;
+    }
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	Soru: Döngü kullanmadan, String sınıfının Java 11 ile eklenen repeat metodunu da kullanmadan parametresi ile aldığı
+	bir karakter ve count değeri için karakteri çoklayan repeat metodunu yazınız
+----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 22.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+public class Main {
+    public static void main(String [] args)
+    {
+        System.out.println(StringUtil.repeat(2, 'x'));
+        System.out.println(StringUtil.repeat(3, 'x'));
+        System.out.println(StringUtil.repeat(4, 'x'));
+    }
+}
+
+class StringUtil {
+    public static String repeat(int n , char ch)
+    {
+        return String.format("%0" + n + "d", 0).replace('0', ch);
+    }
+}
 
 
 

@@ -35,6 +35,21 @@ public class StringUtil {
         return countString(s1.toLowerCase(), s2.toLowerCase());
     }
 
+    public static String getLongestPalindrome(String str)
+    {
+        String maxPalindrome = "";
+
+        for (int i = str.length() - 1; i > 0; --i)
+            for (int k = 0; k < i; ++k) {
+                String s = str.substring(k, i);
+
+                if (s.length() != 1 && isPalindrome(s) &&  s.length() > maxPalindrome.length())
+                    maxPalindrome = s;
+            }
+
+        return maxPalindrome;
+    }
+
     public static String getRandomTextTR(java.util.Random r, int n)
     {
         return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
