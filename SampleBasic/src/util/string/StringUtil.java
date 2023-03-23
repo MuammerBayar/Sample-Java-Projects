@@ -2,7 +2,7 @@
     StringUtil Sınıfı
     last update:22.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package util.stringUtil;
+package util.string;
 
 public class StringUtil {
     public static String capitalize(String s)
@@ -164,5 +164,10 @@ public class StringUtil {
             str += s.charAt(length - 1 - i);
         }
         return str;
+    }
+
+    public static String repeat(int n , char ch)
+    {
+        return String.format("%0" + n + "d", 0).replace('0', ch);
     }
 }

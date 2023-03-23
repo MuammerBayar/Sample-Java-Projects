@@ -1,13 +1,12 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    izlenecek (oop):27.video
-    izlenecek (app): -
+    Complex Sınıfı
+    last update:23.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package samples.main;
+package util.math;
 
+public class Complex {
+    public double real;
+    public double imag;
 
-public class Main {
-    public static void main(String [] args)
-    {
-
-    }
+    //...
 }

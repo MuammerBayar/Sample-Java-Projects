@@ -2,7 +2,7 @@
     NumberUtil Sınıfı
     last update:21.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package util.numberUtil;
+package util.number;
 
 public class NumberUtil {
     public static int countDigits(int val)
