@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     NumberUtil Sınıfı
-    last update:21.03.2023
+    last update:24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package util.number;
 
@@ -117,6 +117,10 @@ public class NumberUtil {
 
         return false;
     }
+    public static boolean isPerfect(int val)
+    {
+        return sumFactors(val) == val ;
+    }
     public static boolean isPrime(long val)
     {
         if (val < 2)
@@ -140,6 +144,18 @@ public class NumberUtil {
 
         return true;
     }
+
+    public static boolean isPrimeX(int val)
+    {
+        while (isPrime(val)) {
+            if (val < 10)
+                return true;
+
+            val = sumDigits(val);
+        }
+
+        return false;
+    }
     public static int reversed(int val)
     {
         int result = 0;
@@ -160,6 +176,16 @@ public class NumberUtil {
             sum += val % 10;
             val /= 10;
         }
+
+        return sum;
+    }
+    public static int sumFactors(int val)
+    {
+        int sum = 1;
+
+        for (int i = 2; i <= val / 2; ++i)
+            if (val % i == 0)
+                sum += i;
 
         return sum;
     }

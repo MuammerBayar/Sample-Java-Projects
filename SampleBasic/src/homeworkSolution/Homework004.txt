@@ -35,12 +35,21 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01
 	 çözüm tarihi:10.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
 
+public class Main {
+    public static void main(String [] args)
+    {
+        SumNumbersApp.run();
+    }
+}
 class SumNumbersApp {
+    public static Scanner kb;
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        kb = new Scanner(System.in);
 
         int sum = 0, max = 0, count = 0, min = 0;
 
@@ -67,8 +76,6 @@ class SumNumbersApp {
     }
     public static int doWorkForOne()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
-
         for(;;) {
             System.out.print("bir değer giriniz: ");
             int n = Integer.parseInt(kb.nextLine());

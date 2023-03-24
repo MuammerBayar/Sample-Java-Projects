@@ -55,11 +55,20 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01
 	 çözüm tarihi:06.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        DrawDiomandApp.run();
+    }
+}
 class DrawDiomandApp {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Bir sayı giriniz:");
@@ -95,11 +104,20 @@ class DrawDiomandApp {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-02
 	 çözüm tarihi:06.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        DisplayDurationTest.run();
+    }
+}
 class DisplayDurationTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Bir değer giriniz:");
@@ -152,11 +170,20 @@ class DateUtil{
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-03
 	 çözüm tarihi:07.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintPrimeFactorApp.run();
+    }
+}
 class PrintPrimeFactorApp{
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("bir değer giriniz:");
@@ -210,15 +237,23 @@ class PrintPrimeFactorApp{
 
 }
 
-
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-04
 	 çözüm tarihi:07.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        DrawBallFallApp.run();
+    }
+}
 class DrawBallFallApp {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Yükseklik değerini giriniz:");
@@ -274,11 +309,20 @@ class DrawBallFallApp {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-05
 	 çözüm tarihi:08.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintPrimeFactorApp.run();
+    }
+}
 class PrintPrimeFactorApp{
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("bir değer giriniz:");
@@ -329,7 +373,5 @@ class PrintPrimeFactorApp{
 
         return true;
     }
-
 }
-
 

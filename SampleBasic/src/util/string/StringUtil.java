@@ -1,8 +1,10 @@
 /*----------------------------------------------------------------------------------------------------------------------
     StringUtil Sınıfı
-    last update:22.03.2023
+    last update:24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package util.string;
+
+import java.util.Random;
 
 public class StringUtil {
     public static String capitalize(String s)
@@ -50,27 +52,27 @@ public class StringUtil {
         return maxPalindrome;
     }
 
-    public static String getRandomTextTR(java.util.Random r, int n)
+    public static String getRandomTextTR(Random r, int n)
     {
         return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
     }
 
     public static String getRandomTextTR(int n)
     {
-        return getRandomTextTR(new java.util.Random(), n);
+        return getRandomTextTR(new Random(), n);
     }
 
-    public static String getRandomTextEN(java.util.Random r, int n)
+    public static String getRandomTextEN(Random r, int n)
     {
         return getRandomText(r, n, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ");
     }
 
     public static String getRandomTextEN(int n)
     {
-        return getRandomTextEN(new java.util.Random(), n);
+        return getRandomTextEN(new Random(), n);
     }
 
-    public static String getRandomText(java.util.Random r, int n, String sourceText)
+    public static String getRandomText(Random r, int n, String sourceText)
     {
         String result = "";
         int length = sourceText.length();

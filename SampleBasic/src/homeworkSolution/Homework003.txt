@@ -213,8 +213,6 @@ class NumberUtil {
 	 Question-03
 	 çözüm tarihi:08.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-
-
 class NumberUtil {
 
     public static int calculateDigitalRoot(int val)
@@ -240,7 +238,14 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-04
 	 çözüm tarihi:08.03.2023
+     son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+public class Main {
+    public static void main(String [] args)
+    {
+        IsFactorianTest.run();
+    }
+}
 class IsFactorianTest {
     public static void run()
     {
@@ -329,7 +334,15 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-06
 	 çözüm tarihi:08.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+
+public class Main {
+    public static void main(String [] args)
+    {
+        IsHardyRamanujanNumberTest.run();
+    }
+}
 class IsHardyRamanujanNumberTest {
     public static void run()
     {
@@ -375,8 +388,15 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-07
 	 çözüm tarihi:09.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 
+public class Main {
+    public static void main(String [] args)
+    {
+        isDecimalHarshadtest.run();
+    }
+}
 class isDecimalHarshadtest {
     public static void run()
     {
@@ -411,11 +431,20 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-08
 	 çözüm tarihi:09.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        DisplayCollatzTest.run();
+    }
+}
 class DisplayCollatzTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;){
             System.out.print("Bir değer giriniz: ");

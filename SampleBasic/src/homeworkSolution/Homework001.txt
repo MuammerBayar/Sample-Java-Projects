@@ -28,11 +28,20 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01
 	 çözüm tarihi:01.02.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        NumberCompareApp.run();
+    }
+}
 class NumberCompareApp {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         System.out.println("Bir sayı giriniz:");
         int x = Integer.parseInt(kb.nextLine());
@@ -67,11 +76,20 @@ class  NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-02
 	 çözüm tarihi:01.02.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        MidTestApp.run();
+    }
+}
 class MidTestApp {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         System.out.println("Bir sayı giriniz:");
         int x = Integer.parseInt(kb.nextLine());
@@ -95,11 +113,20 @@ class  NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	Question-03
 	çözüm tarihi:01.02.2023
+	son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        SignumTestApp.run();
+    }
+}
 class SignumTestApp {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         System.out.println("Bir sayı giriniz:");
         int val = Integer.parseInt(kb.nextLine());
