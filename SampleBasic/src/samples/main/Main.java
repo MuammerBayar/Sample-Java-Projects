@@ -1,13 +1,11 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    izlenecek (oop):28.video
+    izlenecek (oop):29.video
     izlenecek (app): -
 ----------------------------------------------------------------------------------------------------------------------*/
 package samples.main;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String [] args)
     {
-        
+
     }
 }

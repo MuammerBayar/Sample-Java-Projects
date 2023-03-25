@@ -100,15 +100,21 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01
 	 çözüm tarihi:08.03.2023
+	 son güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import static util.number.NumberUtil.isPrime;
+public class Main {
+    public static void main(String [] args)
+    {
+        FindPrimesOfThreeDigitsNumber.run();
+    }
+}
 class FindPrimesOfThreeDigitsNumber {
     public static void run()
     {
-
         for (int i = 100; i < 1000; ++i)
             if (checkConditions(i))
                 System.out.printf("%d ",i);
-
     }
 
     public static boolean checkConditions (int val)
@@ -129,31 +135,6 @@ class FindPrimesOfThreeDigitsNumber {
 
         return true;
     }
-
-    public static boolean isPrime(long val)
-    {
-        if (val <= 1)
-            return false;
-
-        if (val % 2 == 0)
-            return val == 2;
-
-        if (val % 3 == 0)
-            return val == 3;
-
-        if (val % 5 == 0)
-            return val == 5;
-
-        if (val % 7 == 0)
-            return val == 7;
-
-        for (long i = 11; i * i <= val; i += 2)
-            if (val % i == 0)
-                return false;
-
-        return true;
-    }
-
 }
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-02
@@ -334,9 +315,9 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-06
 	 çözüm tarihi:08.03.2023
-	 son güncelleme: 24.03.2023
+	 son güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-
+import static java.lang.Math.pow;
 public class Main {
     public static void main(String [] args)
     {
@@ -362,7 +343,7 @@ class NumberUtil {
         int  b, temp = 0;
 
         for (int i = 1; ; ++i) {
-            int cubeOfi = (int)Math.pow(i, 3);
+            int cubeOfi = (int)pow(i, 3);
 
             if (cubeOfi > n)
                 return false;
@@ -377,8 +358,8 @@ class NumberUtil {
     }
     public static int  getCubeRootOfNumber(int val)
     {
-        for (int i = 1;Math.pow(i,3) <= val; ++i)
-            if (Math.pow(i,3) == val)
+        for (int i = 1;pow(i,3) <= val; ++i)
+            if (pow(i,3) == val)
                 return i;
 
         return -1;

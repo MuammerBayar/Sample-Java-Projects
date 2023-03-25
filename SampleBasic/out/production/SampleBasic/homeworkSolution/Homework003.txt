@@ -100,15 +100,21 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01
 	 çözüm tarihi:08.03.2023
+	 son güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import static util.number.NumberUtil.isPrime;
+public class Main {
+    public static void main(String [] args)
+    {
+        FindPrimesOfThreeDigitsNumber.run();
+    }
+}
 class FindPrimesOfThreeDigitsNumber {
     public static void run()
     {
-
         for (int i = 100; i < 1000; ++i)
             if (checkConditions(i))
                 System.out.printf("%d ",i);
-
     }
 
     public static boolean checkConditions (int val)
@@ -129,31 +135,6 @@ class FindPrimesOfThreeDigitsNumber {
 
         return true;
     }
-
-    public static boolean isPrime(long val)
-    {
-        if (val <= 1)
-            return false;
-
-        if (val % 2 == 0)
-            return val == 2;
-
-        if (val % 3 == 0)
-            return val == 3;
-
-        if (val % 5 == 0)
-            return val == 5;
-
-        if (val % 7 == 0)
-            return val == 7;
-
-        for (long i = 11; i * i <= val; i += 2)
-            if (val % i == 0)
-                return false;
-
-        return true;
-    }
-
 }
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-02
@@ -213,8 +194,6 @@ class NumberUtil {
 	 Question-03
 	 çözüm tarihi:08.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-
-
 class NumberUtil {
 
     public static int calculateDigitalRoot(int val)
@@ -240,7 +219,14 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-04
 	 çözüm tarihi:08.03.2023
+     son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+public class Main {
+    public static void main(String [] args)
+    {
+        IsFactorianTest.run();
+    }
+}
 class IsFactorianTest {
     public static void run()
     {
@@ -329,7 +315,15 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-06
 	 çözüm tarihi:08.03.2023
+	 son güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import static java.lang.Math.pow;
+public class Main {
+    public static void main(String [] args)
+    {
+        IsHardyRamanujanNumberTest.run();
+    }
+}
 class IsHardyRamanujanNumberTest {
     public static void run()
     {
@@ -349,7 +343,7 @@ class NumberUtil {
         int  b, temp = 0;
 
         for (int i = 1; ; ++i) {
-            int cubeOfi = (int)Math.pow(i, 3);
+            int cubeOfi = (int)pow(i, 3);
 
             if (cubeOfi > n)
                 return false;
@@ -364,8 +358,8 @@ class NumberUtil {
     }
     public static int  getCubeRootOfNumber(int val)
     {
-        for (int i = 1;Math.pow(i,3) <= val; ++i)
-            if (Math.pow(i,3) == val)
+        for (int i = 1;pow(i,3) <= val; ++i)
+            if (pow(i,3) == val)
                 return i;
 
         return -1;
@@ -375,8 +369,15 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-07
 	 çözüm tarihi:09.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 
+public class Main {
+    public static void main(String [] args)
+    {
+        isDecimalHarshadtest.run();
+    }
+}
 class isDecimalHarshadtest {
     public static void run()
     {
@@ -411,11 +412,20 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-08
 	 çözüm tarihi:09.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        DisplayCollatzTest.run();
+    }
+}
 class DisplayCollatzTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;){
             System.out.print("Bir değer giriniz: ");

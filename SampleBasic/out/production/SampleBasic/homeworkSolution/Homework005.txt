@@ -40,7 +40,15 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01
 	 çözüm tarihi:11.03.2023
+	 sun güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import static util.number.NumberUtil.factorial;
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintEApp.run();
+    }
+}
 class PrintEApp {
     public static void run()
     {
@@ -49,25 +57,25 @@ class PrintEApp {
             e += 1. / factorial(i);
         System.out.printf("e = %.20f%n", e);
     }
-    public static int factorial (int n)
-    {
-        int result = 1;
-
-        for (int i = 2; i <= n; ++i)
-            result *= i;
-
-        return result;
-    }
 }
 
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-02
 	 çözüm tarihi:11.03.2023
+     son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        SumFactorsTest.run();
+    }
+}
 class SumFactorsTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("bir sayı giriniz: ");
@@ -96,7 +104,15 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-03
 	 çözüm tarihi:12.03.2023
+     son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+
+public class Main {
+    public static void main(String [] args)
+    {
+        AreFriendsTest.run();
+    }
+}
 class AreFriendsTest {
     public static void run()
     {
@@ -132,7 +148,15 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-04
 	 çözüm tarihi:12.03.2023
+     son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+
+public class Main {
+    public static void main(String [] args)
+    {
+        IsPerfectTest.run();
+    }
+}
 class IsPerfectTest {
     public static void run()
     {

@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Homework-002
 	 verilen ders: 13-21-03-2021
-	 çözülen ders: --
+	 çözülen ders: 28-22-05-2021
 
     1. Klavyeden bir n sayısı okuyunuz ve aşağıdaki deseni oluşturan programı yazınız (örneğimizde n = 6’dır):
          *
@@ -55,11 +55,20 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01
 	 çözüm tarihi:06.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        DrawDiomandApp.run();
+    }
+}
 class DrawDiomandApp {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Bir sayı giriniz:");
@@ -95,11 +104,20 @@ class DrawDiomandApp {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-02
 	 çözüm tarihi:06.03.2023
+	 son güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        DisplayDurationTest.run();
+    }
+}
 class DisplayDurationTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Bir değer giriniz:");
@@ -115,9 +133,9 @@ class DisplayDurationTest {
 class DateUtil{
     public static void displayDuration (long second)
     {
-        long hour =  getHour(second);
-        long minute = getMinute(second);
-        second = getSecond(second);
+        long hour =  second / 60 / 60;
+        long minute = second / 60 % 60;
+        second = second % 60 % 60;
 
         if (hour != 0)
             System.out.printf("%d saat ",hour);
@@ -128,35 +146,24 @@ class DateUtil{
 
         System.out.println();
     }
-
-    public static long getHour(long second)
-    {
-        return second / 3600;
-    }
-
-    public static long getMinute(long second)
-    {
-        second -= getHour(second) * 3600;
-
-        return second / 60;
-    }
-
-    public static long getSecond(long second)
-    {
-        second -= getHour(second) * 3600;
-        second -= getMinute(second) * 60;
-
-        return second;
-    }
 }
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-03
 	 çözüm tarihi:07.03.2023
+	 son güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintPrimeFactorApp.run();
+    }
+}
 class PrintPrimeFactorApp{
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("bir değer giriniz:");
@@ -171,54 +178,37 @@ class PrintPrimeFactorApp{
 
     public static void printPrimeFactor (int val)
     {
-        for (int i = 2; i <= val;)
-            if (isPrime(i))
-                if (val % i == 0) {
-                    System.out.printf("%d ", i);
-                    val /= i;
-                }
-                else
-                    ++i;
+        int i = 2;
+
+        while (val != 1)
+            if (val % i == 0) {
+                System.out.printf("%d ", i);
+                val /= i;
+            }
             else
                 ++i;
+
         System.out.println();
     }
-
-    public static boolean isPrime(long val)
-    {
-        if (val <= 1)
-            return false;
-
-        if (val % 2 == 0)
-            return val == 2;
-
-        if (val % 3 == 0)
-            return val == 3;
-
-        if (val % 5 == 0)
-            return val == 5;
-
-        if (val % 7 == 0)
-            return val == 7;
-
-        for (long i = 11; i * i <= val; i += 2)
-            if (val % i == 0)
-                return false;
-
-        return true;
-    }
-
 }
-
 
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-04
 	 çözüm tarihi:07.03.2023
+	 son güncelleme: 24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        DrawBallFallApp.run();
+    }
+}
 class DrawBallFallApp {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Yükseklik değerini giriniz:");
@@ -274,11 +264,21 @@ class DrawBallFallApp {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-05
 	 çözüm tarihi:08.03.2023
+	 son güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+import static util.number.NumberUtil.isPrime;
+import static java.lang.Math.*;
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintPrimeFactorApp.run();
+    }
+}
 class PrintPrimeFactorApp{
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("bir değer giriniz:");
@@ -292,7 +292,7 @@ class PrintPrimeFactorApp{
                 continue;
             }
 
-            printPrimeFactor(Math.abs(val));
+            printPrimeFactor(abs(val));
         }
     }
 
@@ -305,31 +305,5 @@ class PrintPrimeFactorApp{
                     break;
                 }
     }
-
-    public static boolean isPrime(long val)
-    {
-        if (val <= 1)
-            return false;
-
-        if (val % 2 == 0)
-            return val == 2;
-
-        if (val % 3 == 0)
-            return val == 3;
-
-        if (val % 5 == 0)
-            return val == 5;
-
-        if (val % 7 == 0)
-            return val == 7;
-
-        for (long i = 11; i * i <= val; i += 2)
-            if (val % i == 0)
-                return false;
-
-        return true;
-    }
-
 }
-
 

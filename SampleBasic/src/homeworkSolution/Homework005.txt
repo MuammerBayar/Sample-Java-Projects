@@ -40,7 +40,15 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01
 	 çözüm tarihi:11.03.2023
+	 sun güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import static util.number.NumberUtil.factorial;
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintEApp.run();
+    }
+}
 class PrintEApp {
     public static void run()
     {
@@ -48,15 +56,6 @@ class PrintEApp {
         for (int i = 0; i < 13; ++i)
             e += 1. / factorial(i);
         System.out.printf("e = %.20f%n", e);
-    }
-    public static int factorial (int n)
-    {
-        int result = 1;
-
-        for (int i = 2; i <= n; ++i)
-            result *= i;
-
-        return result;
     }
 }
 
