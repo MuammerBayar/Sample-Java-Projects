@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
      Homework-003
 	 verilen ders: 13-21-03-2021
-	 çözülen ders: --
+	 çözülen ders: 29-23-05-2021
 
     1. abc üç basamaklı bir tamsayıdır ve aşağıdaki koşulları sağlamaktadır:
     koşul 1 cba > abc olacak
@@ -198,7 +198,7 @@ class NumberUtil {
 
     public static int calculateDigitalRoot(int val)
     {
-        while ((val = digitsSum(val)) > 10)
+        while ((val = digitsSum(val)) > 9)
             ;
 
         return val;
@@ -219,7 +219,7 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-04
 	 çözüm tarihi:08.03.2023
-     son güncelleme: 24.03.2023
+     son güncelleme: 26.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 public class Main {
     public static void main(String [] args)
@@ -236,13 +236,12 @@ class IsFactorianTest {
                 System.out.printf("%d ",i);
         }
     }
-
 }
 
 class NumberUtil {
     public static boolean isFactorian(int val)
     {
-        return val == getDigitsFactorialSum(val);
+        return val > 0 && val == getDigitsFactorialSum(val);
     }
     public static int getDigitsFactorialSum(int val)
     {
@@ -391,10 +390,7 @@ class isDecimalHarshadtest {
 class NumberUtil {
     public static boolean isDecimalHarshad(int val)
     {
-        if (val < 0)
-            return false;
-
-        return val % digitsSum(val) == 0;
+        return val > 0 && val % digitsSum(val) == 0;
     }
 
     public static int digitsSum(int val)
@@ -412,7 +408,7 @@ class NumberUtil {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-08
 	 çözüm tarihi:09.03.2023
-	 son güncelleme: 24.03.2023
+	 son güncelleme: 26.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 import java.util.Scanner;
 
@@ -444,16 +440,16 @@ class NumberUtil {
 
     public static void displayCollatz(int n)
     {
-        while (true) {
+        if (n <= 0) {
+            System.out.println("Geçersiz değer");
+            return;
+        }
+
+        System.out.println(n);
+
+        while (n != 1) {
+            n = n % 2 == 0 ? n / 2 : 3 * n + 1;
             System.out.println(n);
-
-            if (n == 1)
-                break;
-
-            if (n % 2 == 0)
-                n /= 2;
-            else
-                n = 3 * n + 1;
         }
     }
 }
