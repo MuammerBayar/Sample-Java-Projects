@@ -4,7 +4,11 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package util.math;
 
-class Complex {
+
+import static java.lang.Math.abs;
+import static java.lang.Math.sqrt;
+
+public class Complex {
     public double real;
     public double imag;
 
@@ -48,7 +52,7 @@ class Complex {
 
     public double getNorm()
     {
-        return Math.sqrt(real * real + imag * imag);
+        return sqrt(real * real + imag * imag);
     }
 
     public Complex getConjugate()
@@ -112,6 +116,6 @@ class Complex {
 
     public String toString()
     {
-        return String.format("|%.1f%si| = %f", real, (imag < 0 ? " - " : " + ") +  Math.abs(imag), getNorm());
+        return String.format("|%.1f%si| = %f", real, (imag < 0 ? " - " : " + ") +  abs(imag), getNorm());
     }
 }

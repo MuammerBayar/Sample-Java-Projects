@@ -1,13 +1,19 @@
 /*----------------------------------------------------------------------------------------------------------------------
     NumberUtil Sınıfı
-    last update:26.03.2023
+    last update:27.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package util.number;
+
+import static java.lang.Math.abs;
+import static java.lang.Math.log10;
+import static java.lang.Math.min;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
 public class NumberUtil {
     public static int calculateDigitalRoot(int val)
     {
-        int root = Math.abs(val);
+        int root = abs(val);
 
         while ((root = digitsSum(root)) > 9)
             ;
@@ -17,7 +23,7 @@ public class NumberUtil {
 
     public static int countDigits(int val)
     {
-        return val == 0 ? 1 : (int)Math.log10(Math.abs(val)) +  1;
+        return val == 0 ? 1 : (int)log10(abs(val)) +  1;
     }
 
     public static int digitsSum(long val)
@@ -57,7 +63,7 @@ public class NumberUtil {
 
     public static int gcd(int a, int b)
     {
-        int min = Math.min(Math.abs(a), Math.abs(b));
+        int min = min(abs(a), abs(b));
 
         for (int i = min; i >= 2; --i)
             if (a % i == 0 && b % i == 0)
@@ -72,7 +78,7 @@ public class NumberUtil {
         int sum = 0;
 
         while (val != 0) {
-            sum += Math.pow(val % 10, n);
+            sum += pow(val % 10, n);
             val /= 10;
         }
 
@@ -168,7 +174,7 @@ public class NumberUtil {
         if (n == 0)
             return;
 
-        n = Math.abs(n);
+        n = abs(n);
 
         int i = 2;
 
@@ -203,7 +209,7 @@ public class NumberUtil {
             return 1;
 
         int result = 0;
-        int sqrtVal = (int)Math.sqrt(val);
+        int sqrtVal = (int)sqrt(val);
 
         for (int i = 2; i <= sqrtVal; ++i)
             if (val % i == 0)
@@ -272,7 +278,7 @@ public class NumberUtil {
         if (val % 7 == 0)
             return val == 7;
 
-        int sqrtVal = (int)Math.sqrt(val);
+        int sqrtVal = (int)sqrt(val);
 
         for (long i = 11; i <= sqrtVal; i += 2)
             if (val % i == 0)
@@ -297,3 +303,4 @@ public class NumberUtil {
         return isPrime(n) && isPrime(getIndexOfPrime(n));
     }
 }
+
