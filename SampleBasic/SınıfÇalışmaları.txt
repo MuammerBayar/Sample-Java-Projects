@@ -1037,17 +1037,30 @@ class DateUtil {
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
 }
+//xxxxxxxxxxxxxxxxxxxxxxxx
 /*----------------------------------------------------------------------------------------------------------------------
  	Sınıf Çalışması: Parametresi ile aldığı int türden iki sayının "en büyük ortak bölenini" döndüren gcd isimli
  	metodu Numberutil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 06.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        GcdTest.run();
+    }
+}
 class GcdTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Birinci sayıyı giriniz:");
@@ -1070,9 +1083,9 @@ class GcdTest {
 class NumberUtil {
     public static int gcd(int a, int b)
     {
-        int devider = Math.min(a,b);
+        int devider = min(a,b);
 
-        if (Math.max(a,b) % devider == 0)
+        if (max(a,b) % devider == 0)
             return devider;
         else
             devider /= 2;
@@ -1094,15 +1107,25 @@ class NumberUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 14.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        CoinSimulationApp.run();
+    }
+}
 class CoinSimulationApp {
-    public static boolean isHead(java.util.Random random)
+    public static boolean isHead(Random random)
     {
         return random.nextBoolean();
     }
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Kaç Deneme yapılsın: ");
@@ -1116,7 +1139,7 @@ class CoinSimulationApp {
     }
     public static int getNumberOfHeads(int n)
     {
-        java.util.Random r = new java.util.Random();
+        Random r = new Random();
         int count = 0;
         for (int i = 0; i < n; ++i)
             if (isHead(r))
@@ -1132,7 +1155,17 @@ class CoinSimulationApp {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 14.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        SameDiceProbilitySimulationApp.run();
+    }
+}
 class SameDiceProbilitySimulationApp {
     public static boolean isSame(java.util.Random random)
     {
@@ -1140,7 +1173,7 @@ class SameDiceProbilitySimulationApp {
     }
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Kaç Deneme yapılsın: ");
@@ -1154,7 +1187,7 @@ class SameDiceProbilitySimulationApp {
     }
     public static int getNumberOfSameDice(int n)
     {
-        java.util.Random r = new java.util.Random();
+        Random r = new Random();
         int count = 0;
         for (int i = 0; i < n; ++i)
             if (isSame(r))
@@ -1173,12 +1206,23 @@ class SameDiceProbilitySimulationApp {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 15.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        CountStringTest.run();
+    }
+}
 class CountStringTest {
     public static void run()
     {
+        Scanner kb = new Scanner(System.in);
+
         for (;;) {
-            java.util.Scanner kb = new java.util.Scanner(System.in);
+
             System.out.print("Birinci yazıyı giriniz: ");
             String s1 = kb.nextLine();
 
@@ -1231,7 +1275,16 @@ class StringUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 21.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        ATMApp.run();
+    }
+}
 class ATMApp {
     public static void run()
     {
@@ -1261,7 +1314,7 @@ class Card {
 }
 class ATM{
     public Card card;
-    public java.util.Scanner kb;
+    public Scanner kb;
 
     public void getCard()
     {
@@ -1295,7 +1348,7 @@ class ATM{
     }
     public ATM ()
     {
-        kb = new java.util.Scanner(System.in);
+        kb = new Scanner(System.in);
         getCard();
         doWorkForEntry(3);
 
@@ -1307,7 +1360,16 @@ class ATM{
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 21.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        ReversedTest.run();
+    }
+}
 class ReversedTest {
     public static void run()
     {
@@ -1342,7 +1404,16 @@ class StringUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 21.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        ConcatWithHypenApp.run();
+    }
+}
 class ConcatWithHypenApp {
     public static void run()
     {
@@ -1372,11 +1443,20 @@ class ConcatWithHypenApp {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 22.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        CapitalizeTest.run();
+    }
+}
 class CapitalizeTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Bir yazı giriniz:");
@@ -1410,11 +1490,22 @@ class StringUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 22.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+import static java.lang.Character.isWhitespace;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        CapitalizeWSTest.run();
+    }
+}
 class CapitalizeWSTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Bir yazı giriniz:");
@@ -1434,7 +1525,7 @@ class StringUtil {
       {
            int i;
            int length = s.length();
-           for (i = 0; i < length && Character.isWhitespace(s.charAt(i)); ++i)
+           for (i = 0; i < length && isWhitespace(s.charAt(i)); ++i)
                ;
 
            return i == length ? "" : s.substring(0,i) + Character.toUpperCase(s.charAt(i))  + s.substring(i + 1).toLowerCase();
@@ -1447,11 +1538,21 @@ class StringUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 22.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+import static java.lang.Character.*;
+public class Main {
+    public static void main(String [] args)
+    {
+        TrimLeadingTrailingTest.run();
+    }
+}
 class TrimLeadingTrailingTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Bir yazı giriniz:");
@@ -1471,7 +1572,7 @@ class StringUtil {
     {
         int i;
 
-        for (i = s.length() - 1; 0 < i && Character.isWhitespace(s.charAt(i)); --i)
+        for (i = s.length() - 1; 0 < i && isWhitespace(s.charAt(i)); --i)
             ;
 
         return s.substring(0,i);
@@ -1481,7 +1582,7 @@ class StringUtil {
         int i;
         int length = s.length();
 
-        for (i = 0; i < length && Character.isWhitespace(s.charAt(i)); ++i)
+        for (i = 0; i < length && isWhitespace(s.charAt(i)); ++i)
             ;
         return s.substring(i);
     }
@@ -1510,11 +1611,20 @@ class StringUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 20.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        PadLeadingTrailingTest.run();
+    }
+}
 class PadLeadingTrailingTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Bir yazı giriniz:");
@@ -1576,12 +1686,20 @@ class StringUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 20.03.2023
+ 	Son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
 
+public class Main {
+    public static void main(String [] args)
+    {
+        IsPangramENTRTest.run();
+    }
+}
 class IsPangramENTRTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Input a text:");
@@ -1595,8 +1713,6 @@ class IsPangramENTRTest {
         }
     }
 }
-
-
 class StringUtil {
     public static boolean isPangramTR(String text)
     {
@@ -1636,11 +1752,22 @@ class StringUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 22.03.2023
+ 	son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+import static java.lang.Character.*;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        IsPalindromeTest.run();
+    }
+}
 class IsPalindromeTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Bir yazı giriniz:");
@@ -1660,15 +1787,15 @@ class StringUtil {
         int right = s.length() - 1;
 
         while (left < right) {
-            char cLeft = Character.toLowerCase(s.charAt(left));
+            char cLeft = toLowerCase(s.charAt(left));
 
-            if (!Character.isLetter(cLeft)) {
+            if (!isLetter(cLeft)) {
                 ++left;
                 continue;
             }
-            char cRight = Character.toLowerCase(s.charAt(right));
+            char cRight = toLowerCase(s.charAt(right));
 
-            if (!Character.isLetter(cRight)) {
+            if (!isLetter(cRight)) {
                 --right;
                 continue;
             }
@@ -1689,12 +1816,22 @@ class StringUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 22.03.2023
+ 	son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        GetRandomTextTRENTest.run();
+    }
+}
 class GetRandomTextTRENTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
-        java.util.Random r = new java.util.Random();
+        Scanner kb = new Scanner(System.in);
+        Random r = new Random();
 
         for (;;) {
             System.out.print("Bir sayı giriniz:");
@@ -1710,36 +1847,36 @@ class GetRandomTextTRENTest {
     }
 }
 class StringUtil {
-    public static String getRandomTextTR(java.util.Random r, int n)
-    	{
-    		return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
-    	}
+    public static String getRandomTextTR(Random r, int n)
+    {
+        return getRandomText(r, n, "abcçdefgğhıijklmnoöprsştuüvyzABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
+    }
 
-    	public static String getRandomTextTR(int n)
-    	{
-    		return getRandomTextTR(new java.util.Random(), n);
-    	}
+    public static String getRandomTextTR(int n)
+    {
+        return getRandomTextTR(new Random(), n);
+    }
 
-    	public static String getRandomTextEN(java.util.Random r, int n)
-    	{
-    		return getRandomText(r, n, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ");
-    	}
+    public static String getRandomTextEN(Random r, int n)
+    {
+        return getRandomText(r, n, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ");
+    }
 
-    	public static String getRandomTextEN(int n)
-    	{
-    		return getRandomTextEN(new java.util.Random(), n);
-    	}
+    public static String getRandomTextEN(int n)
+    {
+        return getRandomTextEN(new Random(), n);
+    }
 
-    	public static String getRandomText(java.util.Random r, int n, String sourceText)
-    	{
-    		String result = "";
-    		int length = sourceText.length();
+    public static String getRandomText(Random r, int n, String sourceText)
+    {
+        String result = "";
+        int length = sourceText.length();
 
-    		for (int i = 0; i < n; ++i)
-    			result += sourceText.charAt(r.nextInt(length));
+        for (int i = 0; i < n; ++i)
+            result += sourceText.charAt(r.nextInt(length));
 
-    		return result;
-    	}
+        return result;
+    }
 }
 
 /*----------------------------------------------------------------------------------------------------------------------
@@ -1755,11 +1892,21 @@ class StringUtil {
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
  	Çözüm tarihi: 22.03.2023
+ 	son güncelleme: 28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+import static java.lang.Character.*;
+public class Main {
+    public static void main(String [] args)
+    {
+        GetLongestPalindromeTest.run();
+    }
+}
 class GetLongestPalindromeTest {
     public static void run()
     {
-        java.util.Scanner kb = new java.util.Scanner(System.in);
+        Scanner kb = new Scanner(System.in);
 
         for (;;) {
             System.out.print("Bir yazı giriniz:");
@@ -1800,14 +1947,14 @@ class StringUtil {
         while (left < right) {
             char cLeft = Character.toLowerCase(s.charAt(left));
 
-            if (!Character.isLetter(cLeft)) {
+            if (!isLetter(cLeft)) {
                 ++left;
                 continue;
             }
 
             char cRight = Character.toLowerCase(s.charAt(right));
 
-            if (!Character.isLetter(cRight)) {
+            if (!isLetter(cRight)) {
                 --right;
                 continue;
             }
