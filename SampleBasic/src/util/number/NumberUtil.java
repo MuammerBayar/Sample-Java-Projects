@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     NumberUtil Sınıfı
-    last update:27.03.2023
+    last update:28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package util.number;
 
@@ -26,6 +26,10 @@ public class NumberUtil {
         return val == 0 ? 1 : (int)log10(abs(val)) +  1;
     }
 
+    public static int countDigits(long val)
+    {
+        return val == 0 ? 1 : (int)log10(abs(val)) +  1;
+    }
     public static int digitsSum(long val)
     {
         int sum = 0;
@@ -70,6 +74,17 @@ public class NumberUtil {
                 return i;
 
         return 1;
+    }
+
+    public static int [] getDigits(long val)
+    {
+        int [] a = new int[countDigits(val)];
+
+        for (int i = a.length - 1; i  >= 0; --i) {
+            a[i] = (int)val % 10;
+            val /= 10;
+        }
+        return a;
     }
 
     public static int getDigitsPowSum(int val)
