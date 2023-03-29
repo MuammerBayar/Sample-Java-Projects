@@ -1,8 +1,10 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    izlenecek (oop):31.video
+    izlenecek (oop):32.video
     izlenecek (app): -
 ----------------------------------------------------------------------------------------------------------------------*/
-package samples.main;
+package byr.main;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String [] args)

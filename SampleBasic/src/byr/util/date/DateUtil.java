@@ -2,7 +2,7 @@
     DateUtil Sınıfı
     last update:21.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package util.date;
+package byr.util.date;
 
 public class DateUtil {
     public static void displayDateTR(int day, int month, int year)

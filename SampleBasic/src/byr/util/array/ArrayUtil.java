@@ -2,7 +2,7 @@
     ArrayUtil Sınıfı
     last update:28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package util.array;
+package byr.util.array;
 
 import java.util.Random;
 

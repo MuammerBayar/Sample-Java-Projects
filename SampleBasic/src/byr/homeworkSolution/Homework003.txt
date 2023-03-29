@@ -102,7 +102,7 @@
 	 çözüm tarihi:08.03.2023
 	 son güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-import static util.number.NumberUtil.isPrime;
+import static byr.util.number.NumberUtil.isPrime;
 public class Main {
     public static void main(String [] args)
     {

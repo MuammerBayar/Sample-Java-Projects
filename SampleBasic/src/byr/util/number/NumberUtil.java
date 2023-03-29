@@ -2,7 +2,7 @@
     NumberUtil Sınıfı
     last update:28.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package util.number;
+package byr.util.number;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.log10;

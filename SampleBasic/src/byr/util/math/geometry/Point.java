@@ -2,7 +2,7 @@
     PointUtil Sınıfı
     last update:23.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package util.math.geometry;
+package byr.util.math.geometry;
 
 import static java.lang.Math.sqrt;
 

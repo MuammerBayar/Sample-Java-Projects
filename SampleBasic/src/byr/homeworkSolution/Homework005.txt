@@ -42,7 +42,8 @@
 	 çözüm tarihi:11.03.2023
 	 sun güncelleme: 25.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-import static util.number.NumberUtil.factorial;
+import static byr.util.number.NumberUtil.factorial;
+
 public class Main {
     public static void main(String [] args)
     {

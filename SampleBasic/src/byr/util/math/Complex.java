@@ -2,7 +2,7 @@
     Complex Sınıfı
     last update:23.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package util.math;
+package byr.util.math;
 
 
 import static java.lang.Math.abs;

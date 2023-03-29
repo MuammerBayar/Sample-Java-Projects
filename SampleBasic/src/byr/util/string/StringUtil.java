@@ -2,7 +2,7 @@
     StringUtil Sınıfı
     last update:24.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
-package util.string;
+package byr.util.string;
 
 import java.util.Random;
 
