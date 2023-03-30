@@ -89,6 +89,15 @@ public class ArrayUtil {
         fillRandomArray(new Random(),a,min,max);
     }
 
+    public static int [] getHistogramData(int [] a, int n) // [0,n]
+    {
+        int [] count = new int[n + 1];
+
+        for (int i = 0; i < a.length; ++i)
+            ++count[a[i]];
+
+        return count;
+    }
     public static int [] getRandomArray(Random r, int n, int min, int max) //[min,max)
     {
            int [] a = new int[n];
@@ -107,6 +116,22 @@ public class ArrayUtil {
         return a;
     }
 
+    public static int partition(int [] a, int threshold)
+    {
+        int partitionIndex = 0;
+
+        while (partitionIndex < a.length && a[partitionIndex] < threshold)
+            ++partitionIndex;
+
+        if (partitionIndex == a.length)
+            return partitionIndex;
+
+        for (int i = partitionIndex + 1; i < a.length; ++i)
+            if (a[i] < threshold)
+                swap(a, partitionIndex++, i);
+
+        return partitionIndex;
+    }
     public static void reverse(int [] a)
     {
         int length = a.length / 2;

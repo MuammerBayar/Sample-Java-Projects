@@ -1,0 +1,35 @@
+/*----------------------------------------------------------------------------------------------------------------------
+    Homework-009
+    verilen ders: 31-30-05-2021
+    çözülen ders: --
+
+        1. “Mastermind” isimli oyun iki kişi ile oynanan bir sayı bulmaca oyunudur. Oyunculardan biri, [1000 - 9999]
+        kümesinden basamak değerleri birbirinden farklı bir sayı belirler. Diğer oyuncunun amacı bu sayıyı en fazla 10
+        tahminde bulmaktır. Sayıyı belirleyen oyuncu, diğer oyuncunun her tahmininden sonra oyunun kuralları
+        doğrultusunda bilgiler vermektedir.
+        - Tahmin edilen sayı içerisinde belirlenen sayının içerisindeki rakamlardan biri varsa fakat basamak değeri
+        tutmuyorsa - işareti ile, basamak değeri de tutuyorsa + işareti ile bilgi verilir. Örnekler:
+
+        Belirlenen sayı : 1234
+        Tahmin edilen sayı : 4567
+        Verilecek bilgi : -
+
+        Belirlenen sayı : 1234
+        Tahmin edilen sayı : 5674
+        Verilecek bilgi : +
+
+        Belirlenen sayı : 1234
+        Tahmin edilen sayı : 4237
+        Verilecek bilgi : +2 -
+
+        Not: Verilecek olan bilgide + ve - 'lerin sırasının bir önemi yoktur.
+
+        Bir sayı belirleyerek mastermind oyununu oynatan programı yazınız.
+
+        2. Parametresi ile aldığı int türden bir dizinin en büyük ikinci elemanını bulan secondMax isimli metodu yazınız
+
+
+        C ve Sistem Programcıları Derneği
+        Java ile Nesne Yönelimli Programlama
+        Çalışma Soruları
+----------------------------------------------------------------------------------------------------------------------*/
