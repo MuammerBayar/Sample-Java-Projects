@@ -1,10 +1,12 @@
 /*----------------------------------------------------------------------------------------------------------------------
     StringUtil Sınıfı
-    last update:24.03.2023
+    last update:31.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.string;
 
 import java.util.Random;
+
+import static byr.util.array.ArrayUtil.swap;
 
 public class StringUtil {
     public static String capitalize(String s)
@@ -74,13 +76,13 @@ public class StringUtil {
 
     public static String getRandomText(Random r, int n, String sourceText)
     {
-        String result = "";
         int length = sourceText.length();
+        char [] resultChars = new char[n];
 
         for (int i = 0; i < n; ++i)
-            result += sourceText.charAt(r.nextInt(length));
+            resultChars[i] = sourceText.charAt(r.nextInt(length));
 
-        return result;
+        return String.valueOf(resultChars);
     }
 
     public static boolean isPalindrome(String s)
@@ -160,12 +162,12 @@ public class StringUtil {
 
     public static String reversed(String s)
     {
-        int length = s.length();
-        String str = "";
-        for (int i = 0; i < length; ++i) {
-            str += s.charAt(length - 1 - i);
-        }
-        return str;
+        char [] chars = s.toCharArray();
+
+        for (int i = 0; i < chars.length / 2; ++i)
+            swap(chars,i, chars.length - 1 - i);
+
+        return String.valueOf(chars);
     }
 
     public static String repeat(int n , char ch)

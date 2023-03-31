@@ -1,8 +1,10 @@
 /*----------------------------------------------------------------------------------------------------------------------
     ArrayUtil Sınıfı
-    last update:28.03.2023
+    last update:31.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.array;
+
+import byr.util.string.StringUtil;
 
 import java.util.Random;
 
@@ -78,6 +80,16 @@ public class ArrayUtil {
         System.out.println();
     }
 
+    public static void drawHistogram(int [] data,int n, char ch)
+    {
+        int maxVal = max(data);
+
+        for (int i = 0; i < data.length; ++i) {
+            int x = (int)Math.ceil((double)n * data[i] / maxVal);
+            System.out.println((ch + "").repeat(x));
+        }
+    }
+
     public static void fillRandomArray(Random r, int [] a, int min, int max) //[min,max)
     {
         for (int i = 0; i < a.length; ++i)
@@ -114,6 +126,27 @@ public class ArrayUtil {
         fillRandomArray(a,min,max);
 
         return a;
+    }
+
+    public static int max(int [] a)
+    {
+        int maxVal = a[0];
+
+        for (int i = 1; i < a.length; ++i)
+            if (maxVal < a[i])
+                maxVal = a[i];
+
+        return maxVal;
+    }
+    public static int min(int [] a)
+    {
+        int minVal = a[0];
+
+        for (int i = 1; i < a.length; ++i)
+            if (minVal > a[i])
+                minVal = a[i];
+
+        return minVal;
     }
 
     public static int partition(int [] a, int threshold)
@@ -165,6 +198,12 @@ public class ArrayUtil {
     public static void swap(int [] a, int i, int k)
     {
         int temp = a[i];
+        a[i] = a[k];
+        a[k] = temp;
+    }
+    public static void swap(char [] a, int i, int k)
+    {
+        char temp = a[i];
         a[i] = a[k];
         a[k] = temp;
     }

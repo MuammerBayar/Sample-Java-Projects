@@ -30,7 +30,123 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01
-	 çözüm tarihi:
+	 çözüm tarihi:31.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Random;
 
+import static byr.util.array.ArrayUtil.*;
+import static byr.util.number.NumberUtil.isPrime;
 
+public class Main {
+    public static void main(String [] args)
+    {
+        BingoGameSimulationApp.run();
+    }
+}
+
+class BingoGameSimulationApp{
+    public static int [] numbers = new int[3];
+    public static void run()
+    {
+        Random r = new Random();
+        int count = 0;
+        int n = 300_000;
+        for (int i = 0; i < 300_000; ++i) {
+            getNumbers(r);
+            if (isPlayerWin())
+                ++count;
+        }
+
+        System.out.printf("Bir oyuncunun kazanma olasılığı: %.4f%n",(double)count /n);
+    }
+
+    public static void getNumbers(Random r)
+    {
+        for (int i = 0; i < 3; ++i)
+            numbers[i] = r.nextInt(98) + 1;
+    }
+
+    public static boolean isPlayerWin()
+    {
+        int sum = sum(numbers);
+        if (sum >= 150)
+            return false;
+
+        if(!isPrime(sum))
+            return false;
+
+        int diff = max(numbers) - min(numbers);
+
+        if (diff <= sum - diff)
+            return false;
+
+        return true;
+    }
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-02
+	 çözüm tarihi:31.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Random;
+import java.util.Scanner;
+
+import static byr.util.date.DateUtil.*;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintRandomDateTest.run();
+    }
+}
+class PrintRandomDateTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Bir sayı giriniz: ");
+            int n = Integer.parseInt(kb.nextLine());
+
+            if (n <= 0)
+                break;
+
+            while (n-- != 0)
+                printRandomDate();
+
+        }
+    }
+}
+
+class DateUtil {
+    public static String getNumberFurther(int day)
+    {
+        String further = "th";
+
+        switch (day % 10) {
+            case 1:
+                further = "st";
+                break;
+            case 2:
+                further = "nd";
+                break;
+            case 3:
+                further = "rd";
+                break;
+        }
+
+        return further;
+    }
+    public static void printRandomDate()
+    {
+        Random r = new Random();
+
+        int month = r.nextInt(12) + 1;
+        int year = r.nextInt(2100 - 1900 + 1) + 1900; //[1900,2100]
+        int day = r.nextInt(dayOfMonths[month]) + 1;
+
+        if (r.nextBoolean() && isLeapYear(year) && month == 2)
+            ++day;
+
+        System.out.printf("%d%s %s %d%n",day, getNumberFurther(day), MONTHS_EN[month], year);
+    }
+}
