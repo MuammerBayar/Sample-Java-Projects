@@ -43,4 +43,273 @@
         Java ile Nesne Yönelimli Programlama
         Çalışma Soruları
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-01
+	 çözüm tarihi:01.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintTextInBracketApp.run();
+    }
+}
+
+class PrintTextInBracketApp {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Bir yazı giriniz: ");
+            String s = kb.nextLine();
+
+            if (s.equals("elma"))
+                break;
+
+            int firstIndex = s.lastIndexOf('{');
+            int lastIndex = s.indexOf('}');
+
+            String result = firstIndex == -1 || lastIndex == -1 ? "Yanlış bir giriş" : s.substring(firstIndex + 1, lastIndex);
+
+            System.out.printf("Yazı: %s%n", s);
+            System.out.printf("Sonuç: %s%n",result);
+        }
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-02
+	 çözüm tarihi:01.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintLineByLineAscApp.run();
+    }
+}
+
+class PrintLineByLineAscApp {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Bir yazı giriniz: ");
+            String s = kb.nextLine();
+
+            if (s.equals("elma"))
+                break;
+
+            printLineByLineAsc(s);
+        }
+    }
+
+    public static void printLineByLineAsc(String s)
+    {
+        int length = s.length();
+
+        for (int i = 1; i <= length; ++i) {
+            System.out.println(s.substring(0,i));
+        }
+
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-03
+	 çözüm tarihi:01.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        WriteInBracketApp.run();
+    }
+}
+
+class WriteInBracketApp {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Bir yazı giriniz: ");
+            String s = kb.nextLine();
+
+            if (s.equals("elma"))
+                break;
+
+            s = s.trim();
+            s = "(".concat(s).concat(")");
+
+            System.out.printf("Sonuç: %s%n",s);
+        }
+    }
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-04
+	 çözüm tarihi:01.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        SqueezeTest.run();
+    }
+}
+
+class SqueezeTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Birinci yazıyı giriniz: ");
+            String s1 = kb.nextLine();
+
+            if (s1.equals("elma"))
+                break;
+
+            System.out.print("İkinci yazıyı giriniz: ");
+            String s2 = kb.nextLine();
+
+            String result = StringUtil.squeeze(s1, s2);
+
+            System.out.printf("Sonuç: %s%n",result);
+        }
+    }
+}
+
+class StringUtil {
+    public static String squeeze(String s1, String s2)
+    {
+        if (s1.isBlank())
+            return s1;
+
+        int index = s1.indexOf(s2);
+        int length = s2.length();
+
+        while(index != -1) {
+             s1 = s1.substring(0,index) + s1.substring(index + length);
+             index = s1.indexOf(s2);
+        }
+
+        return s1;
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-05
+	 çözüm tarihi:01.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+import static java.lang.Character.*;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        ChangeCaseTest.run();
+    }
+}
+
+class ChangeCaseTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Birinci yazıyı giriniz: ");
+            String s = kb.nextLine();
+
+            if (s.equals("elma"))
+                break;
+
+            s = StringUtil.changeCase(s);
+
+            System.out.printf("Sonuç: %s%n",s);
+        }
+    }
+}
+
+class StringUtil {
+    public static String changeCase(String s)
+    {
+        if (s.isBlank())
+            return s;
+
+        char [] chars = s.toCharArray();
+
+        for (int i = 0; i < chars.length; ++i)
+            chars[i] = isLowerCase(chars[i]) ? toUpperCase(chars[i]) : toLowerCase(chars[i]);
+
+        return String.valueOf(chars);
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-06
+	 çözüm tarihi:01.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+
+import static java.lang.Character.*;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        IsValidVariableTest.run();
+    }
+}
+
+class IsValidVariableTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Değişken ismini giriniz: ");
+            String s = kb.nextLine();
+
+
+            if (s.equals("elma"))
+                break;
+
+            if (StringUtil.isValidVariable(s))
+                System.out.printf("%s geçerli değişken ismidir.%n",s);
+            else
+                System.out.printf("%s geçersiz değişken ismidir.%n",s);
+        }
+    }
+}
+
+class StringUtil {
+    public static boolean isValidVariable(String s)
+    {
+        if (isDigit(s.charAt(0)))
+            return false;
+
+        int length = s.length();
+        for (int i = 0; i < length; ++i) {
+            char ch = s.charAt(i);
+
+            if (ch == '$' || ch == '_' || isDigit(ch))
+                continue;
+
+            if(isWhitespace(ch) || !isAlphabetic(ch))
+                return false;
+        }
+
+        return true;
+    }
+}
+
+
 

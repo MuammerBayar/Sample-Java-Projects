@@ -7,6 +7,7 @@ package byr.util.string;
 import java.util.Random;
 
 import static byr.util.array.ArrayUtil.swap;
+import static java.lang.Character.*;
 
 public class StringUtil {
     public static String capitalize(String s)
@@ -22,6 +23,19 @@ public class StringUtil {
             ;
 
         return i == length ? "" : s.substring(0,i) + Character.toUpperCase(s.charAt(i))  + s.substring(i + 1).toLowerCase();
+    }
+
+    public static String changeCase(String s)
+    {
+        if (s.isBlank())
+            return s;
+
+        char [] chars = s.toCharArray();
+
+        for (int i = 0; i < chars.length; ++i)
+            chars[i] = isLowerCase(chars[i]) ? toUpperCase(chars[i]) : toLowerCase(chars[i]);
+
+        return String.valueOf(chars);
     }
 
     public static int countString(String s1, String s2)
@@ -173,5 +187,38 @@ public class StringUtil {
     public static String repeat(int n , char ch)
     {
         return String.format("%0" + n + "d", 0).replace('0', ch);
+    }
+    public static String squeeze(String s1, String s2)
+    {
+        if (s1.isBlank())
+            return s1;
+
+        int index = s1.indexOf(s2);
+        int length = s2.length();
+
+        while(index != -1) {
+            s1 = s1.substring(0,index) + s1.substring(index + length);
+            index = s1.indexOf(s2);
+        }
+
+        return s1;
+    }
+    public static boolean isValidVariable(String s)
+    {
+        if (isDigit(s.charAt(0)))
+            return false;
+
+        int length = s.length();
+        for (int i = 0; i < length; ++i) {
+            char ch = s.charAt(i);
+
+            if (ch == '$' || ch == '_' || isDigit(ch))
+                continue;
+
+            if(isWhitespace(ch) || !isAlphabetic(ch))
+                return false;
+        }
+
+        return true;
     }
 }
