@@ -253,6 +253,27 @@ public class NumberUtil {
         return val > 0 && val % digitsSum(val) == 0;
     }
 
+    public static boolean isDigitsDifferent(int val)
+    {
+        val = Math.abs(val);
+
+        if (val < 10)
+            return true;
+
+        boolean [] a = new boolean[10];
+
+        while (val != 0) {
+            if(!a[val % 10]) {
+                a[val % 10] = true;
+                val /= 10;
+            }
+            else
+                return false;
+        }
+
+        return true;
+    }
+
     public static boolean isHardyRamanujan(int val)
     {
         if (val <= 0)
