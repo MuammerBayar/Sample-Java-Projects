@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     StringUtil Sınıfı
-    last update:31.03.2023
+    last update:03.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.string;
 
@@ -148,6 +148,25 @@ public class StringUtil {
         return true;
     }
 
+    public static boolean isValidVariable(String s)
+    {
+        if (isDigit(s.charAt(0)))
+            return false;
+
+        int length = s.length();
+        for (int i = 0; i < length; ++i) {
+            char ch = s.charAt(i);
+
+            if (ch == '$' || ch == '_' || isDigit(ch))
+                continue;
+
+            if(isWhitespace(ch) || !isAlphabetic(ch))
+                return false;
+        }
+
+        return true;
+    }
+
     public static String padLeading(String text, int length, char ch)
     {
         if (text.length() < length)
@@ -190,35 +209,17 @@ public class StringUtil {
     }
     public static String squeeze(String s1, String s2)
     {
-        if (s1.isBlank())
-            return s1;
-
-        int index = s1.indexOf(s2);
         int length = s2.length();
+        for (int i = 0; i < length; ++i) {
+            int index = s1.indexOf(s2.charAt(i));
 
-        while(index != -1) {
-            s1 = s1.substring(0,index) + s1.substring(index + length);
-            index = s1.indexOf(s2);
+            while(index != -1) {
+                s1 = s1.substring(0,index).concat(s1.substring(index + 1));
+                index = s1.indexOf(s2.charAt(i));
+            }
         }
 
         return s1;
     }
-    public static boolean isValidVariable(String s)
-    {
-        if (isDigit(s.charAt(0)))
-            return false;
 
-        int length = s.length();
-        for (int i = 0; i < length; ++i) {
-            char ch = s.charAt(i);
-
-            if (ch == '$' || ch == '_' || isDigit(ch))
-                continue;
-
-            if(isWhitespace(ch) || !isAlphabetic(ch))
-                return false;
-        }
-
-        return true;
-    }
 }

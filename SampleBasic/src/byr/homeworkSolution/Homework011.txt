@@ -39,3 +39,56 @@
         Java ile Nesne Yönelimli Programlama
         Çalışma Soruları
 ----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-01
+	 çözüm tarihi:03.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+import byr.util.array.ArrayUtil;
+
+import static byr.util.array.ArrayUtil.*;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        CentralLimitTheoremSimulationApp.run();
+    }
+}
+
+class CentralLimitTheoremSimulationApp {
+
+    public static int [] counter;
+    public static void run()
+    {
+        counter = new int[10];
+
+        simulateCounterOfAverage(50_000);
+        //display(counter);
+        drawHistogram();
+    }
+
+    public static void simulateCounterOfAverage(int n)
+    {
+        for (int i = 0; i < n; ++i) {
+            double avg = average(getSamples(5));
+
+            if (0 <= avg && avg <= 1000)
+                ++counter[0];
+            else
+                ++counter[(int)Math.floor(avg / 1000)];
+
+        }
+
+    }
+
+    public static int [] getSamples(int n)
+    {
+        return getRandomArray(n, 0,10_001);
+    }
+    public static void drawHistogram()
+    {
+        ArrayUtil.drawHistogram(counter,100,'x');
+    }
+
+}
+

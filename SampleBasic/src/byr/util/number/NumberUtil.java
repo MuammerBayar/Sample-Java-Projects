@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     NumberUtil Sınıfı
-    last update:28.03.2023
+    last update:03.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.number;
 
@@ -295,6 +295,27 @@ public class NumberUtil {
     public static boolean isPerfect(int val)
     {
         return sumFactors(val) == val;
+    }
+
+    public static boolean isPossible(int a, int b)
+    {
+        boolean [] numbers = new boolean[10];
+
+        int count = countDigits(a);
+        for (int i = 0; i < count;++i) {
+            numbers[a % 10] = true;
+            a /= 10;
+        }
+
+        count = countDigits(b);
+        for (int i = 0; i < count; ++i) {
+            if (numbers[b % 10])
+                b /= 10;
+            else
+                return false;
+        }
+
+        return true;
     }
 
     public static boolean isPrime(long val)

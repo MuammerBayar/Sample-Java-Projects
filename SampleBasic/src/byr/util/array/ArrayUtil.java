@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     ArrayUtil Sınıfı
-    last update:31.03.2023
+    last update:03.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.array;
 
@@ -51,6 +51,12 @@ public class ArrayUtil {
                 }
         }
     }
+
+    public static double average(int [] a)
+    {
+        return (double)sum(a) / a.length;
+    }
+
 
     public static void bubbleSort(int [] a)
     {
@@ -147,6 +153,19 @@ public class ArrayUtil {
                 minVal = a[i];
 
         return minVal;
+    }
+    public static int mod(int [] a)
+    {
+        int [] counter = new int[max(a) + 1];
+        int index = 0;
+
+        for (int i = 0; i < a.length; ++i) {
+            ++counter[a[i]];
+            if (counter[index] < counter[a[i]])
+                index = a[i];
+        }
+
+        return index;
     }
 
     public static int partition(int [] a, int threshold)

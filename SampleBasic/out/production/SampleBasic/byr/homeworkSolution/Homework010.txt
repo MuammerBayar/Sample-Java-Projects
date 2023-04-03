@@ -33,3 +33,154 @@
         Java ile Nesne Yönelimli Programlama
         Çalışma Soruları
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-01
+	 çözüm tarihi:03.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintOpenDoorNumbersApp.run();
+
+    }
+}
+class PrintOpenDoorNumbersApp {
+    public static boolean [] doors;
+    public static void run()
+    {
+        doors = new boolean[101];
+
+        tryKeys();
+        printNumbers();
+    }
+    public static void tryKeys()
+    {
+        for (int i = 1; i <=20; ++i)
+            for (int k = 1; k <= 100; ++k)
+                if (k % i == 0)
+                    doors[k] = !doors[k];
+    }
+
+    public static void printNumbers()
+    {
+        for(int i = 1; i <= 100; ++i)
+            if (doors[i])
+                System.out.printf("%d ",i);
+    }
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-02
+	 çözüm tarihi:03.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+
+import java.util.Random;
+import java.util.Scanner;
+
+import static byr.util.array.ArrayUtil.*;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        ModTest.run();
+    }
+}
+class ModTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+        Random r = new Random();
+
+        for (;;)
+        {
+            System.out.print("Eleman sayısını giriniz: ");
+            int n = Integer.parseInt(kb.nextLine());
+
+            if (n == 0)
+                break;
+
+            int [] a = getRandomArray(r, n,0,50);
+
+            System.out.println("----------------------------------");
+            display(2,a);
+            System.out.printf("En çok tekrar eden: %d%n",ArrayUtil.mod(a));
+            System.out.println("----------------------------------");
+        }
+    }
+}
+class ArrayUtil{
+    public static int mod(int [] a)
+    {
+        int [] counter = new int[max(a) + 1];
+         int index = 0;
+
+        for (int i = 0; i < a.length; ++i) {
+            ++counter[a[i]];
+            if (counter[index] < counter[a[i]])
+                index = a[i];
+        }
+
+        return index;
+    }
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-03
+	 çözüm tarihi:03.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+
+import java.util.Random;
+import java.util.Scanner;
+import static byr.util.number.NumberUtil.countDigits;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        ModTest.run();
+    }
+}
+class ModTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+        Random r = new Random();
+
+        for (;;)
+        {
+            System.out.print("Birinci sayıyı giriniz: ");
+            int a = Integer.parseInt(kb.nextLine());
+
+            System.out.print("İkinci sayıyı giriniz: ");
+            int b = Integer.parseInt(kb.nextLine());
+
+            if (NumberUtil.isPossible(a,b))
+                System.out.printf("%d sayısı rakamlarından %d sayısı elde edilir.%n",a,b);
+            else
+                System.out.printf("%d sayısı rakamlarından %d sayısı elde edilemez.%n",a,b);
+
+            if (a == 0)
+                break;
+        }
+    }
+}
+class NumberUtil{
+    public static boolean isPossible(int a, int b)
+    {
+       boolean [] numbers = new boolean[10];
+
+       int count = countDigits(a);
+       for (int i = 0; i < count;++i) {
+           numbers[a % 10] = true;
+           a /= 10;
+       }
+
+       count = countDigits(b);
+       for (int i = 0; i < count; ++i) {
+           if (numbers[b % 10])
+               b /= 10;
+           else
+               return false;
+       }
+
+       return true;
+    }
+}
+
