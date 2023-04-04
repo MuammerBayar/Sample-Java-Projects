@@ -1,0 +1,30 @@
+/*----------------------------------------------------------------------------------------------------------------------
+    Homework-012
+    verilen ders: 32-05-06-2021
+    çözülen ders: --
+
+        1. Parametresi ile aldığı int türden bir dizinin standart sapmasını bulan standardDeviation isimli metodu yazınız
+        ve elemanları rasgele üretilmiş diziler ile test ediniz. Standart sapmanın formülü aşağıdaki gibidir:
+
+        //formüle bakılacak...
+
+        Burada N dizinin uzunluğu µ ise dizi elemanlarının ortalamasıdır.
+
+        2. Parametresi ile aldığı int türden dizi içerisinde tekrarlanan ilk sayıya geri dönen firstRepeated isimli metodu
+        yazınız.
+
+        Not: Metot, dizi içinde tekrarlanan bir sayı yoksa dizinin ilk elemanının değeriyle geri dönecektir.
+
+        3. Klavyeden girilen bir long türden sayıyı ekrana yazı olarak yazdıran programı yazınız. Örneğin:
+
+        Lütfen bir sayı giriniz: 12345678
+
+        on iki milyon üç yüz kırk beş bin altı yüz yetmiş sekiz
+
+        Not: Rakamlar arasında yalnızca bir adet boşluk karakteri bulunmalıdır
+
+
+        C ve Sistem Programcıları Derneği
+        Java ile Nesne Yönelimli Programlama
+        Çalışma Soruları
+----------------------------------------------------------------------------------------------------------------------*/
