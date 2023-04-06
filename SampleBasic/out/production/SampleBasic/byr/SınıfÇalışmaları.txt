@@ -2225,7 +2225,179 @@ class GetDigitsTest {
 	Sınıf Çalışması: Sayısal loto kupon üreten programı yazınız
 	(İleride daha iyisi yazılacaktır)
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 30.03.2023
+----------------------------------------------------------------------------------------------------------------------*/
+import byr.util.array.ArrayUtil;
 
+import java.util.Random;
+import java.util.Scanner;
+
+public class NumericLotteryApp {
+
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+        Random r = new Random();
+        for (;;) {
+            System.out.print("kupon sayısını giriniz: ");
+            int n = Integer.parseInt(kb.nextLine());
+
+            if (n <= 0)
+                break;
+
+            System.out.println("-------------------------------");
+
+            for (int i = 0; i < n; ++i)
+                ArrayUtil.display(2,NumericLottery.getCoupon(r));
+
+            System.out.println("-------------------------------");
+        }
+
+        System.out.println("Tekrar yapıyor musun?");
+    }
+}
+
+
+
+import java.util.Random;
+
+public class NumericLottery {
+    public static boolean [] numberFlag;
+
+    public static void fillRandomNumberFlag(Random r)
+    {
+        numberFlag = new boolean[50];
+
+        int count = 0;
+        while (count != 6) {
+            int index = r.nextInt(49) + 1;
+
+            if (!numberFlag[index]) {
+                numberFlag[index] = true;
+                ++count;
+            }
+        }
+    }
+    public static int [] getCoupon(Random r)
+    {
+        int [] a = new int[6];
+        fillRandomNumberFlag(r);
+
+        int index = 1;
+        for (int i = 0; i < 6; ++i)
+             for (;;)
+                if (numberFlag[index++]) {
+                    a[i] = index;
+                    break;
+                }
+
+
+        return a;
+    }
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Paremetresi ile aldığı long bir sayının en fazla 3(üç) basamaklı ayrılmış sayılarından oluşan
+	diziyi döndüren getDigitsInThrees metodunu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz.
+	Örnek:1234567 -> 1 234 567
+	Örnek: 9876 -> 9 876
+	Örnek: 567 -> 567
+----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 06.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+
+import java.util.Scanner;
+
+import static byr.util.array.ArrayUtil.display;
+import static java.lang.Math.abs;
+import static java.lang.Math.log10;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        GetDigitsInThreesTest.run();
+    }
+}
+class GetDigitsInThreesTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+        for (;;) {
+            System.out.print("Bir sayı giriniz:");
+            int val = Integer.parseInt(kb.nextLine());
+
+            if (val == 0)
+                break;
+
+            display(NumberUtil.getDigitsInThrees(val));
+        }
+    }
+}
+
+class NumberUtil {
+    public static int countDigits(long val, int n)
+    {
+        return val == 0 ? 1 : (int)(log10(abs(val)) / n) +  1;
+    }
+    public static int [] getDigits(long val,int n)
+    {
+        int powNum = (int)Math.pow(10,n);
+
+        int [] a = new int[countDigits(val,n)];
+
+        val = abs(val);
+
+        for (int i = a.length - 1; i >= 0; a[i] = (int)(val % powNum), val /= powNum, --i)
+            ;
+
+        return a;
+    }
+    public static int [] getDigitsInThrees(long val)
+    {
+        return getDigits(val,3);
+    }
+
+}
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Parametresi ile aldığı en fazla üç basamaklı bir sayının Türkçe okunuşunu döndüren numberToText3DigitsTR
+	metodunu NumberUtil sınıfı içerisinde yazınız ve aşağıdaki kod ile test ediniz. Metot 3 basamaktan büyük sayılar
+	kontrol yapmayacaktır
+
+	123 -> yüzyirmiüç
+	345 -> üçyüzkırkbeş
+	103 -> yüzüç
+	230 -> ikiyüzotuz
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıf Çalışması: Klavyeden int türden bir n sayısı için değer isteyiniz. n elemanlı bir String dizisi yaratınız.
+	bu dizinin her bir elemanını rasgele uzunlukta rasgele üretilmiş Türkçe karakterlerden oluşan yazılarla doldurunuz.
+	Bu işlemden sonra StringUtil sınıfı içerisinde yazacağınız parametresi ile aldığı bir String dizisinin elemanlarını,
+	yine parametresi aldığı bir	ayraç ile birleştirilmiş bir String'e geri dönen join isimli metodu çağırarak sonucu
+	ekrana yazdırınız
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+    Sınıf Çalışması: Klavyeden aşağıdaki formatta girilen bilgiyi ayrıştırarak ekrana detayları yazdıran programı
+    yazınız.
+    <isim>:<gg/aa/yyyy>:<ders adı>:<arasınav>:<final>
+    Oğuz Karan:10/09/1976:Matematik:90:78
+    Açıklamalar:
+    - Bu formata göre kişinin arasınav ve final notlarına arasınav * 0.4 + final * 0.6 formülüne göre geçme notunu da
+    yazdırılacaktır
+
+    - Doğum tarihinin hangi güne geldiği de ekrana yazdırılacaktır
+
+    - Geçme notu 50 olarak düşünülmelidir. Geçti veya kaldı bilgisi de ekrana yazdırılacaktır
+
+    - Programda format kontrolü yapılmayacaktır
+
+    Aşağıdaki örnekte RandomStudentInfoStrFactory sınıfında veriler herhangi bir kaynaktan (dosya, veritabanı vs)
+    elde edilebilir. Uygulama verinin nnasıl elde edildiğinden bağımsızdır
+
+    Not: Uygulama şu ana kadar gördüklerimize göre yazılmıştır. İleride daha iyisi yazılacaktır
+----------------------------------------------------------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------------------------------------------------------
 

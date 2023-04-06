@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     NumberUtil Sınıfı
-    last update:03.04.2023
+    last update:06.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.number;
 
@@ -11,6 +11,9 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class NumberUtil {
+    public static String [] onesTR = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+    public static String [] tensTR = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+
     public static int calculateDigitalRoot(int val)
     {
         int root = abs(val);
@@ -21,14 +24,14 @@ public class NumberUtil {
         return root;
     }
 
-    public static int countDigits(int val)
-    {
-        return val == 0 ? 1 : (int)log10(abs(val)) +  1;
-    }
-
     public static int countDigits(long val)
     {
-        return val == 0 ? 1 : (int)log10(abs(val)) +  1;
+        return countDigits(val,1);
+    }
+
+    public static int countDigits(long val, int n)
+    {
+        return val == 0 ? 1 : (int)(log10(abs(val)) / n) +  1;
     }
     public static int digitsSum(long val)
     {
@@ -78,13 +81,30 @@ public class NumberUtil {
 
     public static int [] getDigits(long val)
     {
-        int [] a = new int[countDigits(val)];
+        return getDigits(val,1);
+    }
+    public static int [] getDigits(long val,int n)
+    {
+        int powNum = (int)Math.pow(10,n);
 
-        for (int i = a.length - 1; i  >= 0; --i) {
-            a[i] = (int)val % 10;
-            val /= 10;
-        }
+        int [] a = new int[countDigits(val,n)];
+
+        val = abs(val);
+
+        for (int i = a.length - 1; i >= 0; a[i] = (int)(val % powNum), val /= powNum, --i)
+            ;
+
         return a;
+    }
+
+    public static int [] getDigitsInTwos(long val)
+    {
+        return getDigits(val,2);
+    }
+
+    public static int [] getDigitsInThrees(long val)
+    {
+        return getDigits(val,3);
     }
 
     public static int getDigitsPowSum(int val)
@@ -171,6 +191,29 @@ public class NumberUtil {
             return a;
 
         return c;
+    }
+
+    public static String numberToText3DigitsTR(int val)
+    {
+        int a = val / 100;
+        int b = val % 100 / 10;
+        int c = val % 10;
+
+        String str = "";
+
+        if (a != 0) {
+            if (a != 1)
+                str += onesTR[a] + " ";
+
+            str += "yüz ";
+        }
+        if (b != 0)
+            str += tensTR[b] + " ";
+
+        if (c != 0)
+            str += onesTR[c];
+
+        return str;
     }
 
 
