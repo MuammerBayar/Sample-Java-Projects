@@ -2434,6 +2434,49 @@ class NumberUtil {
 	yine parametresi aldığı bir	ayraç ile birleştirilmiş bir String'e geri dönen join isimli metodu çağırarak sonucu
 	ekrana yazdırınız
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 06.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+
+import java.util.Random;
+import java.util.Scanner;
+import static byr.util.string.StringUtil.*;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        JoinWithDelimiterApp.run();
+    }
+}
+
+class JoinWithDelimiterApp {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+        Random r = new Random();
+
+        for (;;) {
+            System.out.println("Bir değer giriniz: ");
+            int n = Integer.parseInt(kb.nextLine());
+
+            if (n <= 0)
+                break;
+
+            int min = 5;
+            int max = 10;
+            String [] strings = new String[n];
+            fillRandomArrayTR(r,strings, min, max);
+
+            System.out.printf("Yazı: (%s)%n", join(strings,"--"));
+        }
+    }
+
+    public static void fillRandomArrayTR(Random r,String [] strings,int min, int max)
+    {
+        for (int i = 0; i < strings.length; ++i)
+            strings[i] = getRandomTextTR(r,r.nextInt(max - min) + min);
+    }
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
     Sınıf Çalışması: Klavyeden aşağıdaki formatta girilen bilgiyi ayrıştırarak ekrana detayları yazdıran programı

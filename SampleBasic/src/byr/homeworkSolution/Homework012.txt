@@ -28,3 +28,60 @@
         Java ile Nesne Yönelimli Programlama
         Çalışma Soruları
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-01
+	 çözüm tarihi:07.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Random;
+import java.util.Scanner;
+
+import static byr.util.array.ArrayUtil.*;
+import static java.lang.Math.*;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        StandardDeviationTest.run();
+    }
+}
+
+class StandardDeviationTest {
+    public static void run()
+    {
+        Random r = new Random();
+        Scanner kb = new Scanner(System.in);
+
+        for (;;) {
+            System.out.println("kaç adet dizi üretilsin:");
+            int val = Integer.parseInt(kb.nextLine());
+
+            if (val == 0)
+                break;
+
+            int  n = r.nextInt(20) + 5;
+
+            for (int i = 0; i < n; ++i) {
+                int [] a = getRandomArray(r, n, 0, 100);
+
+                System.out.println("--------------------------");
+                display(2,a);
+                System.out.printf("Standart sapma: %.3f%n", ArrayUtil.standardDeviation(a));
+                System.out.println("--------------------------");
+            }
+        }
+    }
+}
+
+class ArrayUtil {
+    public static double standardDeviation(int [] a)
+    {
+        double avg = average(a);
+
+        double sum = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            sum += Math.pow(a[i] - avg, 2);
+
+        return sqrt(sum / a.length - 1);
+    }
+}

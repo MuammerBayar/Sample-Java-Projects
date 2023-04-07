@@ -166,6 +166,23 @@ public class StringUtil {
 
         return true;
     }
+    public static String join(String [] strings, char ch)
+    {
+        return join(strings,ch + "");
+    }
+
+    public static String join(String [] strings, String str)
+    {
+        String result = "";
+
+        if (strings.length == 0)
+            return result;
+
+        for (int i = 0; i < strings.length; ++i)
+            result += strings[i] + str;
+
+        return result.substring(0,result.length() - str.length());
+    }
 
     public static String padLeading(String text, int length, char ch)
     {

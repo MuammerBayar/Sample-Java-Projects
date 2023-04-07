@@ -4,9 +4,9 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.array;
 
-import byr.util.string.StringUtil;
-
 import java.util.Random;
+
+import static java.lang.Math.sqrt;
 
 public class ArrayUtil {
     public static void bubbleSortAscending(int [] a)
@@ -134,6 +134,7 @@ public class ArrayUtil {
         return a;
     }
 
+
     public static int max(int [] a)
     {
         int maxVal = a[0];
@@ -203,6 +204,18 @@ public class ArrayUtil {
             selectionSortDescending(a);
         else
             selectionSortAscending(a);
+    }
+
+    public static double standardDeviation(int [] a)
+    {
+        double avg = average(a);
+
+        double sum = 0;
+
+        for (int i = 0; i < a.length; ++i)
+            sum += Math.pow(a[i] - avg, 2);
+
+        return sqrt(sum / a.length - 1);
     }
 
     public static int sum(int [] a)
