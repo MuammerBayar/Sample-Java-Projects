@@ -2498,6 +2498,140 @@ class JoinWithDelimiterApp {
 
     Not: Uygulama şu ana kadar gördüklerimize göre yazılmıştır. İleride daha iyisi yazılacaktır
 ----------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------------------------------------------------
+ 	Çözüm tarihi: 08.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+
+public class StudentInfoParserApp {
+    public static void run()
+    {
+        RandomStudentInfoStrFactory factory = new RandomStudentInfoStrFactory();
+        StudentInfo [] randomStudents = new StudentInfo[factory.getNumberOfStudents()];
+
+        for (int i = 0; i < randomStudents.length; ++i) {
+
+            StudentInfo studentInfo = StudentInfo.parse(factory.getRandomStudentInfoStr());
+            //...
+            randomStudents[i] = studentInfo;
+        }
+
+        for (int i = 0; i < randomStudents.length; ++i)
+            System.out.println(randomStudents[i].toString());
+    }
+}
+
+
+
+import byr.util.date.DateUtil;
+
+public class StudentInfo {
+    public String name;
+    public int day;
+    public int month;
+    public int year;
+    public String lectureName;
+    public int midTermGrade;
+    public int finalGrade;
+
+    public static StudentInfo parse(String str)
+    {
+        String [] studentInfoStr = str.split("[:]+");
+
+        //... (format kontrolü)
+
+        String [] birthDateInfo = studentInfoStr[1].split("[/]");
+
+        //... (format kontrolü)
+
+        StudentInfo studentInfo = new StudentInfo();
+
+        studentInfo.day = Integer.parseInt(birthDateInfo[0]);
+        studentInfo.month = Integer.parseInt(birthDateInfo[1]);
+        studentInfo.year = Integer.parseInt(birthDateInfo[2]);
+        studentInfo.name = studentInfoStr[0];
+        studentInfo.lectureName = studentInfoStr[2];
+        studentInfo.midTermGrade = Integer.parseInt(studentInfoStr[3]);
+        studentInfo.finalGrade = Integer.parseInt(studentInfoStr[4]);
+
+        return studentInfo;
+    }
+
+    public double getGrade()
+    {
+        return midTermGrade * 0.4 + finalGrade * 0.6;
+    }
+
+    public String getBirthDateDayOfWeekTR()
+    {
+        return DateUtil.getDayOfWeekTR(day, month, year);
+    }
+
+    public String getBirthDateInfoTR()
+    {
+        return DateUtil.getDateTR(day, month, year);
+    }
+
+    public String toString()
+    {
+        double grade = getGrade();
+        String status = grade >= 50 ? "Geçti" : "Kaldı";
+        String fmt = "{name: %s, birthDate: %s, lectureName: %s, midTermGrade: %d, finalGrade: %d, grade: %d, status: %s}";
+
+        return String.format(fmt, name, getBirthDateInfoTR(), lectureName, midTermGrade, finalGrade, Math.round(grade), status);
+    }
+}
+
+
+
+import java.util.Random;
+
+public class RandomStudentInfoStrFactory {
+    public String [] studentsInfo;
+    public boolean [] flags;
+    public int count;
+    public Random random;
+
+    public void init()
+    {
+        studentsInfo = new String[] {
+                "Muammer bayar:10/09/1976:Matematik:40:55",
+                "Erkam doğrul:10/07/2001:Matematik:90:65",
+                "Cihan Başar:15/01/1997:Matematik:90:95",
+                "Bora Bakırtaş:19/01/2000:Matematik:90:99",
+        };
+        flags = new boolean[studentsInfo.length];
+    }
+
+    public RandomStudentInfoStrFactory()
+    {
+        random = new Random();
+        init();
+    }
+
+    public int getNumberOfStudents()
+    {
+        return studentsInfo.length;
+    }
+
+    public String getRandomStudentInfoStr()
+    {
+        if (count == studentsInfo.length)
+            return "";
+        int index;
+
+        for (;;) {
+            index = random.nextInt(studentsInfo.length);
+
+            if (!flags[index])
+                break;
+        }
+        ++count;
+        flags[index] = true;
+
+        return studentsInfo[index];
+    }
+}
+
 
 /*----------------------------------------------------------------------------------------------------------------------
 

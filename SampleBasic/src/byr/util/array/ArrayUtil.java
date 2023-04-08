@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     ArrayUtil Sınıfı
-    last update:03.04.2023
+    last update:08.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.array;
 
@@ -105,6 +105,20 @@ public class ArrayUtil {
     public static void fillRandomArray(int [] a, int min, int max) //[min,max)
     {
         fillRandomArray(new Random(),a,min,max);
+    }
+
+    public static int firstRepeated(int [] a)
+    {
+        int index = a.length - 1;
+
+        for (int i = 0; i < a.length; ++i)
+            for (int k = i + 1; k < a.length; ++k)
+                if (a[i] == a[k])
+                    if (k < index)
+                        index = k;
+
+
+        return a[index];
     }
 
     public static int [] getHistogramData(int [] a, int n) // [0,n]

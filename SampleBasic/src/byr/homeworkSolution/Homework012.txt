@@ -85,3 +85,106 @@ class ArrayUtil {
         return sqrt(sum / a.length - 1);
     }
 }
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-02
+	 çözüm tarihi:08.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+
+import java.util.Random;
+import java.util.Scanner;
+
+import static byr.util.array.ArrayUtil.display;
+import static byr.util.array.ArrayUtil.getRandomArray;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        FirstRepeatedTest.run();
+    }
+}
+class FirstRepeatedTest {
+    public static void run()
+    {
+        Random r = new Random();
+        Scanner kb = new Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Kaç adet dizi getirilsin: ");
+            int n = Integer.parseInt(kb.nextLine());
+
+            if (n == 0)
+                break;
+
+            for (int i = 0; i < n; ++i) {
+                int[] a = getRandomArray(r,20, 0, 100);
+                System.out.println("----------------------------");
+                display(2,a);
+                System.out.printf("ilk tekrar eden değer: %d%n",ArrayUtil.firstRepeated(a));
+                System.out.println("----------------------------");
+            }
+        }
+    }
+}
+
+class ArrayUtil {
+    public static int firstRepeated(int [] a)
+    {
+        int index = a.length - 1;
+
+        for (int i = 0; i < a.length; ++i)
+            for (int k = i + 1; k < a.length; ++k)
+                if (a[i] == a[k])
+                    if (k < index)
+                        index = k;
+
+
+        return a[index];
+    }
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-03
+	 çözüm tarihi:08.04.2023
+----------------------------------------------------------------------------------------------------------------------*/
+import java.util.Scanner;
+import static byr.util.number.NumberUtil.getDigitsInThrees;
+import static byr.util.number.NumberUtil.numberToText3DigitsTR;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        PrintTextOfNumberApp.run();
+    }
+}
+
+class PrintTextOfNumberApp {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+
+        for(;;) {
+            System.out.print("Lütfen bir değer giriniz: ");
+            long val = Long.parseLong(kb.nextLine());
+
+            System.out.println("--------------------");
+            printTextOfNumber(val);
+            System.out.println("---------------------");
+
+            if (val == 0)
+                break;
+        }
+    }
+
+    public static void printTextOfNumber(long val)
+    {
+        int [] a = getDigitsInThrees(val);
+        String [] digits = {"", "bin", "milyon", "milyar", "trilyon", "katrilyon", "kentilyon" };
+        String str = "";
+
+        for (int i = a.length - 1; i >= 0; --i)
+            str += numberToText3DigitsTR(a[a.length - 1 - i]) + " " + digits[i] + " ";
+
+
+        System.out.printf("%d = %s%n", val, str);
+    }
+}
