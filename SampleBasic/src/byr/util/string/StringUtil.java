@@ -1,71 +1,84 @@
 /*----------------------------------------------------------------------------------------------------------------------
     StringUtil Sınıfı
-    last update:03.04.2023
+    last update:11.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.string;
 
+import byr.util.array.ArrayUtil;
+
 import java.util.Random;
 
-import static byr.util.array.ArrayUtil.swap;
 import static java.lang.Character.*;
 
 public class StringUtil {
     public static String capitalize(String s)
     {
-        return s.isEmpty() ? "" : Character.toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
-    }
-
-    public static String capitalizeWS(String s)
-    {
-        int i;
-        int length = s.length();
-        for (i = 0; i < length && Character.isWhitespace(s.charAt(i)); ++i)
-            ;
-
-        return i == length ? "" : s.substring(0,i) + Character.toUpperCase(s.charAt(i))  + s.substring(i + 1).toLowerCase();
-    }
-
-    public static String changeCase(String s)
-    {
-        if (s.isBlank())
-            return s;
-
-        char [] chars = s.toCharArray();
-
-        for (int i = 0; i < chars.length; ++i)
-            chars[i] = isLowerCase(chars[i]) ? toUpperCase(chars[i]) : toLowerCase(chars[i]);
-
-        return String.valueOf(chars);
+        return s.isEmpty() ? s : toUpperCase(s.charAt(0)) + s.substring(1).toLowerCase();
     }
 
     public static int countString(String s1, String s2)
     {
         int count = 0;
-        int index = -1;
-        while ((index = s1.indexOf(s2, index + 1)) != -1)
-            ++count;
+
+        for (int i = 0; (i = s1.indexOf(s2, i)) != -1; ++count, ++i)
+            ;
 
         return count;
     }
 
-    public static int countStringIgnoreCase(String s1, String s2)
+    public static void display(String [] s)
     {
-        return countString(s1.toLowerCase(), s2.toLowerCase());
+        for (String str : s)
+            System.out.println(str);
     }
 
-    public static String getLongestPalindrome(String str)
+    public static void fillRandomArrayTR(String [] s, int min, int max)
     {
-        String maxPalindrome = "";
+        fillRandomArrayTR(new Random(), s, min, max);
+    }
 
-        for (int i = str.length() - 1; i > 0; --i)
-            for (int k = 0; k < i; ++k) {
-                String s = str.substring(k, i);
+    public static void fillRandomArrayTR(Random r, String [] s, int min, int max)
+    {
+        for (int i = 0; i < s.length; ++i)
+            s[i] = StringUtil.getRandomTextTR(r, r.nextInt(max - min) + min);
+    }
 
-                if (s.length() != 1 && isPalindrome(s) &&  s.length() > maxPalindrome.length())
-                    maxPalindrome = s;
+
+
+    public static String getLongestPalindrome(String s)
+    {
+        String maxStr = "";
+
+        int endIndex = s.length();
+
+        while (endIndex != 0) {
+            int beginIndex = 0;
+
+            while (beginIndex != endIndex) {
+                String str = s.substring(beginIndex++, endIndex);
+
+                if (str.length() > 1 && isPalindrome(str) && str.length() > maxStr.length())
+                    maxStr = str;
             }
 
-        return maxPalindrome;
+            --endIndex;
+        }
+
+        return maxStr;
+    }
+
+    public static String [] getRandomArrayTR(int n, int min, int max)
+    {
+        return getRandomArrayTR(new Random(), n, min, max);
+    }
+
+    public static String [] getRandomArrayTR(Random r, int n, int min, int max)
+    {
+        String [] s = new String[n];
+
+        fillRandomArrayTR(r, s, min, max);
+
+        return s;
     }
 
     public static String getRandomTextTR(Random r, int n)
@@ -80,7 +93,7 @@ public class StringUtil {
 
     public static String getRandomTextEN(Random r, int n)
     {
-        return getRandomText(r, n, "abcdefghijklmnopqrstuwxvyzABCDEFGHIJKLMNOPQRSTUWXVYZ");
+        return getRandomText(r, n, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
     }
 
     public static String getRandomTextEN(int n)
@@ -90,41 +103,39 @@ public class StringUtil {
 
     public static String getRandomText(Random r, int n, String sourceText)
     {
-        int length = sourceText.length();
-        char [] resultChars = new char[n];
+        char [] c = new char[n];
 
         for (int i = 0; i < n; ++i)
-            resultChars[i] = sourceText.charAt(r.nextInt(length));
+            c[i] = sourceText.charAt(r.nextInt(sourceText.length()));
 
-        return String.valueOf(resultChars);
+        return String.valueOf(c);
     }
 
-    public static boolean isPalindrome(String s)
+    public static int indexOf(String [] s, String str)
     {
-        int left = 0;
-        int right = s.length() - 1;
+        for (int i = 0; i < s.length; ++i)
+            if (s[i].equals(str))
+                return i;
 
-        while (left < right) {
-            char cLeft = Character.toLowerCase(s.charAt(left));
+        return -1;
+    }
 
-            if (!Character.isLetter(cLeft)) {
-                ++left;
-                continue;
-            }
-            char cRight = Character.toLowerCase(s.charAt(right));
+    public static int indexOfStartsWith(String [] s, String str)
+    {
+        for (int i = 0; i < s.length; ++i)
+            if (s[i].startsWith(str))
+                return i;
 
-            if (!Character.isLetter(cRight)) {
-                --right;
-                continue;
-            }
-            if (cLeft != cRight)
-                return false;
+        return -1;
+    }
 
-            ++left;
-            --right;
-        }
+    public static int indexOfEndsWith(String [] s, String str)
+    {
+        for (int i = 0; i < s.length; ++i)
+            if (s[i].endsWith(str))
+                return i;
 
-        return true;
+        return -1;
     }
 
     public static boolean isPangramTR(String text)
@@ -139,104 +150,142 @@ public class StringUtil {
 
     public static boolean isPangram(String text, String alphabet)
     {
-        int len = alphabet.length();
+        int length = alphabet.length();
 
-        for (int i = 0; i < len; ++i)
+        for (int i = 0; i < length; ++i)
             if (text.indexOf(alphabet.charAt(i)) == -1)
                 return false;
 
         return true;
     }
 
-    public static boolean isValidVariable(String s)
+    public static boolean isPalindrome(String s)
     {
-        if (isDigit(s.charAt(0)))
-            return false;
+        int left = 0;
+        int right = s.length() - 1;
 
-        int length = s.length();
-        for (int i = 0; i < length; ++i) {
-            char ch = s.charAt(i);
+        while (left < right) {
+            char cLeft = s.charAt(left);
 
-            if (ch == '$' || ch == '_' || isDigit(ch))
+            if (!isLetter(cLeft)) {
+                ++left;
                 continue;
+            }
 
-            if(isWhitespace(ch) || !isAlphabetic(ch))
+            cLeft = Character.toLowerCase(cLeft);
+
+            char cRight= s.charAt(right);
+
+            if (!isLetter(cRight)) {
+                --right;
+                continue;
+            }
+
+            cRight = Character.toLowerCase(cRight);
+
+            if (cLeft != cRight)
                 return false;
+
+            ++left;
+            --right;
         }
 
         return true;
     }
-    public static String join(String [] strings, char ch)
+
+    public static String join(String [] s, char delimiter)
     {
-        return join(strings,ch + "");
+        return join(s, delimiter + "");
     }
 
-    public static String join(String [] strings, String str)
+    public static String join(String [] s, String delimiter)
     {
-        String result = "";
-
-        if (strings.length == 0)
-            return result;
-
-        for (int i = 0; i < strings.length; ++i)
-            result += strings[i] + str;
-
-        return result.substring(0,result.length() - str.length());
+        return join(s, 0, delimiter);
     }
 
-    public static String padLeading(String text, int length, char ch)
+    public static String join(String [] s, int startIndex, char delimiter)
     {
-        if (text.length() < length)
-            text = (ch + "").repeat(length - text.length()) + text;
-
-        return text;
+        return join(s, startIndex, delimiter + "");
     }
 
-    public static String padLeading(String text, int length)
+    public static String join(String [] s, int startIndex, String delimiter)
     {
-        return padLeading(text, length,' ');
+        String str = "";
+
+        for (int i = startIndex; i < s.length; ++i)
+            str += s[i] + delimiter;
+
+        return str.substring(0, str.length() - delimiter.length());
     }
 
-    public static String padTrailing(String text, int length, char ch)
+    public static String padLeading(String s, int length, char ch)
     {
-        if ( text.length() < length)
-            text = text + (ch + "").repeat(length - text.length());
+        length -= s.length();
 
-        return text;
+        return length <= 0 ? s : (ch + "").repeat(length) + s;
     }
 
-    public static String padTrailing(String text, int length)
+    public static String padLeading(String s, int length)
     {
-        return padTrailing(text, length,' ');
+        return padLeading(s, length, ' ');
     }
 
-    public static String reversed(String s)
+    public static String padTrailing(String s, int length, char ch)
     {
-        char [] chars = s.toCharArray();
+        length -= s.length();
 
-        for (int i = 0; i < chars.length / 2; ++i)
-            swap(chars,i, chars.length - 1 - i);
-
-        return String.valueOf(chars);
+        return length <= 0 ? s : s + (ch + "").repeat(length);
     }
 
-    public static String repeat(int n , char ch)
+    public static String padTrailing(String s, int length)
     {
-        return String.format("%0" + n + "d", 0).replace('0', ch);
+        return padTrailing(s, length, ' ');
     }
-    public static String squeeze(String s1, String s2)
+
+    public static String removeWhitespaces(String s)
     {
-        int length = s2.length();
+        char [] c = new char[s.length()];
+        int index = 0;
+        int length = s.length();
+
         for (int i = 0; i < length; ++i) {
-            int index = s1.indexOf(s2.charAt(i));
+            char ch = s.charAt(i);
 
-            while(index != -1) {
-                s1 = s1.substring(0,index).concat(s1.substring(index + 1));
-                index = s1.indexOf(s2.charAt(i));
-            }
+            if (!isWhitespace(ch))
+                c[index++] = ch;
         }
 
-        return s1;
+        return String.valueOf(c, 0, index);
     }
 
+    public static String reverse(String s)
+    {
+        char [] c = s.toCharArray();
+
+        ArrayUtil.reverse(c);
+
+        return String.valueOf(c);
+    }
+
+
+    public static String trimLeading(String s)
+    {
+        int i;
+        int length = s.length();
+
+        for (i = 0; i < length && isWhitespace(s.charAt(i)); ++i)
+            ;
+
+        return s.substring(i);
+    }
+
+    public static String trimTrailing(String s)
+    {
+        int i;
+
+        for (i = s.length() - 1; i >= 0 && isWhitespace(s.charAt(i)); --i)
+            ;
+
+        return s.substring(0, i + 1);
+    }
 }

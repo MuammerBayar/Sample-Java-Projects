@@ -2632,6 +2632,40 @@ public class RandomStudentInfoStrFactory {
     }
 }
 
+/*----------------------------------------------------------------------------------------------------------------------
+    Sınıf Çalışması: Parametresi ile aldığı dizi dizisinin bir matris olup olmadığını test eden isMatrix metodunu ve
+    parametresi ile aldığı dizi dizisinin bir kare matris olup olmadığını test eden isSquareMatrix isimli metodu
+    ArrayUtil sınıfı içerisinde yazınız ve test ediniz
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+    Sınıf Çalışması: Parametresi ile aldığı matrisin devriğini (transpose) döndüren transpose isimli metodu yazınız ve
+    test ediniz
+    Not: Matris mi? değil mi? kontrolü yapılmayacaktır
+    Örnek:
+    1 2 3
+    4 5 6
+
+    1 4
+    2 5
+    3 6
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+    Sınıf Çalışması: Parametresi ile aldığı bir kare matrisin esas köşegeni (diagonal) üzerinde elemanların toplamını
+    döndüren sumDiagonal metodunu yazınız ve test ediniz. Metot matris veya kare matris kontrolü yapmayacaktır
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+    Sınıf Çalışması: Bir okulda Matematik sınavı ortak olarak yapılıyor olsun. Kaç şube olduğu olduğu ve herbir şubede
+    kaç öğrenci olduğu bilgisi klavyeden alınacaktır. Bu işlem sonrasında öğrencilerin notları rasgele belirlenecektir.
+    Tüm bu işlemlerden sonra Matematik sınavı için herbir şubenin ayrı ayrı not ortalamaları ile okulun ortalamasını bulan
+    basit bir simülasyon programı yazınız
+
+    Not: İlerde daha iyi şekilde yazılacaktır
+----------------------------------------------------------------------------------------------------------------------*/
+
+
 
 /*----------------------------------------------------------------------------------------------------------------------
 
