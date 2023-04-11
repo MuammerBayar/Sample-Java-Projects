@@ -71,6 +71,7 @@ class PrintOpenDoorNumbersApp {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-02
 	 çözüm tarihi:03.04.2023
+	 son güncelleme:11.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 
 import java.util.Random;
@@ -111,12 +112,12 @@ class ArrayUtil{
     public static int mod(int [] a)
     {
         int [] counter = new int[max(a) + 1];
-         int index = 0;
+        int index = 0;
 
-        for (int i = 0; i < a.length; ++i) {
-            ++counter[a[i]];
-            if (counter[index] < counter[a[i]])
-                index = a[i];
+        for (int val : a){
+            ++counter[val];
+            if (counter[index] < counter[val])
+                index = val;
         }
 
         return index;
