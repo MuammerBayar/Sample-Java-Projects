@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
      Homework-003
-	 verilen ders: 13-21-03-2021
-	 çözülen ders: 29-23-05-2021
+	 verilen ders: 13-21-03-2xxx
+	 çözülen ders: 29-23-05-2xxx
 
     1. abc üç basamaklı bir tamsayıdır ve aşağıdaki koşulları sağlamaktadır:
     koşul 1 cba > abc olacak

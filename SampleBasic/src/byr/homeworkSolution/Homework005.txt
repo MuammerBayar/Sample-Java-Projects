@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
     Homework-005
-    verilen ders: 16-03-04-2021
-    çözülen ders: -16-03-04-2021-?
+    verilen ders: 16-03-04-2xxx
+    çözülen ders: -16-03-04-2xxx-?
 
     1. e sayısını aşağıdaki seri toplamıyla bulabilirsiniz :
     e=

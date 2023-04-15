@@ -1,35 +1,27 @@
 /*----------------------------------------------------------------------------------------------------------------------
     NumericLotteryApp Sınıfı
-    Son güncelleme:30.03.2023
+    Son güncelleme:15.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.samples.application.numericlottery;
 
 import byr.util.array.ArrayUtil;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class NumericLotteryApp {
-
     public static void run()
     {
         Scanner kb = new Scanner(System.in);
-        Random r = new Random();
+        NumericLottery lottery = new NumericLottery();
+
         for (;;) {
-            System.out.print("kupon sayısını giriniz: ");
+            System.out.print("Kaç kupon oynamak istersiniz?");
             int n = Integer.parseInt(kb.nextLine());
 
             if (n <= 0)
                 break;
 
-            System.out.println("-------------------------------");
-
-            for (int i = 0; i < n; ++i)
-                ArrayUtil.display(2,NumericLottery.getCoupon(r));
-
-            System.out.println("-------------------------------");
+            ArrayUtil.display(2, lottery.getNumbers(n));
         }
-
-        System.out.println("Tekrar yapıyor musun?");
     }
 }

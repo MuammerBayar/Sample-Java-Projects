@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     Homework-012
-    verilen ders: 32-05-06-2021
+    verilen ders: 32-05-06-2xxx
     çözülen ders: --
 
         1. Parametresi ile aldığı int türden bir dizinin standart sapmasını bulan standardDeviation isimli metodu yazınız

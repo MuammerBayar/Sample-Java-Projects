@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     Homework-009
-    verilen ders: 31-30-05-2021
+    verilen ders: 31-30-05-2xxx
     çözülen ders: --
 
         1. “Mastermind” isimli oyun iki kişi ile oynanan bir sayı bulmaca oyunudur. Oyunculardan biri, [1000 - 9999]

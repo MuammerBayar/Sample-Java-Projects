@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     Homework-007
-    verilen ders: 21-18-04-2021
+    verilen ders: 21-18-04-2xxx
     çözülen ders: --
 
     1. Bir tombala torbasında 1'den 99'a kadar numaralanmış (99 dahil) pullar bulunmaktadır. Bu tombala torbasıyla

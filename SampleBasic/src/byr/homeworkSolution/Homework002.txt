@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Homework-002
-	 verilen ders: 13-21-03-2021
-	 çözülen ders: 28-22-05-2021
+	 verilen ders: 13-21-03-2xxx
+	 çözülen ders: 28-22-05-2xxx
 
     1. Klavyeden bir n sayısı okuyunuz ve aşağıdaki deseni oluşturan programı yazınız (örneğimizde n = 6’dır):
          *

@@ -1,46 +1,66 @@
 /*----------------------------------------------------------------------------------------------------------------------
     NumericLottery Sınıfı
-    Son güncelleme:30.03.2023
+    Son güncelleme:15.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.samples.application.numericlottery;
 
 import java.util.Random;
 
 public class NumericLottery {
-    public static boolean [] numberFlag;
+    public Random random;
 
-    public static void fillRandomNumberFlag(Random r)
+    public boolean [] getFlags()
     {
-        numberFlag = new boolean[50];
+        boolean [] flags = new boolean[50];
+        int val;
 
-        int count = 0;
-        while (count != 6) {
-            int index = r.nextInt(49) + 1;
-
-            if (!numberFlag[index]) {
-                numberFlag[index] = true;
-                ++count;
-            }
-        }
-    }
-    public static int [] getCoupon(Random r)
-    {
-        int [] a = new int[6];
-        fillRandomNumberFlag(r);
-
-        int index = 1;
-        for (int i = 0; i < 6; ++i)
-             for (;;)
-                if (numberFlag[index++]) {
-                    a[i] = index;
+        for (int i = 0; i < 6; ++i) {
+            for (;;) {
+                val = random.nextInt(49) + 1;
+                if (!flags[val])
                     break;
-                }
+            }
+            flags[val] = true;
+        }
 
+        return flags;
+    }
 
-        return a;
+    public int[] getNumbers(boolean [] flags)
+    {
+        int [] numbers = new int[6];
+        int index = 0;
+
+        for (int i = 1; i < 50; ++i)
+            if (flags[i])
+                numbers[index++] = i;
+
+        return numbers;
+    }
+
+    public NumericLottery()
+    {
+        random = new Random();
+    }
+
+    public NumericLottery(Random r)
+    {
+        random = r;
+    }
+
+    public int [] getNumbers()
+    {
+        return getNumbers(getFlags());
+    }
+
+    public int [][] getNumbers(int n)
+    {
+        int [][] result = new int[n][];
+
+        for (int i = 0; i < n; ++i)
+            result[i] = getNumbers();
+
+        return result;
     }
 }
-
-
-
 
