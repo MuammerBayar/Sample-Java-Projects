@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     Homework-008
-    verilen ders: 24-01-05-2021
+    verilen ders: 24-01-05-2xxx
     çözülen ders: --
 
     1. Klavyeden bir yazı giriniz. Yazı içerisinde iç içe küme parantezleri bulunuyor olsun. En içteki küme parantezinin

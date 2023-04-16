@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     Homework-009
-    verilen ders: 31-30-05-2021
+    verilen ders: 31-30-05-2xxx
     çözülen ders: --
 
         1. “Mastermind” isimli oyun iki kişi ile oynanan bir sayı bulmaca oyunudur. Oyunculardan biri, [1000 - 9999]
@@ -137,6 +137,7 @@ public class MastermindGameApp {
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-02
 	 çözüm tarihi:01.04.2023
+	 son güncelleme:11.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 import java.util.Scanner;
 
@@ -180,9 +181,9 @@ class ArrayUtil {
         if (max == secMax)
             secMax = a[1];
 
-        for (int i = 0; i < a.length; ++i) {
-            if (a[i] != max && secMax < a[i])
-                secMax = a[i];
+        for (int val : a) {
+            if (val != max && secMax < val)
+                secMax = val;
         }
 
         return secMax;

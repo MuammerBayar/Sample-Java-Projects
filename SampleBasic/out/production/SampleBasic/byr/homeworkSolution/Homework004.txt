@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     Homework-004
-    verilen ders: 16-03-04-2021
+    verilen ders: 16-03-04-2xxx
     çözülen ders: --
 
     Soru: Klavyeden girilen tamsayı değerlerin, toplam sayısını, en büyüğünü, en küçüğünü ve ortalamasını hesaplayan

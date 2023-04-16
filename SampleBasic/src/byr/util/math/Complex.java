@@ -1,121 +1,145 @@
 /*----------------------------------------------------------------------------------------------------------------------
     Complex Sınıfı
-    last update:23.03.2023
+    last update:16.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.math;
 
-
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
+import static java.lang.String.format;
 
 public class Complex {
-    public double real;
-    public double imag;
-
-    public static Complex add(double real1, double imag1, double real2, double imag2) //İleride bu metodu gizleyeceğiz
+    private static Complex add(double re1, double im1, double re2, double im2)
     {
-        return new Complex(real1 + real2, imag1 + imag2);
+        return new Complex(re1 + re2, im1 + im2);
     }
 
-    public static Complex subtract(double real1, double imag1, double real2, double imag2) //İleride bu metodu gizleyeceğiz
+    private static Complex subtract(double re1, double im1, double re2, double im2)
     {
-        return add(real1, imag1, -real2, -imag2);
+        return add(re1, im1, -re2, -im2);
     }
 
-    //...
+    private static Complex multiply(double re1, double im1, double re2, double im2)
+    {
+        return new Complex(re1 * re2 - im1 * im2, re1 * im2 + re2 * im1);
+    }
+
+    private static Complex divide(double re1, double im1, double re2, double im2)
+    {
+        //TODO:
+        return new Complex();
+    }
+
+    public double re, im;
 
     public Complex()
     {
     }
 
-    public Complex(Complex other)
+    public Complex(double a)
     {
-        real = other.real;
-        imag = other.imag;
+        re = a;
     }
 
-    public Complex(double re)
+    public Complex(double a, double b)
     {
-        real = re;
-    }
-
-    public Complex(double re, double im)
-    {
-        real = re;
-        imag = im;
+        re = a;
+        im = b;
     }
 
     public double getLength()
     {
-        return getNorm();
+        return sqrt(re * re + im  * im);
     }
 
     public double getNorm()
     {
-        return sqrt(real * real + imag * imag);
+        return getLength();
     }
 
     public Complex getConjugate()
     {
-        return new Complex(real, -imag);
+        return new Complex(re, -im);
     }
 
-    //add
-    public static Complex add(double val, Complex right)
+    //add methods
+    public static Complex add(double val, Complex z)
     {
-        return add(val, 0, right.real, right.imag);
+        return add(val, 0, z.re, z.im);
     }
 
-    public Complex add(Complex right)
+    public Complex add(Complex other)
     {
-        return add(real, imag, right.real, right.imag);
+        return add(re, im, other.re, other.im);
     }
 
     public Complex add(double val)
     {
-        return add(real, imag, val, 0);
+        return add(re, im, val, 0);
     }
 
-    //subtract
-    public static Complex subtract(double val, Complex right)
+    //subtract methods
+    public static Complex subtract(double val, Complex z)
     {
-        return subtract(val, 0, right.real, right.imag);
+        return subtract(val, 0, z.re, z.im);
     }
 
-    public Complex subtract(Complex right)
+    public Complex subtract(Complex other)
     {
-        return subtract(real, imag, right.real, right.imag);
+        return subtract(re, im, other.re, other.im);
     }
 
     public Complex subtract(double val)
     {
-        return subtract(real, imag, val, 0);
+        return subtract(re, im, val, 0);
     }
 
-    //inc
-    public void inc(int val)
+    //multiply methods
+    public static Complex multiply(double val, Complex z)
     {
-        real += val;
+        return multiply(val, 0, z.re, z.im);
     }
 
-    public void inc()
+    public Complex multiply(Complex other)
     {
-        inc(1);
+        return multiply(re, im, other.re, other.im);
     }
 
-    //dec
-    public void dec(int val)
+    public Complex multiply(double val)
     {
-        inc(-val);
+        return multiply(re, im, val, 0);
     }
 
-    public void dec()
+    //divide methods
+    public static Complex divide(double val, Complex z)
     {
-        dec(1);
+        return divide(val, 0, z.re, z.im);
+    }
+
+    public Complex divide(Complex other)
+    {
+        return divide(re, im, other.re, other.im);
+    }
+
+    public Complex divide(double val)
+    {
+        return divide(re, im, val, 0);
+    }
+
+    //offset methods
+    public void offset(double dri)
+    {
+        offset(dri, dri);
+    }
+
+    public void offset(double dr, double di)
+    {
+        re += dr;
+        im += di;
     }
 
     public String toString()
     {
-        return String.format("|%.1f%si| = %f", real, (imag < 0 ? " - " : " + ") +  abs(imag), getNorm());
+        return format("|%.2f %c %.2fi| = %f", re, im > 0 ? '+' : '-', abs(im), getLength());
     }
 }

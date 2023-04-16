@@ -1,3 +1,8 @@
+/*----------------------------------------------------------------------------------------------------------------------
+    not:
+    aynı rakamlardan oluşan sayı girildiğinde istenilen tepkiyi vermiyor düzeltilecek..
+----------------------------------------------------------------------------------------------------------------------*/
+
 package byr.samples.game.mastermind;
 
 import static byr.util.number.NumberUtil.*;

@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     Homework-006
-    verilen ders: 21-18-04-2021
+    verilen ders: 21-18-04-2xxx
     çözülen ders: --
 
     Soru: Craps hemen hemen dünyanın her yerinde bilinen, iki zarla oynanan bir oyundur.

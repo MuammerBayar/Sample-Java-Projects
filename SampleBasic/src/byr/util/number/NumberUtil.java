@@ -1,16 +1,16 @@
 /*----------------------------------------------------------------------------------------------------------------------
     NumberUtil Sınıfı
-    last update:11.04.2023
+    last update:16.04.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.number;
 
 import static java.lang.Math.*;
 
 public class NumberUtil {
-    public static String [] ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
-    public static String [] tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+    private static String [] ms_ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+    private static String [] ms_tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 
-    public static int [] getDigits(long val, int p)
+    private static int [] getDigits(long val, int p)
     {
         val = Math.abs(val);
 
@@ -23,7 +23,7 @@ public class NumberUtil {
         return digits;
     }
 
-    public static String numberToText3DigitsTR(int val)
+    private static String numberToText3DigitsTR(int val)
     {
         if (val == 0)
             return "sıfır";
@@ -37,15 +37,15 @@ public class NumberUtil {
 
         if (a != 0) {
             if (a != 1)
-                text += ones[a];
+                text += ms_ones[a];
             text += "yüz";
         }
 
         if (b != 0)
-            text += tens[b];
+            text += ms_tens[b];
 
         if (c != 0)
-            text += ones[c];
+            text += ms_ones[c];
 
         return text;
     }
@@ -197,6 +197,23 @@ public class NumberUtil {
         return val > 0 && val % digitsSum(val) == 0;
     }
 
+    public static boolean isDigitsDifferent(int val)
+    {
+        boolean [] numFlags = new boolean[10];
+
+        int count = digitsCount(val);
+
+        for (int i = 0; i < count; ++i)
+            if (!numFlags[val % 10]) {
+                numFlags[val % 10] = true;
+                val /= 10;
+            }
+            else
+                return false;
+
+        return true;
+    }
+
     public static boolean isEven(int val)
     {
         return val % 2 == 0;
@@ -307,5 +324,4 @@ public class NumberUtil {
 
         return result;
     }
-
 }

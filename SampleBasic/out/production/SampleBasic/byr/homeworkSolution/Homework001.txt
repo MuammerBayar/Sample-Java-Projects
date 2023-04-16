@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
 	 Homework-001
-	 verilen ders: 10-07-03-2021
-	 çözülen ders: 16-03-04-2021
+	 verilen ders: 10-07-03-2xxx
+	 çözülen ders: 16-03-04-2xxx
 
     1. Klavyeden alınan int türden üç sayı arasındaki büyüklük-küçüklük ilişkisini küçükten büyüğe doğru < ve =
     sembolleriyle gösteriniz:

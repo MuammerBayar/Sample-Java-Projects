@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
     Homework-011
-    verilen ders: 31-30-05-2021
+    verilen ders: 31-30-05-2xxx
     çözülen ders: --
 
     Soru: Bir anakütle içerisinden çekilen rastgele örneklere ilişkin ortalamaların dağılımı normal olma eğilimindedir. Buna
