@@ -7,8 +7,8 @@ package byr.util.number;
 import static java.lang.Math.*;
 
 public class NumberUtil {
-    private static String [] ms_ones = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
-    private static String [] ms_tens = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
+    private static final String [] ONES = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
+    private static final String [] TENS = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 
     private static int [] getDigits(long val, int p)
     {
@@ -37,17 +37,21 @@ public class NumberUtil {
 
         if (a != 0) {
             if (a != 1)
-                text += ms_ones[a];
+                text += ONES[a];
             text += "yüz";
         }
 
         if (b != 0)
-            text += ms_tens[b];
+            text += TENS[b];
 
         if (c != 0)
-            text += ms_ones[c];
+            text += ONES[c];
 
         return text;
+    }
+
+    private NumberUtil()
+    {
     }
 
     public static int getIndexOfPrime(int n)

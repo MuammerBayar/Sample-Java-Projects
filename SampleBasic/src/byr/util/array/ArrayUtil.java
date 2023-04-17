@@ -56,6 +56,9 @@ public class ArrayUtil {
             a[i] = max;
         }
     }
+    private ArrayUtil()
+    {
+    }
 
     public static void addBy(int [] a, int val)
     {
