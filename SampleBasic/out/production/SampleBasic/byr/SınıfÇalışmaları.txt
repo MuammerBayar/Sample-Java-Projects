@@ -2637,6 +2637,69 @@ public class RandomStudentInfoStrFactory {
     parametresi ile aldığı dizi dizisinin bir kare matris olup olmadığını test eden isSquareMatrix isimli metodu
     ArrayUtil sınıfı içerisinde yazınız ve test ediniz
 ----------------------------------------------------------------------------------------------------------------------*/
+import static  byr.util.array.ArrayUtil.*;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        IsMatrixSquareMatrixTest.run();
+    }
+}
+class IsMatrixSquareMatrixTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+        Random r = new Random();
+
+        for (;;) {
+            System.out.print("Bir sayı giriniz: ");
+            int val = Integer.parseInt(kb.nextLine());
+
+            if (val == 0)
+                break;
+
+            while (val-- > 0) {
+                int m = r.nextInt(8) + 2;
+                int n = r.nextInt(8) + 2;
+                boolean flag = r.nextBoolean();
+                int[][] a = flag ? getRandomMatrix(r, m, n, 0, 100) : getRandomSquareMatrix(r,m,0,100);
+
+                System.out.println("---------------------");
+                display(2,a);
+
+                if (ArrayuUtil.isSquareMatrix(a))
+                    System.out.printf("Kare Matrix: %d x %d%n", m, m);
+                else if (ArrayuUtil.isMatrix(a))
+                    System.out.printf("Matrix: %d x %d%n", m, n);
+                System.out.println("---------------------");
+            }
+
+        }
+    }
+}
+
+class ArrayuUtil {
+    public static boolean isMatrix(int [][] a)
+    {
+        for (int i = 1; i < a.length; ++i)
+            if (a[0].length != a[i].length)
+                return false;
+
+        return true;
+    }
+
+    public static boolean isSquareMatrix(int [][] a)
+    {
+        for (int i = 0; i < a.length; ++i)
+            if (a.length != a[i].length)
+                return false;
+
+        return true;
+    }
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
     Sınıf Çalışması: Parametresi ile aldığı matrisin devriğini (transpose) döndüren transpose isimli metodu yazınız ve
@@ -2650,6 +2713,58 @@ public class RandomStudentInfoStrFactory {
     2 5
     3 6
 ----------------------------------------------------------------------------------------------------------------------*/
+import static  byr.util.array.ArrayUtil.*;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String [] args)
+    {
+        TransposeTest.run();
+    }
+}
+class TransposeTest {
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+        Random r = new Random();
+
+        for (;;) {
+            System.out.println("Bir sayı giriniz: ");
+            int val = Integer.parseInt(kb.nextLine());
+
+            if (val == 0)
+                break;
+
+            while(val -- > 0) {
+                int n = r.nextInt(8) + 2;
+                int m = r.nextInt(8) + 2;
+
+                int [][] a = getRandomMatrix(r,m,n,0,100);
+
+                System.out.println("----------------");
+                display(2,a);
+                System.out.println("Transpose: ");
+                display(2,ArrayuUtil.transpose(a));
+                System.out.println("----------------");
+            }
+        }
+    }
+}
+
+class ArrayuUtil {
+    public static int [][] transpose(int [][] a)
+    {
+        int [][] r = new int[a[0].length][a.length];
+
+        for (int i = 0; i < r.length; ++i)
+            for (int k = 0; k < a.length; ++k)
+                r[i][k] = a[k][i];
+
+        return r;
+    }
+}
 
 /*----------------------------------------------------------------------------------------------------------------------
     Sınıf Çalışması: Parametresi ile aldığı bir kare matrisin esas köşegeni (diagonal) üzerinde elemanların toplamını
