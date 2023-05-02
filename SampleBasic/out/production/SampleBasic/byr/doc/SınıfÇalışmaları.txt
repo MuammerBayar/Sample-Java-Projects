@@ -2522,7 +2522,7 @@ public class StudentInfoParserApp {
 
 
 
-import byr.util.date.DateUtil;
+import byr.util.datetime.DateUtil;
 
 public class StudentInfo {
     public String name;

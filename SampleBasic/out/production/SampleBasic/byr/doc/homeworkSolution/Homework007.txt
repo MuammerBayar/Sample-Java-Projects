@@ -90,7 +90,7 @@ class BingoGameSimulationApp{
 import java.util.Random;
 import java.util.Scanner;
 
-import static byr.util.date.DateUtil.*;
+import static byr.util.datetime.DateUtil.*;
 
 public class Main {
     public static void main(String [] args)

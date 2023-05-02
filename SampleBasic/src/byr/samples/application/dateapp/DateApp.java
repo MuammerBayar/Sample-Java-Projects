@@ -1,8 +1,10 @@
-package byr.samples.application.date;
+/*----------------------------------------------------------------------------------------------------------------------
+    DateApp sınıfı
+    todo:
+----------------------------------------------------------------------------------------------------------------------*/
+package byr.samples.application.dateapp;
 
-import byr.util.date.DateUtil;
-
-public class DateUtilTest {
+public class DateApp {
 	public static void run()
 	{
 		java.util.Scanner kb = new java.util.Scanner(System.in);
@@ -20,8 +22,7 @@ public class DateUtilTest {
 			System.out.print("Yıl:");
 			int year = Integer.parseInt(kb.nextLine());
 
-			DateUtil.displayDateTR(day, month, year);
-			DateUtil.displayDateEN(day, month, year);
+
 		}
 
 		System.out.println("Tekrar yapıyor musun?");
