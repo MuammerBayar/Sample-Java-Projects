@@ -96,6 +96,14 @@ public class Time {
 
     //...
 
+    Time(Time time)
+    {
+        m_hour = time.m_hour;
+        m_minute = time.m_minute;
+        m_second = time.m_second;
+        m_millisecond = time.m_millisecond;
+    }
+
     public Time() //Bu ctor o anki sistem zamanını alır. Burada yazılan kodların ne anlama geldiği şu an önemsizdir. Tasarım açısından bu ctor yazılmıştır
     {
         Calendar now = new GregorianCalendar();
