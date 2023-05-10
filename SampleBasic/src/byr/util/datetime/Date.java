@@ -1,7 +1,5 @@
-/*----------------------------------------------------------------------------------------------------------------------
-    Date sınıfı
-----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.datetime;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
@@ -156,6 +154,13 @@ public class Date {
 
         return new Date(day, month, year);
     }
+
+    private Date(int day, int month, int year, String errMsg)
+    {
+        checkForDate(day, month, year, errMsg);
+        set(day, month, year);
+    }
+
     Date(Date date)
     {
         set(date.m_day, date.m_month, date.m_year);
@@ -174,18 +179,13 @@ public class Date {
 
     public Date(int day, Month month, int year)
     {
-        String errMsg = String.format("Invalid date values: d -> %d, m -> %d, y -> %d", day, month.ordinal() + 1, year);
-
-        checkForDate(day, month.ordinal() + 1, year, errMsg);
-        set(day, month.ordinal() + 1, year);
+        this(day, month.ordinal() + 1, year,
+                String.format("Invalid date values: d -> %d, m -> %d, y -> %d", day, month.ordinal() + 1, year));
     }
 
     public Date(int day, int month, int year)
     {
-        String errMsg = String.format("Invalid date values: d -> %d, m -> %d, y -> %d", day, month, year);
-
-        checkForDate(day, month, year, errMsg);
-        set(day, month, year);
+        this(day, month, year, String.format("Invalid date values: d -> %d, m -> %d, y -> %d", day, month, year));
     }
 
     public int getDay()

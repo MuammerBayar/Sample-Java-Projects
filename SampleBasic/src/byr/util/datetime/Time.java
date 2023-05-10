@@ -6,6 +6,7 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.datetime;
 
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
@@ -84,6 +85,14 @@ public class Time {
                     hour, minute, second, millisecond));
     }
 
+    private void set(int hour, int minute, int second, int millisecond)
+    {
+        m_hour = hour;
+        m_minute = minute;
+        m_second = second;
+        m_millisecond = millisecond;
+    }
+
     public static Time ofRandom()
     {
         return ofRandom(new Random());
@@ -94,14 +103,9 @@ public class Time {
         return new Time(r.nextInt(24), r.nextInt(60), r.nextInt(60), r.nextInt(1000));
     }
 
-    //...
-
     Time(Time time)
     {
-        m_hour = time.m_hour;
-        m_minute = time.m_minute;
-        m_second = time.m_second;
-        m_millisecond = time.m_millisecond;
+        set(time.m_hour, time.m_minute, time.m_second, time.m_millisecond);
     }
 
     public Time() //Bu ctor o anki sistem zamanını alır. Burada yazılan kodların ne anlama geldiği şu an önemsizdir. Tasarım açısından bu ctor yazılmıştır
@@ -114,13 +118,20 @@ public class Time {
         m_millisecond = now.get(Calendar.MILLISECOND);
     }
 
+    public Time(int hour, int minute)
+    {
+        this(hour, minute, 0);
+    }
+
+    public Time(int hour, int minute, int second)
+    {
+        this(hour, minute, second, 0);
+    }
+
     public Time(int hour, int minute, int second, int millisecond)
     {
         checkForTime(hour, minute, second, millisecond);
-        m_hour = hour;
-        m_minute = minute;
-        m_second = second;
-        m_millisecond = millisecond;
+        set(hour, minute, second, millisecond);
     }
 
     public int getHour()
