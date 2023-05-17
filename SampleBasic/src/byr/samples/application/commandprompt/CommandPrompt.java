@@ -1,3 +1,8 @@
+/*----------------------------------------------------------------------------------------------------------------------
+    CommandPrompt Sınıfı
+
+    iskelettir.
+----------------------------------------------------------------------------------------------------------------------*/
 package byr.samples.application.commandprompt;
 
 import byr.util.string.StringUtil;
@@ -8,6 +13,8 @@ public class CommandPrompt {
     private final String [] m_commands = {"length", "reverse", "upper", "lower", "chprom", "quit"};
     private final Scanner m_kb = new Scanner(System.in);
     private String m_prompt;
+
+    private static final int numberOfArgs = 2;
 
     private static void lengthProc(String [] cmdInfo)
     {
@@ -80,8 +87,11 @@ public class CommandPrompt {
             m_prompt = StringUtil.join(cmdInfo, 1, ' ');
     }
 
-    private void parseCommand(String [] cmdInfo)
+    private void parseCommand(String cmdText)
     {
+
+        String [] cmdInfo = cmdText.split("[ \t]+");
+
         if (cmdInfo.length == 1 && cmdInfo[0].equals(""))
             return;
 
@@ -93,7 +103,18 @@ public class CommandPrompt {
         int index = StringUtil.indexOfStartsWith(m_commands, cmdInfo[0]);
 
         if (index != -1) {
+            // argüman almayan commandler ne olacak ?
+            String [] args = getArguments(cmdText);
+
+            if (args == null)
+                return;
+
+            cmdInfo = new String[numberOfArgs + 1];
+
             cmdInfo[0] = m_commands[index];
+            for (int i = 1; i < args.length; ++i)
+                cmdInfo[i + 1] = args[i];
+
             doWorkForCommand(cmdInfo);
         }
         else
@@ -124,6 +145,34 @@ public class CommandPrompt {
         }
     }
 
+    private static String [] getArguments(String text)
+    {
+        String [] args = new String[numberOfArgs];
+        int count = 0, firstIdx, secondIdx;
+
+        text = text.trim();
+        int len = text.length();
+
+        for (int i = 0; i < len; i = secondIdx + 1) {
+            firstIdx = text.indexOf("\"", i);
+
+            if (firstIdx == -1) {
+                System.out.println("argument must be between double quote");
+                return null;
+            }
+            secondIdx = text.indexOf("\"", firstIdx + 1);
+
+            if (secondIdx == -1){
+                System.out.println("argument must be between double quote");
+                return null;
+            }
+
+            args[count++] = text.substring(firstIdx + 1, secondIdx);
+        }
+
+        return args;
+    }
+
     public CommandPrompt(String p)
     {
         m_prompt = p;
@@ -135,7 +184,7 @@ public class CommandPrompt {
             System.out.print(m_prompt + ">");
             String cmdText = m_kb.nextLine().trim();
 
-            parseCommand(cmdText.split("[ \t]+"));
+            parseCommand(cmdText);
         }
     }
 }

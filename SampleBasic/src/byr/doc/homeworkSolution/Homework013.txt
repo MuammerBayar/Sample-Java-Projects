@@ -14,7 +14,7 @@
     - Komutları iki tırnak içerisinde bir yazı izlemektedir. İki tırnak kontrolü yapılmalıdır. Komuttan önce, komuttan
     sonra boşluk karakterleri bulunabilir:
 
-    length "yazı"
+    length "yazı:"
     reverse "yazı"
     upper "yazı"
     lower "yazı"
