@@ -1,8 +1,6 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    not:
-    aynı rakamlardan oluşan sayı girildiğinde istenilen tepkiyi vermiyor düzeltilecek..
+    MastermindGameApp Sınıfı
 ----------------------------------------------------------------------------------------------------------------------*/
-
 package byr.samples.game.mastermind;
 
 import static byr.util.number.NumberUtil.*;
@@ -11,10 +9,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class MastermindGameApp {
-    public static int enteredNumber;
-    public static int keptNumber;
-    public static int minusNum, plusNum;
-    public static int getNumber(Random r) // [1000,9999]
+    private static int enteredNumber;
+    private static int keptNumber;
+    private static int minusNum, plusNum;
+    private static int getNumber(Random r) // [1000,9999]
     {
         for (;;) {
             int n =r.nextInt(9000) + 1000;
@@ -23,25 +21,31 @@ public class MastermindGameApp {
                 return n;
         }
     }
-    public static void setStatus()
+
+    private static void setStatus()
     {
         minusNum = 0;
         plusNum = 0;
+        boolean [] nums = new boolean[10];
 
         int [] aKept= getDigits(keptNumber);
         int [] aEntered = getDigits(enteredNumber);
 
         for (int i = 0; i < 4; ++i) {
             for (int k = 0; k < 4; ++k)
-                if(aKept[i] == aEntered[k])
-                    if (i == k)
+                if(aKept[i] == aEntered[k] && !nums[aKept[i]])
+                    if (i == k) {
                         ++plusNum;
-                    else
+                        nums[aKept[i]] = true;
+                    }
+                    else {
                         ++minusNum;
+                        nums[aKept[i]] = true;
+                    }
         }
     }
 
-    public static void printStatusMessage()
+    private static void printStatusMessage()
     {
         setStatus();
 
@@ -57,7 +61,7 @@ public class MastermindGameApp {
         System.out.println();
     }
 
-    public static void printstartMessage()
+    private static void printstartMessage()
     {
         System.out.println("---------------------------------");
         System.out.printf("Belirlenen sayı:%d%n",keptNumber);

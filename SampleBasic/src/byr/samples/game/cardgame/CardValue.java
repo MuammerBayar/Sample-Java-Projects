@@ -1,4 +1,4 @@
-package byr.samples.application.cardgame;
+package byr.samples.game.cardgame;
 
 public enum CardValue
 {
