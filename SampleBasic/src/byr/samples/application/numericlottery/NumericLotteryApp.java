@@ -8,7 +8,11 @@ import byr.util.array.ArrayUtil;
 
 import java.util.Scanner;
 
-public class NumericLotteryApp {
+public final class NumericLotteryApp {
+    private NumericLotteryApp()
+    {
+
+    }
     public static void run()
     {
         Scanner kb = new Scanner(System.in);

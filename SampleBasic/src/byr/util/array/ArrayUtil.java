@@ -8,7 +8,7 @@ import java.util.Random;
 
 import java.util.Random;
 
-public class ArrayUtil {
+public final class ArrayUtil {
     private static void bubbleSortAscending(int [] a)
     {
         for (int i = 0; i < a.length - 1; ++i)

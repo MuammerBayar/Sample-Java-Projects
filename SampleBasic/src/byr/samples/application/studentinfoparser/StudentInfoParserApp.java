@@ -1,5 +1,5 @@
 package byr.samples.application.studentinfoparser;
-public class StudentInfoParserApp {
+public final class StudentInfoParserApp {
     private StudentInfoParserApp()
     {
     }

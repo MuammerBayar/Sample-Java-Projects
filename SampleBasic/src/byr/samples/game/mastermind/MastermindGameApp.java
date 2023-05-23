@@ -8,7 +8,7 @@ import static byr.util.number.NumberUtil.*;
 import java.util.Random;
 import java.util.Scanner;
 
-public class MastermindGameApp {
+public final class MastermindGameApp {
     private static int enteredNumber;
     private static int keptNumber;
     private static int minusNum, plusNum;
@@ -66,6 +66,10 @@ public class MastermindGameApp {
         System.out.println("---------------------------------");
         System.out.printf("Belirlenen sayı:%d%n",keptNumber);
         System.out.println("Oyun başlamıştır çıkış için [0] giriniz.");
+    }
+    private MastermindGameApp()
+    {
+
     }
 
     public static void run()

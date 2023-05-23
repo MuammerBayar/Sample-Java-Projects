@@ -6,7 +6,7 @@ package byr.util.number;
 
 import static java.lang.Math.*;
 
-public class NumberUtil {
+public final class NumberUtil {
     private static final String [] ONES = {"", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"};
     private static final String [] TENS = {"", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"};
 

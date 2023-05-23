@@ -1,6 +1,6 @@
 package byr.samples.application.company;
 
-public class CompanyApp {
+public final class CompanyApp {
     private static Manager getManager()
     {
         Manager m = new Manager();

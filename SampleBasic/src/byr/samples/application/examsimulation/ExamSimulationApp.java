@@ -4,7 +4,12 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.samples.application.examsimulation;
 
-public class ExamSimulationApp {
+public final class ExamSimulationApp {
+
+    private ExamSimulationApp()
+    {
+
+    }
     public static void run()
     {
         ExamSimulation mathExam = new ExamSimulation("Matematik");

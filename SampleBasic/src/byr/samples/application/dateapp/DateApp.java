@@ -5,7 +5,7 @@ package byr.samples.application.dateapp;
 
 import byr.util.datetime.Date;
 
-public class DateApp {
+public final class DateApp {
 	private DateApp()
 	{
 	}
