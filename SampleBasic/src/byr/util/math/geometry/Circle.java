@@ -16,7 +16,7 @@ public class Circle {
 
     public Circle(double r)
     {
-        setRadius(r);
+        this.setRadius(r);
     }
 
     public double getRadius()

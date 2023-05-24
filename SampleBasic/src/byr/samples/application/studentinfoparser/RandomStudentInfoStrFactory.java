@@ -22,7 +22,7 @@ public class RandomStudentInfoStrFactory {
     public RandomStudentInfoStrFactory()
     {
         random = new Random();
-        init();
+        this.init();
     }
 
     public int getNumberOfStudents()

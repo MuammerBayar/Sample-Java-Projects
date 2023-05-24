@@ -50,7 +50,7 @@ public class NumericLottery {
 
     public int [] getNumbers()
     {
-        return getNumbers(getFlags());
+        return this.getNumbers(getFlags());
     }
 
     public int [][] getNumbers(int n)
@@ -58,7 +58,7 @@ public class NumericLottery {
         int [][] result = new int[n][];
 
         for (int i = 0; i < n; ++i)
-            result[i] = getNumbers();
+            result[i] = this.getNumbers();
 
         return result;
     }

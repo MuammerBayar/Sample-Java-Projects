@@ -32,9 +32,9 @@ public class BallFall {
 
     private void fillBall(int ballIndex, int end)
     {
-        fillSpace(0, ballIndex);
+        this.fillSpace(0, ballIndex);
         m_shape += '*';
-        fillSpace(ballIndex + 1, end);
+        this.fillSpace(ballIndex + 1, end);
     }
 
     public BallFall()
@@ -55,7 +55,7 @@ public class BallFall {
         m_shape = "";
         for (int i = 1; i <= height; ++i) {
             m_shape += '|';
-            fillBall(ballIndex, width);
+            this.fillBall(ballIndex, width);
             isRight = updateRightFlag(ballIndex, isRight, width);
             if (width != 1)
                 ballIndex = updateBallIndex(isRight, ballIndex);

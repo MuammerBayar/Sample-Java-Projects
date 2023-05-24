@@ -4,8 +4,7 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.math;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.sqrt;
+import static java.lang.Math.*;
 import static java.lang.String.format;
 
 public class Complex {
@@ -26,8 +25,9 @@ public class Complex {
 
     private static Complex divide(double re1, double im1, double re2, double im2)
     {
-        //TODO:
-        return new Complex();
+        double denominator = 1 / (re2 * re2 + im2 *im2);
+
+        return multiply(re1, im1, re2, im2).multiply(denominator);
     }
 
     public double re, im;
@@ -36,15 +36,15 @@ public class Complex {
     {
     }
 
-    public Complex(double a)
+    public Complex(double re)
     {
-        re = a;
+        this.re = re;
     }
 
-    public Complex(double a, double b)
+    public Complex(double re, double im)
     {
-        re = a;
-        im = b;
+        this.re = re;
+        this.im = im;
     }
 
     public double getLength()
@@ -54,7 +54,7 @@ public class Complex {
 
     public double getNorm()
     {
-        return getLength();
+        return this.getLength();
     }
 
     public Complex getConjugate()
@@ -129,7 +129,7 @@ public class Complex {
     //offset methods
     public void offset(double dri)
     {
-        offset(dri, dri);
+        this.offset(dri, dri);
     }
 
     public void offset(double dr, double di)
@@ -140,6 +140,6 @@ public class Complex {
 
     public String toString()
     {
-        return format("|%.2f %c %.2fi| = %f", re, im > 0 ? '+' : '-', abs(im), getLength());
+        return format("|%.2f %c %.2fi| = %f", re, im > 0 ? '+' : '-', abs(im), this.getLength());
     }
 }

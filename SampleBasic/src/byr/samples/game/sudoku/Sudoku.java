@@ -38,6 +38,7 @@ public class Sudoku {
         }
         return true;
     }
+
     // 9x9 sudoku için yazılmıştır, genelleştirilebilir
     private boolean checkSmallMatrices()
     {
@@ -74,6 +75,6 @@ public class Sudoku {
 
     public boolean isValid()
     {
-        return checkColumns() && checkRows() && checkSmallMatrices();
+        return this.checkColumns() && this.checkRows() && this.checkSmallMatrices();
     }
 }

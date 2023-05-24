@@ -1,6 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------
     PointUtil Sınıfı
-    last update:23.03.2023
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.math.geometry;
 
@@ -18,25 +17,25 @@ public class Point {
 	{
 	}
 
-	public Point(int a)
+	public Point(int x)
 	{
-		x = a;
+		this.x = x;
 	}
 
-	public Point(int a, int b)
+	public Point(int x, int y)
 	{
-		x = a;
-		y = b;
+		this.x = x;
+		this.y = y;
 	}
 
 	public double distance()
 	{
-		return distance(0, 0);
+		return this.distance(0, 0);
 	}
 
 	public double distance(Point other)
 	{
-		return distance(other.x, other.y);
+		return this.distance(other.x, other.y);
 	}
 
 	public double distance(int a, int b)
@@ -46,7 +45,7 @@ public class Point {
 
 	public void offset(int dxy)
 	{
-		offset(dxy, dxy);
+		this.offset(dxy, dxy);
 	}
 
 	public void offset(int dx, int dy)

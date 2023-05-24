@@ -16,6 +16,18 @@ public class CommandPrompt {
 
     private static final int numberOfArgs = 2;
 
+    private static boolean checkSeparator(String cmdText, String sep)
+    {
+        cmdText = cmdText.trim();
+        int firstIdx = cmdText.indexOf(sep);
+        int lastIdx = cmdText.lastIndexOf(sep);
+
+        if (lastIdx != cmdText.length() - 1)
+            return false;
+
+        return firstIdx > 2 && firstIdx != lastIdx;
+    }
+
     private static void lengthProc(String [] cmdInfo)
     {
         if (cmdInfo.length == 1) {
@@ -86,17 +98,7 @@ public class CommandPrompt {
         else
             m_prompt = StringUtil.join(cmdInfo, 1, ' ');
     }
-    private boolean checkSeparator(String cmdText, String sep)
-    {
-        cmdText = cmdText.trim();
-        int firstIdx = cmdText.indexOf(sep);
-        int lastIdx = cmdText.lastIndexOf(sep);
 
-        if (lastIdx != cmdText.length() - 1)
-            return false;
-
-        return firstIdx > 2 && firstIdx != lastIdx;
-    }
     private void parseCommand(String cmdText)
     {
 
@@ -119,7 +121,7 @@ public class CommandPrompt {
 
         if (index != -1) {
             cmdInfo[0] = m_commands[index];
-            doWorkForCommand(cmdInfo);
+            this.doWorkForCommand(cmdInfo);
         }
         else
             System.out.println("Invalid command");
@@ -141,7 +143,7 @@ public class CommandPrompt {
                 lowerProc(cmdInfo);
                 break;
             case "chprom":
-                changePromptProc(cmdInfo);
+                this.changePromptProc(cmdInfo);
                 break;
             case "quit":
                 quitProc(cmdInfo);

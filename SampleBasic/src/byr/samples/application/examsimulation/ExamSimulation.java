@@ -54,8 +54,8 @@ public class ExamSimulation {
 
     public void run()
     {
-        fillGrades();
-        findAverages();
+        this.fillGrades();
+        this.findAverages();
     }
 
     public void displayGrades()
@@ -83,8 +83,8 @@ public class ExamSimulation {
     public void displayReport()
     {
         System.out.println("//////////////////////////////////////////////////////////");
-        displayGrades();
-        diplayAverages();
+        this.displayGrades();
+        this.diplayAverages();
         System.out.println("//////////////////////////////////////////////////////////");
     }
 

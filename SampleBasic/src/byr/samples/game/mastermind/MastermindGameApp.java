@@ -69,7 +69,6 @@ public final class MastermindGameApp {
     }
     private MastermindGameApp()
     {
-
     }
 
     public static void run()

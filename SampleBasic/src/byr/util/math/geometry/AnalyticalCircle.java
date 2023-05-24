@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    Circle Sınıfı
+    AnalyticalCircle Sınıfı
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.util.math.geometry;
 
@@ -54,8 +54,8 @@ public class AnalyticalCircle extends Circle {
 
     public void setCenter(int x, int y)
     {
-        setX(x);
-        setY(y);
+        this.setX(x);
+        this.setY(y);
     }
 
     public void setX(int x)
@@ -75,7 +75,7 @@ public class AnalyticalCircle extends Circle {
 
     public void offset(int dxy)
     {
-        offset(dxy, dxy);
+        this.offset(dxy, dxy);
     }
 
     public double centerDistance(AnalyticalCircle other)

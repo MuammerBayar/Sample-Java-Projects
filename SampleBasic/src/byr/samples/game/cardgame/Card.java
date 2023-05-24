@@ -54,7 +54,7 @@ public class Card
 
    public Card(String cardName)
    {
-      setName(cardName.trim());
+      this.setName(cardName.trim());
    }
 
    public Card(CardValue value, CardType type)

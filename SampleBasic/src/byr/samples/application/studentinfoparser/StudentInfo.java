@@ -97,11 +97,11 @@ public class StudentInfo {
 
     public String toString()
     {
-        double grade = getGrade();
+        double grade = this.getGrade();
         String status = grade >= 50 ? "Geçti" : "Kaldı";
         String fmt = "{name: %s, birthDate: %s, lectureName: %s, midTermGrade: %d, finalGrade: %d, grade: %d, status: %s}";
 
-        return String.format(fmt, m_name, getBirthDateInfoTR(), m_lectureName, m_midTermGrade, m_finalGrade, Math.round(grade), status);
+        return String.format(fmt, m_name, this.getBirthDateInfoTR(), m_lectureName, m_midTermGrade, m_finalGrade, Math.round(grade), status);
     }
 }
 

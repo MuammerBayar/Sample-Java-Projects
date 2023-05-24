@@ -1,6 +1,9 @@
 package byr.samples.application.studentinfoparser;
 
-public class StudentInfoParser {
+public final class StudentInfoParser {
+    private StudentInfoParser()
+    {
+    }
 
     public static StudentInfo parse(String str)
     {
