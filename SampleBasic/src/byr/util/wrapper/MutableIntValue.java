@@ -16,8 +16,9 @@ public class MutableIntValue {
         return m_value;
     }
 
-    public void setValue(int m_value) {
-        this.m_value = m_value;
+    public MutableIntValue setValue(int value) {
+        m_value = m_value;
+        return this;
     }
 
     public MutableIntValue add(int val)
