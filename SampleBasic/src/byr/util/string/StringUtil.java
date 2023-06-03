@@ -6,6 +6,7 @@ package byr.util.string;
 
 import byr.util.array.ArrayUtil;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static java.lang.Character.*;
@@ -215,6 +216,21 @@ public final class StringUtil {
     public static String join(String [] s, int startIndex, char delimiter)
     {
         return join(s, startIndex, delimiter + "");
+    }
+
+    public static String join(ArrayList arrayList, String delimiter)
+    {
+        return join(arrayList,0,delimiter);
+    }
+
+    public static String join(ArrayList arrayList, int startIndex, String delimiter)
+    {
+        String str = "";
+        int size = arrayList.size();
+        for (int i = startIndex; i < size; ++i)
+            str += arrayList.get(i) + delimiter;
+
+        return str.substring(0, str.length() - delimiter.length());
     }
 
     public static String join(String [] s, int startIndex, String delimiter)
