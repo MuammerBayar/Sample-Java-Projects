@@ -1,15 +1,18 @@
 /*----------------------------------------------------------------------------------------------------------------------
     CommandPrompt Sınıfı
-
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.samples.application.commandprompt;
 
 import byr.util.string.StringUtil;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CommandPrompt {
-    private final String [] m_commands = {"length", "reverse", "upper", "lower", "chprom", "quit"};
+    private final String [] m_commands = {"length", "reverse", "upper", "lower", "chprom",
+            "tget","tjoin","tclear","tprint","quit"};
+
+    private final ArrayList m_elems;
     private final Scanner m_kb = new Scanner(System.in);
 
     private String m_prompt;
@@ -84,6 +87,62 @@ public class CommandPrompt {
         System.exit(0);
     }
 
+    private void tGetProc(String [] cmdInfo)
+    {
+        if (cmdInfo.length == 1) {
+            System.out.println("tget command must have at least one argument");
+            return;
+        }
+        Scanner kb = new Scanner(System.in);
+
+        String exitText = StringUtil.join(cmdInfo,1," ");
+
+        for (;;) {
+            System.out.printf("Please enter [%s] for exit%n", exitText);
+            System.out.print("text: ");
+            String text = kb.nextLine();
+
+            if (exitText.equals(text))
+                break;
+
+            m_elems.add(text);
+        }
+
+    }
+
+    private void tJoinProc(String [] cmdInfo)
+    {
+        if (m_elems.isEmpty()) {
+            System.out.println("List is Empty");
+            return;
+        }
+
+        String delimiter = cmdInfo.length == 1 ? " " : StringUtil.join(cmdInfo,1," ");
+
+        System.out.printf("Joined text: %s%n",StringUtil.join(m_elems,delimiter));
+
+    }
+
+    private void tClearProc(String [] cmdInfo)
+    {
+        if (cmdInfo.length != 1) {
+            System.out.println("tclear command can not have any argument");
+            return;
+        }
+
+        m_elems.clear();
+    }
+
+    private void tPrintProc(String [] cmdInfo)
+    {
+        if (cmdInfo.length != 1) {
+            System.out.println("tprint command can not have any argument");
+            return;
+        }
+
+        System.out.println(m_elems);
+    }
+
     private void changePromptProc(String [] cmdInfo)
     {
         if (cmdInfo.length == 1) {
@@ -145,6 +204,18 @@ public class CommandPrompt {
             case "chprom":
                 this.changePromptProc(cmdInfo);
                 break;
+            case "tget":
+                this.tGetProc(cmdInfo);
+                break;
+            case "tjoin":
+                this.tJoinProc(cmdInfo);
+                break;
+            case "tclear":
+                this.tClearProc(cmdInfo);
+                break;
+            case "tprint":
+                this.tPrintProc(cmdInfo);
+                break;
             case "quit":
                 quitProc(cmdInfo);
                 break;
@@ -154,6 +225,7 @@ public class CommandPrompt {
     public CommandPrompt(String p)
     {
         m_prompt = p;
+        m_elems = new ArrayList();
     }
 
     public void run()

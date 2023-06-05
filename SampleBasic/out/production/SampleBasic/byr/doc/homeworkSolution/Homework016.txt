@@ -1,0 +1,59 @@
+/*----------------------------------------------------------------------------------------------------------------------
+    Homework-015
+    verilen ders: 49-08-08-2xxx
+    çözülen ders: --
+
+    Soru: ArrayList nesnelerini tutan bir ArrayList örneğine ilişkin aşağıdaki programı yazınız:
+
+    Programda bir döngü olmalı ve döngü içerisinde bizden bir yazı istenmeli. Girilen her yazı boşluk karakterleriyle
+    birbirinden ayrılmış isimlerden oluşmalıdır. exit yazısı girildiğinde döngüden çıkılmalıdır. Örneğin:
+
+    kaan ali
+    şeyma oguz ece deniz
+    ercan ismail turgay taylan emre
+    bora ela esin aykın mert övünç eylem
+    exit
+
+    Girilen her satırdaki isimleri ayrıştırarak o isimleri bir ArrayList nesnesine yerleştiriniz. Bu ArrayList nesnelerini de ayrı bir
+    ArrayList nesnesinde toplayınız. Döngüden çıkıldıktan sonra girilen tüm bilgileri aşağıdaki XML formatında ekrana
+    yazdırınız:
+
+    <Names>
+        <Line>
+            <Name>kaan</Name>
+            <Name>ali</Name>
+        </Line>
+        <Line>
+            <Name>şeyma</Name>
+            <Name>oguz</Name>
+            <Name>ece</Name>
+            <Name>deniz</Name>
+        </Line>
+        <Line>
+            <Name>ercan</Name>
+            <Name>ismail</Name>
+            <Name>turgay</Name>
+            <Name>taylan</Name>
+            <Name>emre</Name>
+        </Line>
+        <Line>
+            <Name>bora</Name>
+            <Name>ela</Name>
+            <Name>esin</Name>
+            <Name>aykın</Name>
+            <Name>mert</Name>
+            <Name>övünç</Name>
+            <Name>eylem</Name>
+        </Line>
+    </Names>
+
+
+    C ve Sistem Programcıları Derneği
+    Java ile Nesne Yönelimli Programlama
+    Çalışma Soruları
+----------------------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------------------------------------------
+	 Question-01
+	 çözüm tarihi: --
+----------------------------------------------------------------------------------------------------------------------*/

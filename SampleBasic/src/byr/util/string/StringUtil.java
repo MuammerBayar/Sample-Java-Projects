@@ -227,6 +227,7 @@ public final class StringUtil {
     {
         String str = "";
         int size = arrayList.size();
+
         for (int i = startIndex; i < size; ++i)
             str += arrayList.get(i) + delimiter;
 
