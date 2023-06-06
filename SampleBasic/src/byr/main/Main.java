@@ -1,8 +1,7 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    izlence(oop): 50.
+    izlence(oop): 51.
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.main;
-
 
 import byr.util.collection.CSDArrayList;
 
@@ -11,26 +10,19 @@ class Main {
     {
         CSDArrayList numbers = new CSDArrayList();
 
-        System.out.printf("Capacity:%d%n", numbers.capacity());
-        System.out.printf("Size:%d%n", numbers.size());
-
-        for (int i = 0; i < 15; ++i)
+        for (int i = 0; i < 10; ++i)
             numbers.add(i * 10);
 
-        System.out.printf("Capacity:%d%n", numbers.capacity());
-        System.out.printf("Size:%d%n", numbers.size());
+        System.out.println(numbers);
 
-        int size = numbers.size();
+        numbers.add(5,25);
 
-        for (int i = 0; i < size; ++i) {
-            int val = (int)numbers.get(i);
+        System.out.println(numbers);
 
-            System.out.printf("%d ", val);
-        }
+        numbers.remove(5);
 
-        System.out.println();
-        numbers.clear();
-        System.out.printf("Capacity:%d%n", numbers.capacity());
-        System.out.printf("Size:%d%n", numbers.size());
+        System.out.println(numbers);
+
     }
 }
+

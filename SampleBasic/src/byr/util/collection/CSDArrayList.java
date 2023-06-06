@@ -4,73 +4,79 @@
 package byr.util.collection;
 
 public class CSDArrayList {
+    private static final int DEFAULT_CAPACITY = 10;
     private Object [] m_elems;
-
-    private int m_capacity;
     private int m_index;
 
-    private void IndexOutOfBoundException(String message)
+    private static void doWorkForIllegalArgumentException(String message)
     {
         System.out.println(message);
-        System.exit(1);
-    }
-    private void WrongValueOfCapacityException(String message)
-    {
-        System.out.println(message);
-        System.exit(1);
+        System.exit(1); //"exception işlemleri" konusuna kadar sabredin
     }
 
-    private void checkCapacity(int capacity) {
+    private static void doWorkForIndexOutOfBounds(String message)
+    {
+        System.out.println(message);
+        System.exit(1); //"exception işlemleri" konusuna kadar sabredin
+    }
+
+    private static void checkCapacity(int capacity)
+    {
         if (capacity < 0)
-            WrongValueOfCapacityException("wrong value of capacity Exception");
-    }
-
-    private void enlargeCapacity()
-    {
-        if (m_index == m_capacity)
-            setCapacity(m_capacity == 0 ? 1 : m_capacity * 2);
-    }
-
-    private void setCapacity(int capacity)
-    {
-        Object [] temp = new Object[capacity];
-        m_capacity = capacity;
-
-        System.arraycopy(m_elems, 0,temp, 0, m_index);
-
-        m_elems = temp;
+            doWorkForIllegalArgumentException("Capacity value can not be negative");
     }
 
     private void checkIndex(int index)
     {
         if (index < 0 || index >= m_index)
-            IndexOutOfBoundException("Index out of bound exception");
+            doWorkForIndexOutOfBounds("Index out of bounds:" + index);
     }
+
+    private void changeCapacity(int capacity)
+    {
+        Object [] temp = new Object[capacity];
+
+        System.arraycopy(m_elems, 0, temp, 0, m_index);
+
+        m_elems = temp;
+    }
+
     public CSDArrayList()
     {
-        this(10);
+        m_elems = new Object[DEFAULT_CAPACITY];
     }
 
-    public CSDArrayList(int capacity)
+    public CSDArrayList(int initialCapacity)
     {
-        checkCapacity(capacity);
-        m_elems = new Object[capacity];
-        m_capacity = capacity;
+        checkCapacity(initialCapacity);
+        m_elems = new Object[initialCapacity];
     }
 
-    public void add(Object object)
+    public boolean add(Object elem)
     {
-        enlargeCapacity();
-        m_elems[m_index++] = object;
+        if (m_elems.length == m_index)
+            changeCapacity(m_elems.length == 0 ? 1 : m_elems.length * 2);
+
+        m_elems[m_index++] = elem;
+
+        return true;
     }
 
-    public void add(int index, Object object)
+    public void add(int index, Object elem)
     {
-        // todo:
+        if (m_elems.length == m_index)
+            changeCapacity(m_elems.length == 0 ? 1 : m_elems.length * 2);
+
+        for (int i = m_index - 1; i >= index; --i)
+            m_elems[i + 1] = m_elems[i];
+
+        ++m_index;
+        m_elems[index] = elem;
     }
+
     public int capacity()
     {
-        return m_capacity;
+        return m_elems.length;
     }
 
     public void clear()
@@ -81,15 +87,12 @@ public class CSDArrayList {
         m_index = 0;
     }
 
-    public void ensureCapacity(int newCapacity)
+    public void ensureCapacity(int minCapacity)
     {
-        checkCapacity(newCapacity);
-
-        if (m_capacity >= newCapacity)
+        if (minCapacity <= m_elems.length)
             return;
 
-        setCapacity(Math.max(m_capacity * 2, newCapacity));
-
+        changeCapacity(Math.max(m_elems.length * 2, minCapacity));
     }
 
     public Object get(int index)
@@ -99,6 +102,33 @@ public class CSDArrayList {
         return m_elems[index];
     }
 
+    public boolean isEmpty()
+    {
+        return m_index == 0;
+    }
+
+    public Object remove(int index)
+    {
+        checkIndex(index);
+        Object oldElem = m_elems[index];
+
+        for (int i = index; i < m_index; ++i)
+            m_elems[i] = m_elems[i + 1];
+
+        --m_index;
+        return oldElem;
+    }
+
+    public Object set(int index, Object elem)
+    {
+        checkIndex(index);
+        Object oldElem = m_elems[index];
+
+        m_elems[index] = elem;
+
+        return oldElem;
+    }
+
     public int size()
     {
         return m_index;
@@ -106,10 +136,20 @@ public class CSDArrayList {
 
     public void trimToSize()
     {
-        if (m_capacity == m_index)
-            return;
+        if (m_index != m_elems.length)
+            changeCapacity(m_index);
+    }
 
-        setCapacity(m_index);
+    public String toString()
+    {
+        String str = "[";
+
+        for (int i = 0; i < m_index; ++i) {
+            if (str.length() != 1)
+                str += ",";
+            str += m_elems[i];
+        }
+        return str + "]";
     }
 
     //...
