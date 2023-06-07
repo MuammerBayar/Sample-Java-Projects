@@ -1,6 +1,6 @@
 package byr.samples.application.company;
 
-public class Employee {
+public abstract class Employee {
     private String m_citizenId;
     private String m_name;
     private String m_address;
@@ -38,6 +38,6 @@ public class Employee {
         //...
         m_address = address;
     }
-
+    public abstract double calculateInsurancePayment();
     //...
 }
