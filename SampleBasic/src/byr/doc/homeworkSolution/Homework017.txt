@@ -328,5 +328,232 @@
 
 /*----------------------------------------------------------------------------------------------------------------------
 	 Question-01
-	 çözüm tarihi: --
+	 çözüm tarihi: 10.06.2023
 ----------------------------------------------------------------------------------------------------------------------*/
+
+
+import java.util.Scanner;
+
+public class AsciiImageApp {
+    private static void checkStrLength(String [] img, String str)
+    {
+        if (img[0] != null && str.length() != img[0].length()) {
+            System.out.println("INPUT MISMATCH");
+            System.exit(1);
+        }
+    }
+
+    public static void run()
+    {
+        Scanner kb = new Scanner(System.in);
+
+        for (;;) {
+            System.out.print("Enter number of lines:");
+            int n = Integer.parseInt(kb.nextLine());
+
+            String [] img =  new String[n];
+
+            for (int i = 0; i < n; ++i) {
+                System.out.printf("%d. line>", i + 1);
+                String str = kb.nextLine();
+
+                checkStrLength(img,str);
+
+                img[i] = str;
+            }
+
+            AsciiImage asciiImage = new AsciiImage(img);
+
+            System.out.println("Commands ->[transpose, display, flipv, quit]");
+
+            for (;;) {
+                System.out.print("command>");
+                String command = kb.nextLine();
+
+                switch (command) {
+                    case "transpose":
+                        asciiImage.transpose();
+                        break;
+                    case "display":
+                        asciiImage.disp();
+                        break;
+                    case "flipv":
+                        asciiImage.flipv();
+                        break;
+
+                    case "quit":
+                        System.exit(1);
+                        break;
+                    default:
+                        System.out.println("Wrong Command.");
+                }
+
+            }
+
+        }
+    }
+
+}
+
+
+// String Array
+public class AsciiImage {
+    private String [] m_image;
+
+
+    public AsciiImage(String [] img)
+    {
+        m_image = img;
+    }
+
+    public void transpose()
+    {
+        char [][] chars = new char[m_image.length][];
+
+        for (int i = 0; i < chars.length; ++i)
+            chars[i] = m_image[i].toCharArray();
+
+        char [][] result = new char[m_image[0].length()][m_image.length];
+        String [] newImg = new String[result.length];
+
+        for (int i = 0; i < result.length ; ++i) {
+            for (int k = 0; k < chars.length; ++k)
+                result[i][k] = chars[k][result.length - 1 - i];
+
+            newImg[i] = String.valueOf(result[i]);
+        }
+
+        m_image = newImg;
+    }
+    public void disp()
+    {
+        for (String s : m_image)
+            System.out.println(s);
+
+        System.out.printf("%d %d%n", m_image[0].length(), m_image.length);
+    }
+
+    public void flipv()
+    {
+        for (int i = 0; i < m_image.length / 2; ++i) {
+            String temp = m_image[i];
+            m_image[i] = m_image[m_image.length - 1 - i];
+            m_image[m_image.length - 1 - i] = temp;
+        }
+    }
+}
+
+
+// char Array
+public class AsciiImage {
+    private char [][] m_image;
+
+
+    private void fillMatrix(String [] img)
+    {
+        m_image = new char[img.length][];
+
+        for (int i = 0; i < img.length; ++i)
+                m_image[i] = img[i].toCharArray();
+    }
+    public AsciiImage(String [] img)
+    {
+        fillMatrix(img);
+    }
+
+    public void transpose()
+    {
+
+        char [][] result = new char[m_image[0].length][m_image.length];
+
+        for (int i = 0; i < result.length ; ++i)
+            for (int k = 0; k < m_image.length; ++k)
+                result[i][k] = m_image[k][result.length - 1 - i];
+
+        m_image = result;
+    }
+    public void disp()
+    {
+        for (char [] arr : m_image) {
+            for (char ch : arr)
+                System.out.print(ch);
+
+            System.out.println();
+        }
+
+        System.out.printf("%d %d%n", m_image[0].length, m_image.length);
+    }
+
+    public void flipv()
+    {
+        for (int i = 0; i < m_image.length / 2; ++i) {
+            char [] temp = m_image[i];
+            m_image[i] = m_image[m_image.length - 1 - i];
+            m_image[m_image.length - 1 - i] = temp;
+        }
+    }
+}
+
+
+// ArrayList
+import java.util.ArrayList;
+
+public class AsciiImage {
+    private ArrayList m_image;
+
+
+    private void fillMatrix(String [] img)
+    {
+        m_image = new ArrayList();
+
+        for (String str : img)
+            m_image.add(str);
+    }
+    public AsciiImage(String [] img)
+    {
+        fillMatrix(img);
+    }
+
+    public void transpose()
+    {
+        char [][] chars = new char[m_image.size()][];
+
+        for (int i = 0; i < chars.length; ++i)
+            chars[i] = ((String)m_image.get(i)).toCharArray();
+
+        int length = ((String)m_image.get(0)).length();
+
+        char [][] result = new char[length][m_image.size()];
+        String [] newImg = new String[result.length];
+
+        for (int i = 0; i < result.length ; ++i) {
+            for (int k = 0; k < chars.length; ++k)
+                result[i][k] = chars[k][result.length - 1 - i];
+
+            newImg[i] = String.valueOf(result[i]);
+        }
+
+        fillMatrix(newImg);
+    }
+    public void disp()
+    {
+        for (Object object : m_image) {
+            System.out.print((String) object);
+
+            System.out.println();
+        }
+        int length = ((String)m_image.get(0)).length();
+        System.out.printf("%d %d%n", length, m_image.size());
+    }
+
+    public void flipv()
+    {
+        int size = m_image.size();
+
+        for (int i = 0; i < size / 2; ++i) {
+            Object temp = m_image.get(i);
+            m_image.set(i,m_image.get(size - 1 - i));
+            m_image.set(size - 1 - i,temp);
+        }
+    }
+}
