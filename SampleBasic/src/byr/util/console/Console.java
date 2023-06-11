@@ -27,14 +27,9 @@ public class Console {
                 System.out.print(message);
                 return Integer.parseInt(KB.nextLine());
             } catch (NumberFormatException ex) {
-                System.out.println(errMessage);
+                System.out.print(errMessage);
             }
         }
-    }
-
-    public static int readIntLine()
-    {
-        return readIntLine("");
     }
 
     public static int readIntLine(String message)
@@ -65,15 +60,11 @@ public class Console {
             try {
                 System.out.print(message);
                 return Double.parseDouble(KB.nextLine());
-            } catch (NumberFormatException ex) {
-                System.out.println(errMessage);
+            }
+            catch (NumberFormatException ignore) {
+                System.out.print(errMessage);
             }
         }
-    }
-
-    public static double readDoubleLine()
-    {
-        return readDoubleLine("");
     }
 
     public static double readDoubleLine(String message)
@@ -84,6 +75,17 @@ public class Console {
     public static double readDoubleLine(String message, String errMessage)
     {
         return readDouble(message + "\n", errMessage + "\n");
+    }
+
+    public static String readLine(String message)
+    {
+        return read(message + "\n");
+    }
+
+    public static String read(String message)
+    {
+        System.out.print(message);
+        return KB.nextLine();
     }
 
     //...
