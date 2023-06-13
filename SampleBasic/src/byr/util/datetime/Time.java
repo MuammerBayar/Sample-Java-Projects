@@ -19,8 +19,7 @@ public class Time {
 
     private static void doWorkException(String message)
     {
-        System.out.println(message);
-        System.exit(1); //exception işlemlerine kadar sabredin
+        throw new DateTimeException(message);
     }
 
     private static boolean isValidForBound(int val, int bound)
@@ -131,7 +130,7 @@ public class Time {
     public Time(int hour, int minute, int second, int millisecond)
     {
         checkForTime(hour, minute, second, millisecond);
-        set(hour, minute, second, millisecond);
+        this.set(hour, minute, second, millisecond);
     }
 
     public int getHour()
@@ -197,7 +196,7 @@ public class Time {
 
     public String toString()
     {
-        return String.format("%s:%02d", toShortTimeString(), m_second);
+        return String.format("%s:%02d", this.toShortTimeString(), m_second);
     }
 
     public String toLongTimeString()

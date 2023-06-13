@@ -1,5 +1,4 @@
 package byr.util.datetime;
-
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Random;
@@ -20,6 +19,7 @@ public class Date {
         MONTHS_EN = new String[] {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         MONTHS = Month.values();
     }
+
     private int m_day;
     private int m_month;
     private int m_year;
@@ -92,8 +92,7 @@ public class Date {
 
     private static void doWorkForException(String messsage)
     {
-        System.out.println(messsage);
-        System.exit(1); //Exception işlemleri konusuna kadar sabredin
+        throw new DateTimeException(messsage);
     }
 
     private static void checkForDate(int day, int month, int year, String errMsg)
@@ -162,12 +161,12 @@ public class Date {
     private Date(int day, int month, int year, String errMsg)
     {
         checkForDate(day, month, year, errMsg);
-        set(day, month, year);
+        this.set(day, month, year);
     }
 
     Date(Date date)
     {
-        set(date.m_day, date.m_month, date.m_year);
+        this.set(date.m_day, date.m_month, date.m_year);
     }
 
     public Date() //Bu ctor o anki sistem tarihini alır. Burada yazılan kodların ne anlama geldiği şu an önemsizdir. Tasarım açısından bu ctor yazılmıştır
@@ -202,8 +201,8 @@ public class Date {
         if (m_day == day)
             return;
 
-        checkForDay(day);
-        set(day, m_month, m_year);
+        this.checkForDay(day);
+        this.set(day, m_month, m_year);
     }
 
     public int getMonthValue()
@@ -216,8 +215,8 @@ public class Date {
         if (m_month == month)
             return;
 
-        checkForMonth(month);
-        set(m_day, month, m_year);
+        this.checkForMonth(month);
+        this.set(m_day, month, m_year);
     }
 
     public Month getMonth()
@@ -227,7 +226,7 @@ public class Date {
 
     public void setMonth(Month month)
     {
-        setMonthValue(month.ordinal() + 1);
+        this.setMonthValue(month.ordinal() + 1);
     }
 
     public int getYear()
@@ -240,8 +239,8 @@ public class Date {
         if (m_year == year)
             return;
 
-        checkForYear(year);
-        set(m_day, m_month, year);
+        this.checkForYear(year);
+        this.set(m_day, m_month, year);
     }
 
     public DayOfWeek getDayOfWeek() {return DayOfWeek.values()[m_dayOfWeek];}
@@ -263,7 +262,7 @@ public class Date {
 
     public boolean isWeekday()
     {
-        return !isWeekend();
+        return !this.isWeekend();
     }
 
     public boolean isLeapYear()
@@ -293,11 +292,12 @@ public class Date {
 
     public String toLongDateStringTR()
     {
-        return String.format("%s %s", toStringTR(), getDayOfWeekTR());
+        return String.format("%s %s", this.toStringTR(), this.getDayOfWeekTR());
     }
 
     public String toLongDateStringEN()
     {
-        return String.format("%s %s", toStringEN(), getDayOfWeekEN());
+        return String.format("%s %s", this.toStringEN(), this.getDayOfWeekEN());
     }
 }
+

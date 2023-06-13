@@ -27,11 +27,9 @@ public class Fraction {
     {
         if (b == 0) {
             if (a == 0)
-                System.out.println("Indefinite");
-            else
-                System.out.println("Undefined");
+                throw new FractionException("indefinite", FractionExceptionStatus.INDEFINITE);
 
-            System.exit(1);
+            throw new FractionException("undefined", FractionExceptionStatus.UNDEFINED);
         }
     }
 
