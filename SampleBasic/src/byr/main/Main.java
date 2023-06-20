@@ -1,10 +1,12 @@
 /*----------------------------------------------------------------------------------------------------------------------
-    izlence(oop): 55.
+    izlence(oop): 61.
 ----------------------------------------------------------------------------------------------------------------------*/
 package byr.main;
 
+import java.util.Scanner;
+
 class Main {
-    public static void main(String[] args)
+    public static void main(String [] args)
     {
 
     }
